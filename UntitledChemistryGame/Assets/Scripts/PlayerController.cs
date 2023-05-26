@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private bool walk = false;
 
     private CharacterController characterController;
     private float cameraVerticalAngle;
@@ -22,8 +23,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        HandleWalk();
         HandleCharacterLook();
         HandleCharacterMovement();
+    }
+
+    private void HandleWalk()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            walk = !walk;
+            // if the player presses "control" they reduce in movement speed.
+            if (walk) { moveSpeed /= 2; }
+            else { moveSpeed *= 2; }
+        }
     }
 
     private void HandleCharacterLook()
@@ -49,7 +62,8 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
 
-        Vector3 characterVelocity = transform.right * moveX * moveSpeed + transform.forward * moveZ * moveSpeed;
+        Vector3 characterVelocity = (transform.right * moveX + transform.forward * moveZ).normalized;
+        Debug.Log((characterVelocity * moveSpeed).magnitude);
 
         // Apply gravity to the velocity.
         float gravityDownForce = -60f;
@@ -62,7 +76,7 @@ public class PlayerController : MonoBehaviour
         characterVelocity += characterVelocityMomentum;
 
         // Move Character Controller.
-        characterController.Move(characterVelocity * Time.deltaTime);
+        characterController.Move(characterVelocity * Time.deltaTime * moveSpeed);
 
         // Dampen momentum
         if (characterVelocityMomentum.magnitude >= 0f)
