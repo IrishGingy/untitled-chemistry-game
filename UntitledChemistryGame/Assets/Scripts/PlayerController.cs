@@ -63,10 +63,20 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxisRaw("Vertical");
 
         Vector3 characterVelocity = (transform.right * moveX + transform.forward * moveZ).normalized;
-        Debug.Log((characterVelocity * moveSpeed).magnitude);
+
+        if (characterController.isGrounded)
+        {
+            characterVelocityY = 0f;
+            // Jump
+            if (TestInputJump())
+            {
+                float jumpSpeed = 10f;
+                characterVelocityY = jumpSpeed;
+            }
+        }
 
         // Apply gravity to the velocity.
-        float gravityDownForce = -60f;
+        float gravityDownForce = -9f;
         characterVelocityY += gravityDownForce * Time.deltaTime;
 
         // Apply Y velocity to move vector.
@@ -88,5 +98,15 @@ public class PlayerController : MonoBehaviour
                 characterVelocityMomentum = Vector3.zero;
             }
         }
+    }
+
+    private void ResetGravity()
+    {
+        characterVelocityY = 0;
+    }
+
+    private bool TestInputJump()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
     }
 }
