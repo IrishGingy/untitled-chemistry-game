@@ -8,6 +8,7 @@ public class Waves : MonoBehaviour
     public Octave[] Octaves;
     public float UVScale;
     public Transform playerTransform;
+    public BoxCollider playerArea;
 
     protected MeshFilter MeshFilter;
     protected Mesh Mesh;
@@ -92,7 +93,7 @@ public class Waves : MonoBehaviour
     private int[] GenerateTries()
     {
         var tries = new int[Mesh.vertices.Length * 6];
-        
+
         // two tirangles are one tile
         for (int x = 0; x < Dimensions; x++)
         {
@@ -168,16 +169,25 @@ public class Waves : MonoBehaviour
             //}
             for (int z = 0; z <= Dimensions; z++)
             {
-                // Reduce waves near player on both axes
-                if ((x < (playerTransform.position.x - 5) && z < (playerTransform.position.x - 5)) || (x > (playerTransform.position.x + 5) && z > (playerTransform.position.z + 5)))
+                //// Reduce waves near player on both axes
+                //if ((x < (playerTransform.position.x - 5) && z < (playerTransform.position.x - 5)) || (x > (playerTransform.position.x + 5) && z > (playerTransform.position.z + 5)))
+                //{
+                //    heightMultiplier = 1;
+                //}
+                //else
+                //{
+                //    heightMultiplier = 0.25f;
+                //}
+
+                if (playerArea.bounds.Contains(verts[index(x, z)]))
                 {
-                    heightMultiplier = 1;
+                    //Debug.Log("X: " + x + " , Z: " + z);
+                    heightMultiplier = 0.25f;
                 }
                 else
                 {
-                    heightMultiplier = 0.25f;
+                    heightMultiplier = 1;
                 }
-
                 var y = 0f;
                 for (int o = 0; o < Octaves.Length; o++)
                 {
