@@ -183,16 +183,16 @@ public class WaterFloat : MonoBehaviour
             // attach to water surface
             TargetUp = Vector3.SmoothDamp(transform.up, TargetUp, ref smoothVectorRotation, 0.2f);
             Rigidbody.rotation = Quaternion.FromToRotation(transform.up, TargetUp) * Rigidbody.rotation;
-            if (Rigidbody.angularVelocity.x < 0)
-            {
-                Rigidbody.AddTorque((-yDir * waveSpeed[3] * Time.deltaTime) / 10, ForceMode.VelocityChange);
-            }
+            //if (Rigidbody.angularVelocity.x < 0)
+            //{
+            //    Rigidbody.AddTorque((-yDir * waveSpeed[3] * Time.deltaTime) / 10, ForceMode.VelocityChange);
+            //}
             Rigidbody.angularVelocity = Vector3.zero;
         }
-        else if (!pointUnderWater && !noTorque)
-        {
-            Rigidbody.AddTorque((yDir * waveSpeed[3] * Time.deltaTime) / 10, ForceMode.VelocityChange);
-        }
+        //else if (!pointUnderWater && !noTorque)
+        //{
+        //    Rigidbody.AddTorque((yDir * waveSpeed[3] * Time.deltaTime) / 10, ForceMode.VelocityChange);
+        //}
     }
 
     public Vector3 GetNormal(Vector3[] points)

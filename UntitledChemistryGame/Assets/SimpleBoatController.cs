@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBoat : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class SimpleBoatController : MonoBehaviour
 {
     public Transform Motor;
     public float SteerPower = 500f;

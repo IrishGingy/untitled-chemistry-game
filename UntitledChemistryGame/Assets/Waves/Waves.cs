@@ -7,6 +7,7 @@ public class Waves : MonoBehaviour
     public int Dimensions = 10;
     public Octave[] Octaves;
     public float UVScale;
+    public Transform playerTransform;
 
     protected MeshFilter MeshFilter;
     protected Mesh Mesh;
@@ -151,23 +152,44 @@ public class Waves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float heightMultiplier = 1;
+
         var verts = Mesh.vertices;
         for (int x = 0; x <= Dimensions; x++)
         {
+            //// Reduce waves near player on the x axis
+            //if (x < (playerTransform.position.x - 5) || x > (playerTransform.position.x + 5))
+            //{
+            //    xHeightMultiplier = 1;
+            //}
+            //else
+            //{
+            //    xHeightMultiplier = 0.25f;
+            //}
             for (int z = 0; z <= Dimensions; z++)
             {
+                // Reduce waves near player on both axes
+                if ((x < (playerTransform.position.x - 5) && z < (playerTransform.position.x - 5)) || (x > (playerTransform.position.x + 5) && z > (playerTransform.position.z + 5)))
+                {
+                    heightMultiplier = 1;
+                }
+                else
+                {
+                    heightMultiplier = 0.25f;
+                }
+
                 var y = 0f;
                 for (int o = 0; o < Octaves.Length; o++)
                 {
                     if (Octaves[o].alternate)
                     {
                         var perl = Mathf.PerlinNoise((x * Octaves[o].scale.x) / Dimensions, (z * Octaves[o].scale.y) / Dimensions) * Mathf.PI * 2f;
-                        y += Mathf.Cos(perl + Octaves[o].speed.magnitude * Time.time) * Octaves[o].height;
+                        y += Mathf.Cos(perl + Octaves[o].speed.magnitude * Time.time) * (Octaves[o].height * heightMultiplier);
                     }
                     else
                     {
                         var perl = Mathf.PerlinNoise((x * Octaves[o].scale.x + Time.time * Octaves[o].speed.x) / Dimensions, (z * Octaves[o].scale.y + Time.time * Octaves[o].speed.y) / Dimensions) - 0.5f;
-                        y += perl * Octaves[o].height;
+                        y += perl * (Octaves[o].height * heightMultiplier);
                     }
                 }
                 verts[index(x, z)] = new Vector3(x, y, z);
