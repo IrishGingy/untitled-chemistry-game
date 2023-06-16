@@ -5,75 +5,39 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SimpleBoatController : MonoBehaviour
 {
-    public Transform Motor;
-    public float SteerPower = 500f;
-    public float Power = 5f;
-    public float MaxSpeed = 10f;
-    public float Drag = 0.1f;
+    [SerializeField] private float _maxMoveSpeed;
+    [SerializeField] private Vector3 _rotation;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _velocity;
+    [SerializeField] private Vector3 _vectorVelocity;
 
-    protected Rigidbody Rigidbody;
-    protected Quaternion StartRotation;
+    private Rigidbody _rb;
 
     private void Awake()
     {
-        Rigidbody = GetComponent<Rigidbody>();
-        StartRotation = Motor.localRotation;
+        _rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        // default direction
-        var forceDirection = transform.forward;
-        var steer = 0;
+        if (Input.GetKey(KeyCode.A)) { _rotation = Vector3.down; }
+        else if (Input.GetKey(KeyCode.D)) { _rotation = Vector3.up; }
+        else { _rotation = Vector3.zero; }
 
-        // steer direction [1, 0, -1]
-        if (Input.GetKey(KeyCode.A))
-        {
-            steer = 1;
-        }
-        if (Input.GetKey(KeyCode.D)) {  
-            steer = -1;
-        }
+        transform.Rotate(_rotation * _speed * Time.deltaTime);
 
-        var dragCoeff = 1 + Drag;
-
-        // Rotational force
-        Rigidbody.AddForceAtPosition(steer * transform.right * dragCoeff * Time.deltaTime * SteerPower, Motor.position);
-
-        // compute vectors
-        var forward = Vector3.Scale(new Vector3(1, 0, 1), transform.forward);
-        var targetVel = Vector3.zero;
-
-        // forward/backward power
-        if (Input.GetKey(KeyCode.W))
-        {
-            ApplyForceToReachVelocity(Rigidbody, forward * MaxSpeed * dragCoeff * Time.deltaTime, Power);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            ApplyForceToReachVelocity(Rigidbody, forward * -MaxSpeed * dragCoeff * Time.deltaTime, Power);
-        }
+        _velocity = _rb.velocity.magnitude;
+        _vectorVelocity = _rb.velocity;
     }
 
-    private void ApplyForceToReachVelocity(Rigidbody rigidbody, Vector3 velocity, float force = 1, ForceMode mode = ForceMode.Force)
+    private void FixedUpdate()
     {
-        if (force == 0 || velocity.magnitude == 0)
-            return;
+        float _moveSpeed = 0;
+        if (Input.GetKey(KeyCode.W)) { _moveSpeed = _maxMoveSpeed; }
+        if (Input.GetKey(KeyCode.S)) { _moveSpeed = -_maxMoveSpeed; }
 
-        velocity = velocity + velocity.normalized * 0.2f * rigidbody.drag;
+        _rb.AddForce(_moveSpeed * transform.forward, ForceMode.Acceleration);
 
-        //force = 1 => need 1 s to reach velocity (if mass is 1) => force can be max 1 / Time.fixedDeltaTime
-        force = Mathf.Clamp(force, -rigidbody.mass / Time.fixedDeltaTime, rigidbody.mass / Time.fixedDeltaTime);
-
-        //dot product is a projection from rhs to lhs with a length of result / lhs.magnitude https://www.youtube.com/watch?v=h0NJK4mEIJU
-        if (rigidbody.velocity.magnitude == 0)
-        {
-            rigidbody.AddForce(velocity * force, mode);
-        }
-        else
-        {
-            var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rigidbody.velocity) / velocity.magnitude);
-            rigidbody.AddForce((velocity - velocityProjectedToTarget) * force, mode);
-        }
+        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxMoveSpeed);
     }
 }
