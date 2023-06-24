@@ -27,7 +27,7 @@ public class WaterFloat : MonoBehaviour
     protected Vector3 TargetUp;
 
     [SerializeField] bool showRipples;
-    [SerializeField] bool noTorque;
+    //[SerializeField] bool noTorque;
 
     public Vector3 Center { get { return transform.position + centerOffset; } }
 
@@ -155,19 +155,19 @@ public class WaterFloat : MonoBehaviour
             // object is only slightly above waterline (could be a normal push from the waves): we want ripples and torque
             showRipples = true;
             ps.gameObject.SetActive(true);
-            noTorque = false;
+            //noTorque = false;
         }
         else if ((Center.y - WaterLine) > 0.75f)
         {
             // object is far enough above the waves that ripples and torque should be deactivated
             showRipples = false;
             ps.gameObject.SetActive(false);
-            noTorque = true;
+            //noTorque = true;
         }
 
         Rigidbody.AddForce(gravity * Mathf.Clamp(Mathf.Abs(WaterLine - Center.y), 0 , 1));
 
-        // add a force to push object toward the direction of the river (cancelling drag because drag is constantly changing)
+        //// add a force to push object toward the direction of the river (cancelling drag because drag is constantly changing)
         //var dragCoeff = 1 + Rigidbody.drag;
         //Rigidbody.AddForce(dragCoeff * Time.deltaTime * waveSpeed[1] * xDir, ForceMode.Force);
         //Rigidbody.AddForce(dragCoeff * Time.deltaTime * waveSpeed[3] * yDir, ForceMode.Force);

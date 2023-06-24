@@ -68,6 +68,7 @@ public class FishingSlider : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("Reeling in! (Pressed Spacebar)");
             if (_slider.value >= (left * 0.001) && _slider.value <= ((1000 - right) * 0.001))
             {
                 statusTextMesh.text = "FISH CAUGHT!";
@@ -79,6 +80,29 @@ public class FishingSlider : MonoBehaviour
                 statusTextMesh.text = "FISH LOST!";
                 statusTextMesh.color = Color.red;
                 statusTextMesh.gameObject.SetActive(true);
+            }
+        }
+
+        if (!flip)
+        {
+            if (_slider.value < _slider.maxValue)
+            {
+                _slider.value += speed * Time.deltaTime;
+            }
+            else
+            {
+                flip = true;
+            }
+        }
+        else
+        {
+            if (_slider.value > _slider.minValue)
+            {
+                _slider.value -= speed * Time.deltaTime;
+            }
+            else
+            {
+                flip = false;
             }
         }
     }
