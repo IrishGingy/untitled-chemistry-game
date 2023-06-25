@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public bool lookingAtUI = false;
+
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float moveSpeed = 5f;
@@ -23,9 +25,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleWalk();
-        HandleCharacterLook();
-        HandleCharacterMovement();
+        if (!lookingAtUI)
+        {
+            HandleWalk();
+            HandleCharacterLook();
+            HandleCharacterMovement();
+        }
     }
 
     private void HandleWalk()
