@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SimpleBoatController : MonoBehaviour
 {
-    [SerializeField] private float _maxMoveSpeed;
+    [SerializeField] public float maxMoveSpeed;
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _speed;
     [SerializeField] private float _velocity;
@@ -33,11 +33,11 @@ public class SimpleBoatController : MonoBehaviour
     private void FixedUpdate()
     {
         float _moveSpeed = 0;
-        if (Input.GetKey(KeyCode.W)) { _moveSpeed = _maxMoveSpeed; }
-        if (Input.GetKey(KeyCode.S)) { _moveSpeed = -_maxMoveSpeed; }
+        if (Input.GetKey(KeyCode.W)) { _moveSpeed = maxMoveSpeed; }
+        if (Input.GetKey(KeyCode.S)) { _moveSpeed = -maxMoveSpeed; }
 
         _rb.AddForce(_moveSpeed * transform.forward, ForceMode.Acceleration);
 
-        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxMoveSpeed);
+        _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, maxMoveSpeed);
     }
 }
