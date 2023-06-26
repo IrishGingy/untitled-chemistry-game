@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Slider))]
 public class FishingSlider : MonoBehaviour
@@ -24,6 +25,8 @@ public class FishingSlider : MonoBehaviour
 
     private Slider _slider;
     private GameObject initObj;
+    private RectTransform sliderRect;
+    private bool handleStopped;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,7 @@ public class FishingSlider : MonoBehaviour
         statusTextMesh.gameObject.SetActive(false);
         _slider = GetComponent<Slider>();
 
-        RectTransform sliderRect = _slider.GetComponent<RectTransform>();
+        sliderRect = _slider.GetComponent<RectTransform>();
         initObj = Instantiate(catchSectionObj, _slider.transform);
         gameObjectRect = initObj.GetComponent<RectTransform>();
         gameObjectRect.anchoredPosition = new Vector2(-200, 0);
@@ -82,7 +85,19 @@ public class FishingSlider : MonoBehaviour
                 statusTextMesh.gameObject.SetActive(true);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResetSlider();
+        }
 
+        if (!handleStopped)
+        {
+            MoveHandle();
+        }
+    }
+
+    void MoveHandle()
+    {
         if (!flip)
         {
             if (_slider.value < _slider.maxValue)
@@ -105,5 +120,13 @@ public class FishingSlider : MonoBehaviour
                 flip = false;
             }
         }
+    }
+
+    void ResetSlider()
+    {
+        _slider.value = _slider.minValue;
+        statusTextMesh.gameObject.SetActive(false);
+        _slider.gameObject.SetActive(false);
+        handleStopped = true;
     }
 }
