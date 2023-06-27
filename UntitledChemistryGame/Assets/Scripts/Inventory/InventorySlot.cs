@@ -5,6 +5,7 @@ public class InventorySlot : MonoBehaviour
 {
     public Image icon;
     public Button removeButton;
+    public Image usedIcon;
 
     [SerializeField] Image previewImage;
 
@@ -26,6 +27,8 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = upgrade.icon;
         icon.enabled = true;
+        usedIcon.enabled = false;
+        // can add tooltip in here
         //removeButton.interactable = true;
     }
 
@@ -43,13 +46,30 @@ public class InventorySlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }
 
-    /*public void UseItem()
+    //public void UseItem()
+    //{
+    //    if (item != null)
+    //    {
+    //        item.Use(item);
+    //    }
+    //}
+
+    public void UseUpgrade()
     {
-        if (item != null)
+        if (upgrade != null)
         {
-            item.Use(item);
+            upgrade.Use(upgrade);
+            usedIcon.enabled = true;
         }
-    }*/
+    }
+
+    public void ShowTooltip()
+    {
+        if (upgrade != null)
+        {
+            upgrade.Tooltip(upgrade);
+        }
+    }
 
     public void PreviewItem()
     {
