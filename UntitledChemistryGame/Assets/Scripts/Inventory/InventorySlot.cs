@@ -9,6 +9,7 @@ public class InventorySlot : MonoBehaviour
     [SerializeField] Image previewImage;
 
     Item item;
+    Upgrade upgrade;
 
     public void AddItem(Item newItem)
     {
@@ -17,6 +18,15 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.icon;
         icon.enabled = true;
         removeButton.interactable = true;
+    }
+
+    public void AddUpgrade(Upgrade newUpgrade)
+    {
+        upgrade = newUpgrade;
+
+        icon.sprite = upgrade.icon;
+        icon.enabled = true;
+        //removeButton.interactable = true;
     }
 
     public void ClearSlot()
