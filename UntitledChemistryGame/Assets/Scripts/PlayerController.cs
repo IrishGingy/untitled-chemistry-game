@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool lookingAtUI = false;
+    public bool docked = false;
 
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private Camera playerCamera;
