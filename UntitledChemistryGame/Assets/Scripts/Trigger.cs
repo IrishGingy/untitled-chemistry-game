@@ -6,13 +6,13 @@ using System;
 
 public abstract class Trigger : MonoBehaviour
 {
-    public abstract char promptKeyText { get; set; }
+    public abstract KeyCode promptKeyText { get; set; }
 
     private GameManager gm;
     private GameObject buttonPrompt;
     private TextMeshProUGUI promptKeyTextMesh;
 
-    private void Start()
+    protected virtual void Start()
     {
         gm = FindObjectOfType<GameManager>();
         buttonPrompt = gm.buttonPrompt;
@@ -21,8 +21,10 @@ public abstract class Trigger : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
+        // TODO: Change this to detect a like script called "Player" instead of checking for tags
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player has entered!");
             ShowPrompt();
             // call derived class's "TriggerEnterEvent" method that overrides this class's "TriggerEnterEvent" method
             TriggerEnterEvent();
@@ -31,6 +33,7 @@ public abstract class Trigger : MonoBehaviour
 
     public virtual void OnTriggerExit(Collider other)
     {
+        // TODO: Change this to detect a like script called "Player" instead of checking for tags
         if (other.CompareTag("Player"))
         {
             HidePrompt();
@@ -50,7 +53,7 @@ public abstract class Trigger : MonoBehaviour
         buttonPrompt.SetActive(true);
     }
 
-    private void HidePrompt()
+    public void HidePrompt()
     {
         promptKeyTextMesh.text = "";
         buttonPrompt.SetActive(false);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DialogueTrigger : Trigger
 {
-    [SerializeField] private char _promptKeyText;
-    public override char promptKeyText
+    [SerializeField] private KeyCode _promptKeyText;
+    public override KeyCode promptKeyText
     {
         get { return _promptKeyText; }
         set { _promptKeyText = value; }
