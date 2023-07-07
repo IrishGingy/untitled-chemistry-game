@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Player
 {
     public bool lookingAtUI = false;
-    public bool docked = false;
 
     [SerializeField] private float mouseSensitivity = 1f;
     [SerializeField] private Camera playerCamera;

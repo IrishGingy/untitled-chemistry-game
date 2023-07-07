@@ -14,98 +14,58 @@ public class Dock : Trigger
 
     public bool canDock = false;
     public bool canSail = false;
-    public GameObject playerParent;
-    public GameObject boat;
     public Transform spawnLocation;
-    //public TextMeshProUGUI canDockTextMesh;
+    public Transform boatDockLocation;
 
-    private bool docked;
+    private Player player;
 
     protected override void Start()
     {
         base.Start();
-        docked = playerParent.GetComponentInChildren<PlayerController>().docked;
-        //canDockTextMesh.enabled = false;
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canDock && !docked)
+        if (canDock && !player.docked)
         {
-            InstantiatePlayer();
+            // TODO: Convert to Unity's new input system
+            if (Input.GetKeyDown(promptKeyText))
+            {
+                player.DockBoat(spawnLocation, boatDockLocation);
+                // switching from docked to undocked and vice versa requires that we hide the prompt to reset the promptTextMesh (to prevent error)
+                base.HidePrompt();
+            }
         }
-        if (canSail && docked)
+        if (canSail && player.docked)
         {
-            InstantiateBoat();
-        }
-        //if (canDock && Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    Instantiate(playerParent, spawnLocation);
-        //    boat.SetActive(false);
-        //    canDock = false;
-        //    docked = true;
-        //    canDockTextMesh.enabled = false;
-        //}
-    }
-
-    private void InstantiatePlayer()
-    {
-        if (Input.GetKeyDown(promptKeyText))
-        {
-            Instantiate(playerParent, spawnLocation);
-            boat.SetActive(false);
-            canDock = false;
-            docked = true;
-            base.HidePrompt();
+            // TODO: Convert to Unity's new input system
+            if (Input.GetKeyDown(promptKeyText))
+            {
+                player.SetSail();
+                base.HidePrompt();
+            }
         }
     }
-
-    private void InstantiateBoat()
-    {
-        //if (Input.GetKeyDown(promptKeyText))
-        //{
-        //    Instantiate(playerParent, spawnLocation);
-        //    boat.SetActive(false);
-        //    canDock = false;
-        //    docked = true;
-        //    base.HidePrompt();
-        //}
-    }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player") && !docked)
-    //    {
-    //        canDock = true;
-    //        canDockTextMesh.enabled = true;
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Player") && !docked)
-    //    {
-    //        canDockTextMesh.enabled = false;
-    //    }
-    //}
 
     public override void TriggerEnterEvent()
     {
-        if (!docked)
+        if (!player.docked)
         {
             canDock = true;
+            canSail = false;
         }
         else
         {
+            canDock = false;
             canSail = true;
         }
-        Debug.Log("Called the trigger enter event from Dock!");
     }
 
     public override void TriggerExitEvent() 
     {
-        if (!docked)
+        if (!player.docked)
         {
             canDock = false;
         }
@@ -113,6 +73,5 @@ public class Dock : Trigger
         {
             canSail = false;
         }
-        Debug.Log("Called the trigger exit event from Dock!");
     }
 }

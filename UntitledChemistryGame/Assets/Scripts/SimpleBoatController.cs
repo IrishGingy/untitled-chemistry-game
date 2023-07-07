@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SimpleBoatController : MonoBehaviour
+public class SimpleBoatController : Player
 {
     [SerializeField] public float maxMoveSpeed;
     [SerializeField] private Vector3 _rotation;
