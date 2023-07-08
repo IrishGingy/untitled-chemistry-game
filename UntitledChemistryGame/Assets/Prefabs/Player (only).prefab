@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc6d9af372d5fe4ebb4307775ef990b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookingAtUI: 0
   mouseSensitivity: 1
   playerCamera: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 5
   walk: 0
 --- !u!143 &4802560647905495091
 CharacterController:

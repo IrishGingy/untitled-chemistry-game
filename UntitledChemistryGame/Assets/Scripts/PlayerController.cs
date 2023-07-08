@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : Player
+public class PlayerController : MonoBehaviour
 {
     public bool lookingAtUI = false;
 

@@ -217,7 +217,7 @@ RectTransform:
   m_Children:
   - {fileID: 789436696}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -897,7 +897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1961b1252b95c7f4f8f451bc51fac014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _promptKeyText: 69
+  _promptKeyText: 101
+  canTriggerDialogue: 0
 --- !u!850595691 &408086430
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1205,7 +1206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &507314114
 GameObject:
@@ -2436,7 +2437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1206950991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2485,7 +2486,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206950990}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2528,13 +2529,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206950990}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 4.159, y: 7.964, z: -4.27}
+  m_LocalRotation: {x: 0.62914026, y: -0.28024113, z: -0.26059842, w: 0.6765619}
+  m_LocalPosition: {x: 4.69, y: 7.801606, z: 1.7927785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1003444334}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!4 &1217631443 stripped
 Transform:
@@ -3286,7 +3287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1799753691
 MonoBehaviour:
@@ -3314,8 +3315,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _docked: 0
+  _inDialogue: 0
   playerPrefab: {fileID: 7879930732490864301, guid: 1b454b82fda9a554694e892f3958a873, type: 3}
   boat: {fileID: 350559639}
+  playerObject: {fileID: 0}
 --- !u!1 &1955635705
 GameObject:
   m_ObjectHideFlags: 0

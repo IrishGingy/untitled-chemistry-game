@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Indicates whether the player is docked (on foot) or not (in the boat)
-    public bool _docked;
+    [SerializeField] private bool _docked;
     public bool docked
     {
         get { return _docked; }
@@ -14,10 +14,20 @@ public class Player : MonoBehaviour
             _docked = value;
         }
     }
-    public GameObject playerPrefab;
-    public GameObject boat;
+    [SerializeField] private bool _inDialogue;
+    public bool inDialogue
+    {
+        get { return _inDialogue; }
+        set
+        {
+            _inDialogue = value;
+        }
+    }
 
-    private GameObject playerObject;
+    public GameObject playerPrefab;
+    [SerializeField] private GameObject boat;
+
+    public GameObject playerObject;
 
     // will want an inventory at some point that is a singleton
 
@@ -29,6 +39,8 @@ public class Player : MonoBehaviour
     public void DockBoat(Transform spawn, Transform dock)
     {
         playerObject = Instantiate(playerPrefab, spawn);
+        // TODO: Figure out why PlayerController is being set to false on instantiation
+        playerObject.GetComponentInChildren<PlayerController>().enabled = true;
         boat.transform.position = dock.position;
         boat.SetActive(false);
         docked = true;
