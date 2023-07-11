@@ -1,10 +1,23 @@
 # speaker Mom & Dad
-Hey honey, how are you doing?
+Hey honey, what are you up to today?
 
- # speaker Sully
- * I'm doing well, how are you guys?
- * I'm not doing that great
+# speaker Sully
+* I think I'll probably just play some games today.
+    -> play_some_games
+
+# speaker Sully
+* I'm not sure. What do you suggest?
     # speaker Mom & Dad
-    Oh no, I'm sorry to hear that honey, what's wrong?
+    Your dad says that Leo enjoys catching the fish of the day usually. Would you want to learn how to fish?
+    # speaker Sully
+    ** Let's do it!
+    ** No thanks, I'll probably just play some games today.
+        -> play_some_games
+
+==play_some_games==
+# speaker Mom & Dad
+Sounds good, honey, have fun. Hey, don't forget to dust around the house today. Love you
+    # speaker Sully
+    ** Will do. Love you guys too
 
     -> END
