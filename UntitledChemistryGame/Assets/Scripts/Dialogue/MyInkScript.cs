@@ -156,12 +156,13 @@ public class MyInkScript : MonoBehaviour
 
         for (int i = 0; i < _choices.Count; i++)
         {
-            temp = Instantiate(customButton, optionPanel.transform);
+            GameObject buttonObj = Instantiate(customButton, optionPanel.transform);
+            temp = buttonObj;
             temp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
             temp.AddComponent<Selectable>();
             temp.AddComponent<ContentSizeFitter>();
             temp.GetComponent<Selectable>().element = _choices[i];
-            temp.GetComponent<Button>().onClick.AddListener(() => { temp.GetComponent<Selectable>().Decide(); });
+            temp.GetComponent<Button>().onClick.AddListener(() => { buttonObj.GetComponent<Selectable>().Decide(); });
             switch (i)
             {
                 case 0:
