@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     public void StopDialogue()
     {
         dialogueIsPlaying = false;
+        // give control back to the player
     }
 
     public void PlayPlaceholderDialogue()

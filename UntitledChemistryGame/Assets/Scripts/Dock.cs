@@ -14,15 +14,20 @@ public class Dock : Trigger
 
     public bool canDock = false;
     public bool canSail = false;
-    public Transform spawnLocation;
-    public Transform boatDockLocation;
 
     private Player player;
+    private GameManager gm;
+    /// <summary>
+    /// A DialogueItem that must be played in order to dock or set sail.
+    /// </summary>
+    private EventDependency eventDependency;
 
     protected override void Start()
     {
         base.Start();
+        eventDependency = GetComponent<EventDependency>();
         player = FindObjectOfType<Player>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,9 +38,9 @@ public class Dock : Trigger
             // TODO: Convert to Unity's new input system
             if (Input.GetKeyDown(promptKeyText))
             {
-                player.DockBoat(spawnLocation, boatDockLocation);
+                player.DockBoat(gm.spawnLocation, gm.boatDockLocation);
                 // switching from docked to undocked and vice versa requires that we hide the prompt to reset the promptTextMesh (to prevent error)
-                base.HidePrompt();
+                //base.HidePrompt();
             }
         }
         if (canSail && player.docked)
@@ -44,7 +49,7 @@ public class Dock : Trigger
             if (Input.GetKeyDown(promptKeyText))
             {
                 player.SetSail();
-                base.HidePrompt();
+                //base.HidePrompt();
             }
         }
     }
@@ -53,12 +58,27 @@ public class Dock : Trigger
     {
         if (!player.docked)
         {
-            canDock = true;
             canSail = false;
+
+            if (!HasDependentDialogueBeenPlayed(EventDependency.Methods.dock))
+            {
+                canDock = false;
+                base.HidePrompt();
+                return;
+            }
+
+            canDock = true;
         }
         else
         {
             canDock = false;
+
+            if (!HasDependentDialogueBeenPlayed(EventDependency.Methods.sail))
+            {
+                canSail = false;
+                base.HidePrompt();
+                return;
+            }
             canSail = true;
         }
     }
@@ -72,6 +92,29 @@ public class Dock : Trigger
         else
         {
             canSail = false;
+        }
+    }
+
+
+    private bool HasDependentDialogueBeenPlayed(EventDependency.Methods method)
+    {
+        if (!eventDependency || eventDependency.preventedMethod != method) 
+        {
+            // dependent dialogue for this event doesn't exist, so the event is allowed to occur.
+            return true;
+        }
+        else
+        {
+            if (!eventDependency.dependentDialogue.played)
+            {
+                // dependent dialogue exists for this event, and has not been played yet: prevent event from occurring.
+                return false;
+            }
+            else
+            {
+                // dependent dialogue has been played: allow event to occur.
+                return true;
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ public class MyInkScript : MonoBehaviour
     public Image textboxSprite;
     public bool isTalking = false;
     public bool startDialogue;
+    public KeyCode continueButtonKey;
 
     [SerializeField] private Sprite bubbleSprite;
     [SerializeField] private Sprite borderSprite;
@@ -25,10 +26,12 @@ public class MyInkScript : MonoBehaviour
     static Story story;
     TextMeshProUGUI nametag;
     TextMeshProUGUI message;
+    TextMeshProUGUI continueMessage;
     List<string> tags;
     static Choice choiceSelected;
     bool letterCancel;
     GameManager gm;
+    string continueButtonKeyString;
 
     GameObject temp;
     //bool dialoguePlaying;
@@ -37,6 +40,8 @@ public class MyInkScript : MonoBehaviour
     void Start()
     {
         SetInkScript(inkFile);
+        continueButtonKeyString = continueButtonKey.ToString().ToUpper();
+        continueMessage.text = $"—— PRESS {continueButtonKeyString} TO CONTINUE ——";
         dm = GetComponent<DialogueManager>();
         gm = GetComponent<GameManager>();
     }
@@ -46,13 +51,14 @@ public class MyInkScript : MonoBehaviour
         story = new Story(file.text);
         nametag = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message = textBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        continueMessage = textBox.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         tags = new List<string>();
         choiceSelected = null;
     }
 
     private void Update()
     {
-        if (textBox.activeSelf && (startDialogue || Input.GetKeyDown(KeyCode.Space)))
+        if (textBox.activeSelf && (startDialogue || Input.GetKeyDown(continueButtonKey)))
         {
             startDialogue = false;
             //dm.dialoguePlaying = true;
@@ -62,6 +68,13 @@ public class MyInkScript : MonoBehaviour
             {
                 nametag.text = "Placeholder";
                 AdvanceDialogue();
+
+                //Is this the last line of dialogue?
+                if (!story.canContinue && story.currentChoices.Count == 0)
+                {
+                    Debug.Log("This is the last line of dialogue!");
+                    continueMessage.text = $"—— PRESS {continueButtonKeyString} TO FINISH DIALOGUE ——";
+                }
 
                 //Are there any choices?
                 if (story.currentChoices.Count != 0)

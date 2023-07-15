@@ -51,13 +51,17 @@ public class DialogueTrigger : Trigger
                 dm.PlayDialogue(dI);
             }
         }
-        else if (player.inDialogue)
+        else if (player.inDialogue && !dm.dialogueIsPlaying)
         {
-            if (Input.GetKeyDown(promptKeyText))
-            {
-                DisableShopCamera();
-                base.HidePrompt();
-            }
+            //dm.StopDialogue();
+            dm.dialogueIsPlaying = false;
+            DisableShopCamera();
+            base.HidePrompt();
+            //if (Input.GetKeyDown(promptKeyText))
+            //{
+            //    DisableShopCamera();
+            //    base.HidePrompt();
+            //}
         }
     }
 

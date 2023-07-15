@@ -26,12 +26,28 @@ public class Player : MonoBehaviour
 
     public GameObject playerPrefab;
     [SerializeField] private GameObject boat;
+    [SerializeField] public Trigger trigger;
 
+    [Header("Don't set")]
     public GameObject playerObject;
+
+    private Rigidbody boatRb;
+    private Collider boatCollider;
+    private SimpleBoatController boatController;
+    private GameObject boatParts;
 
     // will want an inventory at some point that is a singleton
 
     // properties that would need to be applied to the next instantiated player character should go here
+
+    private void Start()
+    {
+        boatRb = boat.GetComponent<Rigidbody>();
+        boatCollider = boat.GetComponent<Collider>();
+        boatController = boat.GetComponent<SimpleBoatController>();
+        // these parts include the camera and trigger area around boat (both not necessary after docking the boat).
+        boatParts = boat.transform.GetChild(0).gameObject;
+    }
 
     /// <summary>
     /// Instantiate player gameobject to start playing as player, move boat to the side of the dock and set to inactive, set docked to true.
@@ -42,8 +58,12 @@ public class Player : MonoBehaviour
         // TODO: Figure out why PlayerController is being set to false on instantiation
         playerObject.GetComponentInChildren<PlayerController>().enabled = true;
         boat.transform.position = dock.position;
-        boat.SetActive(false);
+        boatRb.velocity = Vector3.zero;
+        boatCollider.enabled = false;
+        boatController.enabled = false;
+        boatParts.SetActive(false);
         docked = true;
+        trigger.HidePrompt();
     }
 
     /// <summary>
@@ -51,8 +71,12 @@ public class Player : MonoBehaviour
     /// </summary>
     public void SetSail()
     {
-        boat.SetActive(true);
+        boatCollider.enabled = true;
+        boatRb.velocity = Vector3.zero;
+        boatController.enabled = true;
+        boatParts.SetActive(true);
         Destroy(playerObject);
         docked = false;
+        trigger.HidePrompt();
     }
 }
