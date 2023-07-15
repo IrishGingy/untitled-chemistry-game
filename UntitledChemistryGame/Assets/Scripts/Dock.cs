@@ -48,6 +48,11 @@ public class Dock : Trigger
             // TODO: Convert to Unity's new input system
             if (Input.GetKeyDown(promptKeyText))
             {
+                // check to see if we are taking a passenger with us (this depends on an event dependency's 'boardPassenger' field).
+                if (eventDependency && eventDependency.boardPassenger)
+                {
+                    player.BoardPassenger();
+                }
                 player.SetSail();
                 //base.HidePrompt();
             }

@@ -79,4 +79,12 @@ public class Player : MonoBehaviour
         docked = false;
         trigger.HidePrompt();
     }
+
+    /// <summary>
+    /// Set 'carryingPassenger' to true on the boat controller.
+    /// </summary>
+    public void BoardPassenger()
+    {
+        boatController.PlayPassengerDialogue();
+    }
 }

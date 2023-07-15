@@ -8,13 +8,14 @@ public class DialogueItem : ScriptableObject
     public string characterName;
     public TextAsset inkFile;
     /// <summary>
-    /// Whether this specific dialogue has been played yet.
-    /// </summary>
-    public bool played;
-    /// <summary>
     /// A DialogueItem that must be played in order for this DialogueItem to be played.
     /// </summary>
     public DialogueItem dependency = null;
+    [Header("Set in script")]
+    /// <summary>
+    /// Whether this specific dialogue has been played yet.
+    /// </summary>
+    public bool played;
     /// <summary>
     /// A dependency where an event can only occur after this DialogueItem has been played.
     /// </summary>

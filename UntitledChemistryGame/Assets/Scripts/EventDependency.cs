@@ -11,5 +11,12 @@ public class EventDependency : MonoBehaviour
     }
 
     public DialogueItem dependentDialogue;
+    /// <summary>
+    /// The method that the dependentDialogue is preventing.
+    /// </summary>
     public Methods preventedMethod;
+    /// <summary>
+    /// Determines whether an event dependency's completion will result in boarding a passenger.
+    /// </summary>
+    public bool boardPassenger;
 }

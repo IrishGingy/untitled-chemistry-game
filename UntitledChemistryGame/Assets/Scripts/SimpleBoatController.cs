@@ -6,6 +6,8 @@ using UnityEngine;
 public class SimpleBoatController : MonoBehaviour
 {
     [SerializeField] public float maxMoveSpeed;
+    [SerializeField] public bool carryingPassenger;
+    [SerializeField] public DialogueItem passengerDialogue;
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _speed;
     [SerializeField] private float _velocity;
@@ -40,5 +42,18 @@ public class SimpleBoatController : MonoBehaviour
         _rb.AddForce(_moveSpeed * transform.forward, ForceMode.Acceleration);
 
         _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, maxMoveSpeed);
+    }
+
+    public void PlayPassengerDialogue()
+    {
+        carryingPassenger = true;
+        if (passengerDialogue)
+        {
+            FindObjectOfType<DialogueManager>().PlayDialogue(passengerDialogue);
+        }
+        else
+        {
+            Debug.LogWarning("No passenger dialogue to play!");
+        }
     }
 }

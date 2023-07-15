@@ -3534,6 +3534,7 @@ GameObject:
   - component: {fileID: 1955635706}
   - component: {fileID: 1955635708}
   - component: {fileID: 1955635707}
+  - component: {fileID: 1955635709}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -3584,6 +3585,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 18, y: 1, z: 15}
   m_Center: {x: -8, y: 0, z: 0}
+--- !u!114 &1955635709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955635705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7379c11a1915095469792292a6edd611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dependentDialogue: {fileID: 11400000, guid: 9c386076a62619b4cbfabd52cc27821f, type: 2}
+  preventedMethod: 0
+  boardPassenger: 1
 --- !u!4 &1987595364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446262, guid: bf5c716dea4419148879f65f4373d70d, type: 3}
@@ -3842,6 +3858,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2739826838210365184, guid: b8b2d1d4710517c4689ff165d835ce85, type: 3}
+      propertyPath: passengerDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a859786be15f6442890320ba207154b, type: 2}
     - target: {fileID: 2739826838210365209, guid: b8b2d1d4710517c4689ff165d835ce85, type: 3}
       propertyPath: m_Name
       value: Boat

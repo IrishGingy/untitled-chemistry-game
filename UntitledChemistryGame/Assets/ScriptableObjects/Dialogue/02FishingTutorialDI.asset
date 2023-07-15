@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddc610ae4cce30a45955cd946cd96d96, type: 3}
-  m_Name: FishingTutorialDI
+  m_Name: 02FishingTutorialDI
   m_EditorClassIdentifier: 
   characterName: 
-  inkFile: {fileID: 4900000, guid: a81d8cd698488b542a6d4f6f129f5c9c, type: 3}
+  inkFile: {fileID: 4900000, guid: c79bd16a82b9ed247a973b5c26c4b3d6, type: 3}
+  dependency: {fileID: 11400000, guid: 9c386076a62619b4cbfabd52cc27821f, type: 2}
   played: 0
-  dependency: {fileID: 0}
+  eventDependency: {fileID: 0}
