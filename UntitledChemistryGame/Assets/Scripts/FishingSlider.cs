@@ -22,15 +22,18 @@ public class FishingSlider : MonoBehaviour
     public GameObject catchSectionObj;
     public RectTransform gameObjectRect;
     public TextMeshProUGUI statusTextMesh;
+    public Item fishItem;
 
     private Slider _slider;
     private GameObject initObj;
     private RectTransform sliderRect;
     private bool handleStopped;
+    private Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
     {
+        inventory = FindObjectOfType<Inventory>();
         statusTextMesh.gameObject.SetActive(false);
         _slider = GetComponent<Slider>();
 
@@ -74,6 +77,7 @@ public class FishingSlider : MonoBehaviour
             Debug.Log("Reeling in! (Pressed Spacebar)");
             if (_slider.value >= (left * 0.001) && _slider.value <= ((1000 - right) * 0.001))
             {
+                inventory.Add(fishItem);
                 statusTextMesh.text = "FISH CAUGHT!";
                 statusTextMesh.color = Color.green;
                 statusTextMesh.gameObject.SetActive(true);

@@ -16,8 +16,4 @@ public class DialogueItem : ScriptableObject
     /// Whether this specific dialogue has been played yet.
     /// </summary>
     public bool played;
-    /// <summary>
-    /// A dependency where an event can only occur after this DialogueItem has been played.
-    /// </summary>
-    public EventDependency eventDependency = null;
 }

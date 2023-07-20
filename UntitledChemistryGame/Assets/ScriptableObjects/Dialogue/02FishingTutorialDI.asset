@@ -15,5 +15,4 @@ MonoBehaviour:
   characterName: 
   inkFile: {fileID: 4900000, guid: c79bd16a82b9ed247a973b5c26c4b3d6, type: 3}
   dependency: {fileID: 11400000, guid: 9c386076a62619b4cbfabd52cc27821f, type: 2}
-  played: 0
-  eventDependency: {fileID: 0}
+  played: 1
