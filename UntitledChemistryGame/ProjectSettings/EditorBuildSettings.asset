@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Island Prototype.unity
+    guid: b39e1e5b20867b44aa2b9e130742fa5a
+  - enabled: 1
+    path: Assets/Scenes/Room Interior.unity
+    guid: e841da1da0c664d43998f3977bef85fc
+  - enabled: 1
+    path: Assets/Scenes/Island.unity
+    guid: c87d016e641747a44b33f86ac243cbc5
   m_configObjects: {}

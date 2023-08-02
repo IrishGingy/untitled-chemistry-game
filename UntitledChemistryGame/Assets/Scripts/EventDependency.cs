@@ -19,4 +19,8 @@ public class EventDependency : MonoBehaviour
     /// Determines whether an event dependency's completion will result in boarding a passenger.
     /// </summary>
     public bool boardPassenger;
+    /// <summary>
+    /// Determines whether an event dependency's completion will result in loading the next scene.
+    /// </summary>
+    public bool nextSceneTrigger;
 }

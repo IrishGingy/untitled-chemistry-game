@@ -10,6 +10,12 @@ public class DialogueTrigger : Trigger
         get { return _promptKeyText; }
         set { _promptKeyText = value; }
     }
+    [SerializeField] private EventDependency _eventDependency;
+    public override EventDependency eventDependency
+    {
+        get { return _eventDependency; }
+        set { _eventDependency = value; }
+    }
 
     [SerializeField] private bool canTriggerDialogue;
     [SerializeField] DialogueItem dI;

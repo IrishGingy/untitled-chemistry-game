@@ -23,7 +23,7 @@ public class FishDensity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int terrainTextureIndex = terrainDetector.GetActiveTerrainTextureIdx(transform.position);
-        Debug.Log(terrainTextureIndex);
+        //int terrainTextureIndex = terrainDetector.GetActiveTerrainTextureIdx(transform.position);
+        //Debug.Log(terrainTextureIndex);
     }
 }

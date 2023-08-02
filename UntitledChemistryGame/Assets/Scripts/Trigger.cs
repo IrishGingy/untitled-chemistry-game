@@ -7,6 +7,7 @@ using System;
 public abstract class Trigger : MonoBehaviour
 {
     public abstract KeyCode promptKeyText { get; set; }
+    public abstract EventDependency eventDependency { get; set; }
 
     private GameManager gm;
     private GameObject buttonPrompt;
@@ -57,6 +58,29 @@ public abstract class Trigger : MonoBehaviour
     {
         promptKeyTextMesh.text = "";
         buttonPrompt.SetActive(false);
+    }
+
+    public bool HasDependentDialogueBeenPlayed(EventDependency.Methods method)
+    {
+        eventDependency = this.eventDependency;
+        if (!eventDependency || eventDependency.preventedMethod != method)
+        {
+            // dependent dialogue for this event doesn't exist, so the event is allowed to occur.
+            return true;
+        }
+        else
+        {
+            if (!eventDependency.dependentDialogue.played)
+            {
+                // dependent dialogue exists for this event, and has not been played yet: prevent event from occurring.
+                return false;
+            }
+            else
+            {
+                // dependent dialogue has been played: allow event to occur.
+                return true;
+            }
+        }
     }
 
     // The "abstract" keyword here requires derived classes to implement these methods
