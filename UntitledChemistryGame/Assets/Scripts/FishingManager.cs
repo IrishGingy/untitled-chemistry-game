@@ -12,12 +12,18 @@ public class FishingManager : MonoBehaviour
     public int currentPhase;
     public float speed = 1f;
     public GameObject tilemapGO;
+    public GameObject catchAreas;
+
+    [Header("Don't set in inspector")]
+    [SerializeField] public Transform chosenCatchArea;
 
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        SetCatchArea();
+
         tilemapGO.SetActive(false);
         rb = player.GetComponent<Rigidbody2D>();
         rb.gravityScale = 1f;
@@ -45,6 +51,16 @@ public class FishingManager : MonoBehaviour
 
         //// Update the position of the GameObject
         //transform.position = newPosition;
+    }
+
+    private void SetCatchArea()
+    {
+        int catchAreaCount = catchAreas.transform.childCount;
+        Debug.Log(catchAreaCount);
+        if (catchAreaCount > 0)
+        {
+            chosenCatchArea = catchAreas.transform.GetChild(Random.Range(0, catchAreaCount));
+        }
     }
 
     public void ResetFishing()

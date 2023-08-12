@@ -5,7 +5,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
-    public GameObject player;
+    //public GameObject player;
 
     [SerializeField] Image previewImage;
 
@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         camLook = true;
-        playerController = player.GetComponent<PlayerController>();
+        //playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

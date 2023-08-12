@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     }
 
     public GameObject playerPrefab;
+    public GameObject boatCam;
     [SerializeField] private GameObject boat;
     [SerializeField] public Trigger trigger;
 
@@ -33,7 +34,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody boatRb;
     private Collider boatCollider;
+    // TODO: Fix it so this is only one boat controller
     private SimpleBoatController boatController;
+    private WaterBoat boatController2;
     private GameObject boatParts;
 
     // will want an inventory at some point that is a singleton
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
         boatRb = boat.GetComponent<Rigidbody>();
         boatCollider = boat.GetComponent<Collider>();
         boatController = boat.GetComponent<SimpleBoatController>();
+        boatController2 = boat.GetComponent<WaterBoat>();
         // these parts include the camera and trigger area around boat (both not necessary after docking the boat).
         boatParts = boat.transform.GetChild(0).gameObject;
     }
@@ -61,6 +65,8 @@ public class Player : MonoBehaviour
         boatRb.velocity = Vector3.zero;
         boatCollider.enabled = false;
         boatController.enabled = false;
+        boatController2.enabled = false;
+        boatCam.SetActive(false);
         boatParts.SetActive(false);
         docked = true;
         trigger.HidePrompt();
@@ -74,6 +80,8 @@ public class Player : MonoBehaviour
         boatCollider.enabled = true;
         boatRb.velocity = Vector3.zero;
         boatController.enabled = true;
+        boatController2.enabled = true;
+        boatCam.SetActive(true);
         boatParts.SetActive(true);
         Destroy(playerObject);
         docked = false;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class FishingWalls : MonoBehaviour
 {
@@ -10,10 +12,14 @@ public class FishingWalls : MonoBehaviour
     private bool waited;
     private Tilemap tilemap;
     private Vector3Int max;
+    // number of times the player hits an obstacle
+    private int collisions;
 
     // Start is called before the first frame update
     void Start()
     {
+        collisions = 0;
+
         // Get the reference to the Tilemap component
         tilemap = GetComponent<Tilemap>();
         tilemap.CompressBounds();
@@ -44,7 +50,13 @@ public class FishingWalls : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Uh oh");
+        collisions++;
+
+        // restart scene
+        if (collisions >= 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     IEnumerator Wait()
