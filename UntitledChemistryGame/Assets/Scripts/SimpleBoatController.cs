@@ -25,7 +25,7 @@ public class SimpleBoatController : MonoBehaviour
     {
         //boatCam.SetActive(true);
         _rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()

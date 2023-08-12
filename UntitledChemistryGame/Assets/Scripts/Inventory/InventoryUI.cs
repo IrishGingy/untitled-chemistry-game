@@ -55,7 +55,7 @@ public class InventoryUI : MonoBehaviour
             {
                 // TODO: this should be done on a first person controller (the player shouldn't be able to look around or move with the inventory open)
                 //playerController.lookingAtUI = true;
-                Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.lockState = CursorLockMode.Locked;
                 camLook = true;
             }
         }

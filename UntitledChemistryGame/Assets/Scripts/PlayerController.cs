@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -72,12 +72,6 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded)
         {
             characterVelocityY = 0f;
-            // Jump
-            if (TestInputJump())
-            {
-                float jumpSpeed = 10f;
-                characterVelocityY = jumpSpeed;
-            }
         }
 
         // Apply gravity to the velocity.
@@ -108,10 +102,5 @@ public class PlayerController : MonoBehaviour
     private void ResetGravity()
     {
         characterVelocityY = 0;
-    }
-
-    private bool TestInputJump()
-    {
-        return Input.GetKeyDown(KeyCode.Space);
     }
 }
