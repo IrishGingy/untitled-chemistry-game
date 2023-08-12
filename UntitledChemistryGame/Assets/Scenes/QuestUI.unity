@@ -3525,8 +3525,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4111974252360150985, guid: 6057d201def983e4dbcab88fce3575de, type: 3}
       propertyPath: m_Name
-      value: Quest Manager (1)
+      value: Quest Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4111974252360150989, guid: 6057d201def983e4dbcab88fce3575de, type: 3}
+      propertyPath: questDetailsParent
+      value: 
+      objectReference: {fileID: 1958218802241530790}
     - target: {fileID: 4111974252360150990, guid: 6057d201def983e4dbcab88fce3575de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6767,7 +6771,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1700197033}
   - component: {fileID: 1700197032}
-  - component: {fileID: 1700197034}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6804,23 +6807,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1700197034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700197031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea3c78d80e499a8419c37bf3af56991d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questButtonPrefab: {fileID: 3264138802348598857, guid: f80915c2735db244882d9216d895579f, type: 3}
-  questListParent: {fileID: 0}
-  quests:
-  - {fileID: 11400000, guid: 7447c758cc54eb74aa9534488e81e035, type: 2}
-  - {fileID: 11400000, guid: 02fe1c4150194344ba5e26679d129d93, type: 2}
 --- !u!222 &1736150769
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8276,7 +8262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0000038146973, y: 0}
   m_SizeDelta: {x: 250, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1958218802241530791
@@ -8290,6 +8276,7 @@ GameObject:
   - component: {fileID: 1958218802241530790}
   - component: {fileID: 1958218802241530788}
   - component: {fileID: 1958218802241530789}
+  - component: {fileID: 1958218802241530792}
   m_Layer: 5
   m_Name: PreviewImage
   m_TagString: Untagged
@@ -8297,6 +8284,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1958218802241530792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958218802241530791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 10
+    m_Right: 10
+    m_Top: 10
+    m_Bottom: 10
+  m_ChildAlignment: 1
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!224 &1958218802624034368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9177,7 +9190,7 @@ GameObject:
   - component: {fileID: 8517560389005623351}
   - component: {fileID: 8517560389005623350}
   m_Layer: 5
-  m_Name: Preview
+  m_Name: Quest Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

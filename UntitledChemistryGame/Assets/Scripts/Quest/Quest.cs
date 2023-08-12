@@ -7,5 +7,7 @@ public class Quest : ScriptableObject
 {
     public string title;
     public string description;
+    public GameObject descriptionObject;
+    public GameObject tasksObject;
     public bool activeQuest;
 }
