@@ -6,9 +6,13 @@ public class GameManager : MonoBehaviour
     // Used by the "Trigger" abstract class
     public GameObject buttonPrompt;
     public DialogueItem nextSceneTrigger;
+
     [Header("Dock")]
     public Transform spawnLocation;
     public Transform boatDockLocation;
+    
+    [Header("Settings set from the 'OptionsMenu' of the main menu")]
+    public bool letterScrolling;
 
     private Player player;
 
@@ -16,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         player = GetComponent<Player>();
         buttonPrompt.SetActive(false);
+        letterScrolling = true;
         //StartGame();
     }
 

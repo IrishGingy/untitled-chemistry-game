@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
+using UnityEditor;
 
 public class MyInkScript : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class MyInkScript : MonoBehaviour
     List<string> tags;
     static Choice choiceSelected;
     bool letterCancel;
+    bool typingSentence;
     GameManager gm;
     string continueButtonKeyString;
 
@@ -44,6 +46,10 @@ public class MyInkScript : MonoBehaviour
         continueMessage.text = $"—— PRESS {continueButtonKeyString} TO CONTINUE ——";
         dm = GetComponent<DialogueManager>();
         gm = GetComponent<GameManager>();
+        if (!gm.letterScrolling)
+        {
+            letterWaitInSeconds = 0;
+        }
     }
 
     public void SetInkScript(TextAsset file)
@@ -96,18 +102,25 @@ public class MyInkScript : MonoBehaviour
                 FinishDialogue();
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E) && typingSentence)
         {
             letterCancel = true;
-        }*/
+        }
     }
-    
+
     public void StartDialogue(TextAsset file, bool placeholder = false)
     {
         //if (dm.dialoguePlaying) { return; }
         //gm.HidePrompt();
         // turn off player movement.
         //playerController.enabled = false;
+        StartCoroutine(DelayStart(file, placeholder));
+    }
+
+    // Delay the start of the dialogue so that when E is pressed, the dialogue doesn't skip typing out the sentence
+    IEnumerator DelayStart(TextAsset file, bool placeholder)
+    {
+        yield return new WaitForSeconds(0.25f);
         SetInkScript(file);
         if (placeholder)
         {
@@ -144,6 +157,11 @@ public class MyInkScript : MonoBehaviour
         message.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
+            typingSentence = true;
+            if (letterCancel)
+            {
+                message.text = sentence;
+            }
             if (!letterCancel)
             {
                 message.text += letter;
@@ -156,6 +174,7 @@ public class MyInkScript : MonoBehaviour
             SetAnimation("idle");
         }*/
         letterCancel = false;
+        typingSentence = false;
         yield return null;
     }
 

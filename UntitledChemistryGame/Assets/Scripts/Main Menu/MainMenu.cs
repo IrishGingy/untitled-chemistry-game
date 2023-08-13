@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject playerCam;
     public GameObject mainMenuCam;
 
+    private GameManager gm;
+
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         playerCam.SetActive(false);
     }
 
@@ -25,5 +30,17 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Game quit.");
+    }
+
+    public void LetterScrolling(TMP_Dropdown dropdown)
+    {
+        if (dropdown.value == 0)
+        {
+            gm.letterScrolling = true;
+        }
+        else if (dropdown.value == 1)
+        {
+            gm.letterScrolling = false;
+        }
     }
 }
