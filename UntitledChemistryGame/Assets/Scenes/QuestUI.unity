@@ -9058,7 +9058,7 @@ GameObject:
   - component: {fileID: 8517560388386461482}
   - component: {fileID: 8517560388386461481}
   m_Layer: 5
-  m_Name: InventoryItems
+  m_Name: Quest Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9173,7 +9173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8517560388843237432}
   m_Layer: 5
-  m_Name: Inventory
+  m_Name: Quests
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

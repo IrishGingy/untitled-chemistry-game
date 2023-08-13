@@ -10,14 +10,17 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Image previewImage;
 
     Inventory inventory;
-    bool camLook;
+    //bool camLook;
     PlayerController playerController;
 
     InventorySlot[] slots;
+    GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+
         // Disables inventory UI on start.
         if (inventoryUI.activeSelf)
         {
@@ -28,7 +31,7 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        camLook = true;
+        //camLook = true;
         //playerController = player.GetComponent<PlayerController>();
     }
 
@@ -37,27 +40,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            if (inventoryUI.activeSelf == false)
-            {
-                previewImage.sprite = null;
-                previewImage.enabled = false;
-            }
-
-            if (camLook)
-            {
-                // TODO: this should be done on a first person controller (the player shouldn't be able to look around or move with the inventory open)
-                //playerController.lookingAtUI = false;
-                Cursor.lockState = CursorLockMode.None;
-                camLook = false;
-            }
-            else
-            {
-                // TODO: this should be done on a first person controller (the player shouldn't be able to look around or move with the inventory open)
-                //playerController.lookingAtUI = true;
-                //Cursor.lockState = CursorLockMode.Locked;
-                camLook = true;
-            }
+            gm.ToggleInventoryMenu(inventoryUI, previewImage);
         }
     }
 

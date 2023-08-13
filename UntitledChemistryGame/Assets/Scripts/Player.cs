@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     [Header("Don't set")]
     public GameObject playerObject;
+    public ThirdPersonCamera thirdPersonMovement;
 
     private Rigidbody boatRb;
     private Collider boatCollider;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     private SimpleBoatController boatController;
     private WaterBoat boatController2;
     private GameObject boatParts;
+    private PlayerController playerController;
 
     // will want an inventory at some point that is a singleton
 
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        thirdPersonMovement = boatCam.GetComponent<ThirdPersonCamera>();
         boatRb = boat.GetComponent<Rigidbody>();
         boatCollider = boat.GetComponent<Collider>();
         boatController = boat.GetComponent<SimpleBoatController>();
@@ -59,8 +62,9 @@ public class Player : MonoBehaviour
     public void DockBoat(Transform spawn, Transform dock)
     {
         playerObject = Instantiate(playerPrefab, spawn);
+        playerController = playerObject.GetComponentInChildren<PlayerController>();
         // TODO: Figure out why PlayerController is being set to false on instantiation
-        playerObject.GetComponentInChildren<PlayerController>().enabled = true;
+        playerController.enabled = true;
         boat.transform.position = dock.position;
         boatRb.velocity = Vector3.zero;
         boatCollider.enabled = false;
@@ -77,6 +81,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void SetSail()
     {
+        playerController = null;
         boatCollider.enabled = true;
         boatRb.velocity = Vector3.zero;
         boatController.enabled = true;
@@ -94,5 +99,21 @@ public class Player : MonoBehaviour
     public void BoardPassenger()
     {
         boatController.PlayPassengerDialogue();
+    }
+
+    public void TogglePlayerMovement()
+    {
+        if (playerController)
+        {
+            playerController.enabled = !playerController.enabled;
+        }
+        else
+        {
+            thirdPersonMovement.enabled = !thirdPersonMovement.enabled;
+            boatController.enabled = !boatController.enabled;
+            boatController2.enabled = !boatController2.enabled;
+        }
+
+        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

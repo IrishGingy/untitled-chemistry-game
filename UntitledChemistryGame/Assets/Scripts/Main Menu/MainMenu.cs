@@ -13,12 +13,16 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        gm.atMainMenu = true;
+        gm.canOpenMenus = false;
         playerCam.SetActive(false);
     }
 
     public void PlayGame()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        gm.atMainMenu = false;
+        gm.canOpenMenus = true;
 
         // Later smoothly transition to the playerCam
         playerCam.SetActive(true);
