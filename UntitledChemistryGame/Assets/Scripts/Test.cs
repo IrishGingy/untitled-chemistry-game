@@ -18,6 +18,6 @@ public class Test : MonoBehaviour
 
     private void OnMouseOver()
     {
-        Debug.Log("Over Square image!");
+        //Debug.Log("Over Square image!");
     }
 }

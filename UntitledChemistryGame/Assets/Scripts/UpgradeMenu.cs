@@ -60,13 +60,13 @@ public class UpgradeMenu : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
-        Debug.Log("UPDATING UI");
+        //Debug.Log("UPDATING UI");
     }
 
     public void IncreaseBoatSpeed()
     {
         float oldSpeed = boatController.maxMoveSpeed;
         boatController.maxMoveSpeed *= 2;
-        Debug.Log($"Boat speed increased from [{oldSpeed}] to [{boatController.maxMoveSpeed}]");
+        //Debug.Log($"Boat speed increased from [{oldSpeed}] to [{boatController.maxMoveSpeed}]");
     }
 }

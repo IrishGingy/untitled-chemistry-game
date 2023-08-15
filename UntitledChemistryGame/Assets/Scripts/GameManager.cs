@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public DialogueItem nextSceneTrigger;
 
     public Player player;
+    public GameObject pauseMenu;
+    public QuestManager qm;
 
     [Header("Game States")]
     public bool atMainMenu;
@@ -33,6 +35,14 @@ public class GameManager : MonoBehaviour
         //StartGame();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseMenu();
+        }
+    }
+
     private void StartGame()
     {
         //player.DockBoat(spawnLocation, boatDockLocation);
@@ -49,10 +59,20 @@ public class GameManager : MonoBehaviour
         if (!atMainMenu)
         {
             inPauseMenu = inPauseMenu ? false : true;
+            player.TogglePlayerMovement();
+            if (inPauseMenu)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+            pauseMenu.SetActive(inPauseMenu);
         }
         else
         {
-            Debug.Log("Can't pause when at the main menu.");
+            //Debug.Log("Can't pause when at the main menu.");
         }
     }
 

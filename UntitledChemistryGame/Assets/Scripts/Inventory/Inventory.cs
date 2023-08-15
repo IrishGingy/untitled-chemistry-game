@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
         */
         if (items.Count >= space)
         {
-            Debug.Log("Not enough room.");
+            //Debug.Log("Not enough room.");
             return false;
         }
         items.Add(item);

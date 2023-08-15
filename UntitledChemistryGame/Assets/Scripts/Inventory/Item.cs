@@ -14,12 +14,12 @@ public class Item : ScriptableObject
         if(item.name.Contains("Note"))
         {
             // Change preview image
-            Debug.Log("Something has been done...I think");
+            //Debug.Log("Something has been done...I think");
         }
         if (item.name.Contains("List"))
         {
             // Change preview image
-            Debug.Log("Using " + name);
+            //Debug.Log("Using " + name);
 
         }
     }
@@ -28,6 +28,6 @@ public class Item : ScriptableObject
     {
         preview.sprite = icon;
         preview.enabled = true;
-        Debug.Log("Previewing " + name);
+        //Debug.Log("Previewing " + name);
     }
 }

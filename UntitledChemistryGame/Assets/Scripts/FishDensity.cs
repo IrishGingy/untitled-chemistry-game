@@ -36,7 +36,7 @@ public class FishDensity : MonoBehaviour
             }
             else if (hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
             {
-                Debug.Log("Hit renderer component");
+                //Debug.Log("Hit renderer component");
             }
         }
     }

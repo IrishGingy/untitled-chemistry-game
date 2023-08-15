@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         gm.atMainMenu = false;
         gm.canOpenMenus = true;
+        //gm.qm.AddQuestToMenu();
 
         // Later smoothly transition to the playerCam
         playerCam.SetActive(true);
@@ -33,7 +34,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Game quit.");
+        //Debug.Log("Game quit.");
     }
 
     public void LetterScrolling(TMP_Dropdown dropdown)

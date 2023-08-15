@@ -25,7 +25,7 @@ public abstract class Trigger : MonoBehaviour
         // TODO: Change this to detect a like script called "Player" instead of checking for tags
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player has entered!");
+            //Debug.Log("Player has entered!");
             ShowPrompt();
             // call derived class's "TriggerEnterEvent" method that overrides this class's "TriggerEnterEvent" method
             TriggerEnterEvent();
@@ -47,8 +47,8 @@ public abstract class Trigger : MonoBehaviour
     {
         if (promptKeyTextMesh.text != "")
         {
-            Debug.LogError($"There are two triggers trying to change the text of the button prompt at the same time. Errored on '{this.name}'," +
-                $" called by '{this.GetType()}'");
+            //Debug.LogError($"There are two triggers trying to change the text of the button prompt at the same time. Errored on '{this.name}'," +
+            //    $" called by '{this.GetType()}'");
         }
         promptKeyTextMesh.text = this.promptKeyText.ToString();
         buttonPrompt.SetActive(true);

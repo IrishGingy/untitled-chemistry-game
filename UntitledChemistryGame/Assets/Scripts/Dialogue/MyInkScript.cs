@@ -41,15 +41,12 @@ public class MyInkScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetInkScript(inkFile);
-        continueButtonKeyString = continueButtonKey.ToString().ToUpper();
-        continueMessage.text = $"—— PRESS {continueButtonKeyString} TO CONTINUE ——";
         dm = GetComponent<DialogueManager>();
         gm = GetComponent<GameManager>();
-        if (!gm.letterScrolling)
-        {
-            letterWaitInSeconds = 0;
-        }
+        SetInkScript(inkFile);
+
+        continueButtonKeyString = continueButtonKey.ToString().ToUpper();
+        continueMessage.text = $"—— PRESS {continueButtonKeyString} TO CONTINUE ——";
     }
 
     public void SetInkScript(TextAsset file)
@@ -60,6 +57,15 @@ public class MyInkScript : MonoBehaviour
         continueMessage = textBox.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         tags = new List<string>();
         choiceSelected = null;
+
+        if (letterWaitInSeconds != 0 && !gm.letterScrolling)
+        {
+            letterWaitInSeconds = 0;
+        }
+        else if (letterWaitInSeconds != 0.02 && gm.letterScrolling)
+        {
+            letterWaitInSeconds = 0.02f;
+        }
     }
 
     private void Update()
@@ -78,7 +84,7 @@ public class MyInkScript : MonoBehaviour
                 //Is this the last line of dialogue?
                 if (!story.canContinue && story.currentChoices.Count == 0)
                 {
-                    Debug.Log("This is the last line of dialogue!");
+                    //Debug.Log("This is the last line of dialogue!");
                     continueMessage.text = $"—— PRESS {continueButtonKeyString} TO FINISH DIALOGUE ——";
                 }
 
@@ -90,7 +96,7 @@ public class MyInkScript : MonoBehaviour
             }
             else if (!story.canContinue && story.currentChoices.Count != 0 && showingChoices)
             {
-                Debug.Log("Dialogue isn't finished, but player must make a choice to proceed.");
+                //Debug.Log("Dialogue isn't finished, but player must make a choice to proceed.");
             }
             else if (!story.canContinue && story.currentChoices.Count != 0 && !showingChoices)
             {
@@ -124,7 +130,7 @@ public class MyInkScript : MonoBehaviour
         SetInkScript(file);
         if (placeholder)
         {
-            Debug.Log("Should add a smaller textbox right above the NPC without a name tag showing the placeholder text");
+            //Debug.Log("Should add a smaller textbox right above the NPC without a name tag showing the placeholder text");
         }
         textBox.SetActive(true);
         startDialogue = true;
@@ -133,7 +139,7 @@ public class MyInkScript : MonoBehaviour
     // Finished the Story (Dialogue)
     private void FinishDialogue()
     {
-        Debug.Log("End of Dialogue!");
+        //Debug.Log("End of Dialogue!");
         textBox.SetActive(false);
         dm.StopDialogue();
         //gm.ShowPrompt();
@@ -155,25 +161,30 @@ public class MyInkScript : MonoBehaviour
     IEnumerator TypeSentence(string sentence)
     {
         message.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        if (letterWaitInSeconds > 0)
         {
-            typingSentence = true;
-            if (letterCancel)
+            foreach (char letter in sentence.ToCharArray())
             {
-                message.text = sentence;
+                typingSentence = true;
+                if (letterCancel)
+                {
+                    message.text = sentence;
+                }
+                if (!letterCancel)
+                {
+                    message.text += letter;
+                    yield return new WaitForSeconds(letterWaitInSeconds);
+                }
             }
-            if (!letterCancel)
+            /*CharacterScript tempSpeaker = GameObject.FindObjectOfType<CharacterScript>();
+            if (tempSpeaker.isTalking)
             {
-                message.text += letter;
-                yield return new WaitForSeconds(letterWaitInSeconds);
-            }
+                SetAnimation("idle");
+            }*/
+            letterCancel = false;
         }
-        /*CharacterScript tempSpeaker = GameObject.FindObjectOfType<CharacterScript>();
-        if (tempSpeaker.isTalking)
-        {
-            SetAnimation("idle");
-        }*/
-        letterCancel = false;
+
+        message.text = sentence;
         typingSentence = false;
         yield return null;
     }
@@ -181,7 +192,7 @@ public class MyInkScript : MonoBehaviour
     // Create then show the choices on the screen until one got selected
     IEnumerator ShowChoices()
     {
-        Debug.Log("There are choices need to be made here!");
+        //Debug.Log("There are choices need to be made here!");
         showingChoices = true;
 
         List<Choice> _choices = story.currentChoices;
@@ -198,15 +209,15 @@ public class MyInkScript : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    Debug.Log("First Choice = " + temp.name);
+                    //Debug.Log("First Choice = " + temp.name);
                     temp.transform.position = new Vector2(optionPanel.transform.position.x, optionPanel.transform.position.y);
                     break;
                 case 1:
-                    Debug.Log("Second Choice = " + temp.name);
+                    //Debug.Log("Second Choice = " + temp.name);
                     temp.transform.position = new Vector2(optionPanel.transform.position.x, optionPanel.transform.position.y - 100);
                     break;
                 case 2:
-                    Debug.Log("Third Choice = " + temp.name);
+                    //Debug.Log("Third Choice = " + temp.name);
                     temp.transform.position = new Vector2(optionPanel.transform.position.x, optionPanel.transform.position.y - 200);
                     break;
             }

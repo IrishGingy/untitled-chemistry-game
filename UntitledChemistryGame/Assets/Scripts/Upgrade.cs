@@ -17,26 +17,26 @@ public class Upgrade : ScriptableObject
     {
         if (upgrade.used)
         {
-            Debug.LogWarning("This upgrade has already been used!");
+            //Debug.LogWarning("This upgrade has already been used!");
             return;
         }
 
         if (upgrade.name.Contains("Engine"))
         {
             // Change preview image
-            Debug.Log("Changing max speed of boat...");
+            //Debug.Log("Changing max speed of boat...");
             FindObjectOfType<UpgradeMenu>().IncreaseBoatSpeed();
             used = true;
         }
         else
         {
-            Debug.Log("Doesn't do anything yet");
+            //Debug.Log("Doesn't do anything yet");
         }
     }
 
     public virtual void Tooltip(Upgrade upgrade)
     {
         // display the description of this upgrade on mouse hover
-        Debug.Log("Tooltip: " + upgrade.description);
+        //Debug.Log("Tooltip: " + upgrade.description);
     }
 }

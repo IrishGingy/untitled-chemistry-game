@@ -10,7 +10,7 @@ public class QuestList : MonoBehaviour
     public Transform questListParent;
     public Transform questDetailsParent;
     public Button activeQuestButton;
-    public Button[] buttons;
+    public Dictionary<Quest, GameObject> buttonGameObjects = new Dictionary<Quest, GameObject>();
     public Quest[] quests;
     
     private int id;
@@ -22,12 +22,15 @@ public class QuestList : MonoBehaviour
         id = 0;
         foreach(Quest quest in quests)
         {
-            Debug.Log("Instantiating...");
+            //Debug.Log("Instantiating...");
             GameObject button = Instantiate(questButtonPrefab, questListParent);
+            
             button.name = $"Quest {id}";
             button.GetComponentInChildren<TextMeshProUGUI>().text = quest.title;
             // disable the gameobject indicating the active quest
             button.transform.GetChild(1).GetComponent<Image>().enabled = false;
+
+            buttonGameObjects[quest] = button;
 
             // TODO: This might be an issue later...
             quest.activeQuest = false;
@@ -47,6 +50,8 @@ public class QuestList : MonoBehaviour
             qb.questTasksObject = tasks;
 
             id++;
+
+            button.SetActive(false);
         }
 
     }

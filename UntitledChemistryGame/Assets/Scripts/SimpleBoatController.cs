@@ -73,7 +73,7 @@ public class SimpleBoatController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No passenger dialogue to play!");
+            //Debug.LogWarning("No passenger dialogue to play!");
         }
     }
 }

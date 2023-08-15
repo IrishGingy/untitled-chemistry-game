@@ -73,7 +73,7 @@ public class DialogueTrigger : Trigger
 
     private void EnableShopCamera()
     {
-        Debug.Log("Call from EnableShopCamera by " + this);
+        //Debug.Log("Call from EnableShopCamera by " + this);
         shopCamera.enabled = true;
         Cursor.lockState = CursorLockMode.None;
         player.playerObject.SetActive(false);

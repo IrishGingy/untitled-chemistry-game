@@ -28,8 +28,8 @@ public class FishingWalls : MonoBehaviour
         int numTilesX = tilemap.cellBounds.size.x;
         max = tilemap.cellBounds.max;
         Vector3 rightMostBoundPosition = tilemap.CellToWorld(max);
-        Debug.Log(numTilesX);
-        Debug.Log(rightMostBoundPosition);
+        //Debug.Log(numTilesX);
+        //Debug.Log(rightMostBoundPosition);
 
         waited = false;
         StartCoroutine(Wait());

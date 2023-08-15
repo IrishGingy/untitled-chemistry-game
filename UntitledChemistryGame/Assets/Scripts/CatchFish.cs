@@ -11,7 +11,7 @@ public class CatchFish : MonoBehaviour
     void Start()
     {
         fm = FindObjectOfType<FishingManager>();
-        Debug.Log(fm.chosenCatchArea);
+        //Debug.Log(fm.chosenCatchArea);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

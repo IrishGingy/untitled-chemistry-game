@@ -52,15 +52,15 @@ public class FishingSlider : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Anchor position: " + gameObjectRect.anchoredPosition);
-            Debug.Log("Anchor max: " + gameObjectRect.anchorMax);
-            Debug.Log("Anchor min: " + gameObjectRect.anchorMin);
-            Debug.Log("Offset max: " + gameObjectRect.offsetMax);
-            Debug.Log("Offset min: " + gameObjectRect.offsetMin);
+            //Debug.Log("Anchor position: " + gameObjectRect.anchoredPosition);
+            //Debug.Log("Anchor max: " + gameObjectRect.anchorMax);
+            //Debug.Log("Anchor min: " + gameObjectRect.anchorMin);
+            //Debug.Log("Offset max: " + gameObjectRect.offsetMax);
+            //Debug.Log("Offset min: " + gameObjectRect.offsetMin);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Slider value: " + _slider.value);
+            //Debug.Log("Slider value: " + _slider.value);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -74,7 +74,7 @@ public class FishingSlider : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Reeling in! (Pressed Spacebar)");
+            //Debug.Log("Reeling in! (Pressed Spacebar)");
             if (_slider.value >= (left * 0.001) && _slider.value <= ((1000 - right) * 0.001))
             {
                 inventory.Add(fishItem);

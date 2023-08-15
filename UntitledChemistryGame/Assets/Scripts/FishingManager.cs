@@ -56,7 +56,7 @@ public class FishingManager : MonoBehaviour
     private void SetCatchArea()
     {
         int catchAreaCount = catchAreas.transform.childCount;
-        Debug.Log(catchAreaCount);
+        //Debug.Log(catchAreaCount);
         if (catchAreaCount > 0)
         {
             chosenCatchArea = catchAreas.transform.GetChild(Random.Range(0, catchAreaCount));
