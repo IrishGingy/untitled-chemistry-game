@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78e8425654c32040aa43b5e59030fcc, type: 3}
+  m_Name: New Texture Density
+  m_EditorClassIdentifier: 
+  terrainLayer: {fileID: 8574412962073106934, guid: 209e074a384f9a74290c61b0bddf05dc, type: 2}
+  density: 10
+  fish:
+  - {fileID: 11400000, guid: a43166919c45cb54098d90706aa58a41, type: 2}
+  - {fileID: 11400000, guid: 7c3405596926f3a49ad19427865f8433, type: 2}

@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     public GameObject playerPrefab;
     public GameObject boatCam;
-    [SerializeField] private GameObject boat;
+    [SerializeField] public GameObject boat;
     [SerializeField] public Trigger trigger;
 
     [Header("Don't set")]

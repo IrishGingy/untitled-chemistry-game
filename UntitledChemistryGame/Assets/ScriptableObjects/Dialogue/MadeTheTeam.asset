@@ -15,4 +15,4 @@ MonoBehaviour:
   characterName: 
   inkFile: {fileID: 4900000, guid: 16bb1579ef818ad4ba44a58b17c155cd, type: 3}
   dependency: {fileID: 0}
-  played: 1
+  played: 0

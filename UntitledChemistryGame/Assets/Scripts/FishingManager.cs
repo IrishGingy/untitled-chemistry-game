@@ -66,14 +66,30 @@ public class FishingManager : MonoBehaviour
     public void ResetFishing()
     {
         player.transform.position = startPosition.transform.position;
+        catchAreas.SetActive(true);
     }
 
     public void FishOn()
     {
+        catchAreas.SetActive(false);
+        Debug.Log("Before: " + Cursor.lockState);
+        Cursor.lockState = CursorLockMode.None;
+        Debug.Log("After: " + Cursor.lockState);
         rb.velocity = Vector3.zero;
-        player.transform.position = Vector3.zero;
+        player.transform.position = tilemapGO.transform.position;
         tilemapGO.SetActive(true);
         currentPhase = 1;
         rb.gravityScale = 0f;
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Debug.Log("Maybe drawing");
+    //    if (chosenCatchArea)
+    //    {
+    //        Debug.Log("Drawing!");
+    //        Gizmos.color = Color.red;
+    //        Gizmos.DrawMesh(chosenCatchArea.gameObject., chosenCatchArea.localScale);
+    //    }
+    //}
 }

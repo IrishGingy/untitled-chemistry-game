@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public QuestManager qm;
 
     [Header("Game States")]
+    public Scene currentScene;
     public bool atMainMenu;
     public bool inMenus;
     public bool inPauseMenu;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         player = GetComponent<Player>();
         buttonPrompt.SetActive(false);
         letterScrolling = true;
+        currentScene = SceneManager.GetActiveScene();
         //StartGame();
     }
 

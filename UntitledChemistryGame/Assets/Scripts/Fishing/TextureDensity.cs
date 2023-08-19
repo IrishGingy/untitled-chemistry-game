@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextureDensity : MonoBehaviour
+[CreateAssetMenu(fileName = "New Texture Density", menuName = "ScriptableObjects/Fishing/TextureDensity")]
+public class TextureDensity : ScriptableObject
 {
-    public Texture albedo;
+    public TerrainLayer terrainLayer;
     public float density;
+    public Fish[] fish;
 }

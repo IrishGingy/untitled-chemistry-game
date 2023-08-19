@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FishDensity : MonoBehaviour
 {
+    public GameObject fishingUIGameObject;
+
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TextureDensity[] textureDensities;
-    [SerializeField] public float currentDensity;
+    [SerializeField] public TextureDensity currentTextureDensity;
 
     private Rigidbody rb;
+    private GameManager gm;
 
     private void Awake()
     {
+        fishingUIGameObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -22,17 +28,17 @@ public class FishDensity : MonoBehaviour
 
     private void CheckGround()
     {
-        Debug.DrawRay(transform.position, Vector3.down * 5f, Color.red);
-        if (Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position,
+        Debug.DrawRay(transform.position, Vector3.down * 40f, Color.red);
+        if (!gm.player.docked && Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position,
             Vector3.down,
             out RaycastHit hit,
-            5f,
+            40f,
             groundLayer)
             )
         {
             if (hit.collider.TryGetComponent<Terrain>(out Terrain terrain))
             {
-                CalculateDensity(terrain, hit.point);
+                GetDensity(terrain, hit.point);
             }
             else if (hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
             {
@@ -41,7 +47,7 @@ public class FishDensity : MonoBehaviour
         }
     }
 
-    private void CalculateDensity(Terrain terrain, Vector3 hitPoint)
+    private void GetDensity(Terrain terrain, Vector3 hitPoint)
     {
         // Find terrain position of our hitpoint
         Vector3 terrainPosition = hitPoint - terrain.transform.position;
@@ -71,20 +77,28 @@ public class FishDensity : MonoBehaviour
 
         foreach(TextureDensity textureDensity in textureDensities)
         {
-            if (textureDensity.albedo == terrain.terrainData.terrainLayers[primaryIndex].diffuseTexture)
+            if (textureDensity.terrainLayer.diffuseTexture == terrain.terrainData.terrainLayers[primaryIndex].diffuseTexture)
             {
-                currentDensity = textureDensity.density;
+                currentTextureDensity = textureDensity;
                 break;
             }
         }
+
+        // "Improved Fishing" has a buildIndex of 1
+        //SceneManager.LoadScene(SceneManager.GetSceneAt(1).name);
+
+        // set the fishing gameobjects to active (could create the prefab here which could present more
+        // options for customization based upon density, player info, etc.)
+        gm.player.boatCam.SetActive(false);
+        fishingUIGameObject.SetActive(true);
     }
 
-    [System.Serializable]
-    private class TextureDensity
-    {
-        public Texture albedo;
-        public float density;
-    }
+    //[System.Serializable]
+    //private class TextureDensity
+    //{
+    //    public Texture albedo;
+    //    public float density;
+    //}
 
     //public Terrain terrain;
 

@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
-using UnityEditor.Build.Content;
 
 public class FishingSpot : MonoBehaviour
 {
@@ -18,8 +17,8 @@ public class FishingSpot : MonoBehaviour
     private void Awake()
     {
         // Change the icon of the objects with this script attached to green rounded rectangle
-        var iconContent = EditorGUIUtility.IconContent("sv_label_3");
-        EditorGUIUtility.SetIconForObject(gameObject, (Texture2D) iconContent.image);
+        //var iconContent = EditorGUIUtility.IconContent("sv_label_3");
+        //EditorGUIUtility.SetIconForObject(gameObject, (Texture2D) iconContent.image);
 
         bCollider = GetComponent<BoxCollider>();
     }
