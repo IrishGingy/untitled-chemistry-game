@@ -5,6 +5,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
+    public QuestManager qm;
     //public GameObject player;
 
     [SerializeField] Image previewImage;
@@ -57,7 +58,9 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
+
+        // Check if a quest has been completed
+        qm.QuestCheck();
         //Debug.Log("UPDATING UI");
     }
-
 }

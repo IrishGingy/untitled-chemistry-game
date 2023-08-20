@@ -35,4 +35,9 @@ public class QuestManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         questNotificationUI.SetActive(false);
     }
+
+    public void QuestCheck()
+    {
+        // number of fish, 
+    }
 }

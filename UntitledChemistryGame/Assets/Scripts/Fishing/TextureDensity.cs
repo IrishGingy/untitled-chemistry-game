@@ -8,5 +8,5 @@ public class TextureDensity : ScriptableObject
 {
     public TerrainLayer terrainLayer;
     public float density;
-    public Fish[] fish;
+    public FishType[] fish;
 }

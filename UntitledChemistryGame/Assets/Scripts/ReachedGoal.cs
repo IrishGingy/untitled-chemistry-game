@@ -13,12 +13,14 @@ public class ReachedGoal : MonoBehaviour
     private GameManager gm;
     private FishDensity fishDensity;
     private FishWeightGenerator weightGenerator;
+    private Inventory inventory;
 
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
         fishDensity = gm.player.boat.GetComponent<FishDensity>();
         weightGenerator = gm.GetComponent<FishWeightGenerator>();
+        inventory = gm.GetComponent<Inventory>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,9 +42,16 @@ public class ReachedGoal : MonoBehaviour
         // calculate the point rating of the fish based on the weight and type
         // use depth (deeper = larger)
 
-        weightGenerator.CalculateWeight();
-        Fish[] fishTypes = fishDensity.currentTextureDensity.fish;
-        int i = Random.Range(0, fishTypes.Length-1);
-        Debug.Log(fishDensity.currentTextureDensity.fish[i]);
+        FishType[] fishTypes = fishDensity.currentTextureDensity.fish;
+        int i = Random.Range(0, fishTypes.Length);
+        FishType fishType = fishDensity.currentTextureDensity.fish[i];
+
+        var result = weightGenerator.CalculateWeightAndPoints(fishType);
+        float weight = result.Item1;
+        float pointValue = result.Item2;
+
+        Item item = Item.CreateFish(fishType, weight, pointValue);
+
+        inventory.Add(item);
     }
 }

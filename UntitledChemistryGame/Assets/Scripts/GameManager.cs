@@ -58,8 +58,9 @@ public class GameManager : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        if (!atMainMenu)
+        if (!atMainMenu && !inMenus)
         {
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             inPauseMenu = inPauseMenu ? false : true;
             player.TogglePlayerMovement();
             if (inPauseMenu)
@@ -82,6 +83,8 @@ public class GameManager : MonoBehaviour
     {
         if (canOpenMenus)
         {
+            inMenus = !inMenus;
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
             ui.SetActive(!ui.activeSelf);
             if (ui.activeSelf == false)

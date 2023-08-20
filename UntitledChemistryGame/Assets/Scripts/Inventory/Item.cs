@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,21 @@ public class Item : ScriptableObject
     new public string name = "New Item";
     public Sprite icon = null;
     public bool isDefaultItem = false;
+
+    [Header("Fish Item")]
+    public FishType fishType = null;
+    public float weight = -1f;
+    public float pointValue = 0f;
+
+    public static Item CreateFish(FishType type, float weight, float pointValue)
+    {
+        Item newItem = CreateInstance<Item>();
+        newItem.icon = type.icon;
+        newItem.fishType = type;
+        newItem.pointValue = pointValue;
+
+        return newItem;
+    }
 
     // "Virtual" derives different objects from the item and that way you can do different things to different items.
     public virtual void Use(Item item)

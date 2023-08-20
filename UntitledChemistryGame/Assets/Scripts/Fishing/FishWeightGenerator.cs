@@ -50,14 +50,26 @@ public class FishWeightGenerator : MonoBehaviour
     public float minWeight = 1f;
     public float maxWeight = 10f;
 
-    public void CalculateWeight()
+    private float avgWeight;
+
+    public (float, float) CalculateWeightAndPoints(FishType fType)
     {
-        float randomTime = Random.value; // Generate random time [0, 1]
-        float curveValue = weightCurve.Evaluate(randomTime);
+        // calculate weight
+        //float randomTime = Random.value; // Generate random time [0, 1]
+        //float curveValue = weightCurve.Evaluate(randomTime);
+        avgWeight = fType.avgWeight;
+        float posStDev = avgWeight / 2.0f;
+        float negStDev = -(avgWeight / 2.0f);
+        float weight = Random.Range(avgWeight + negStDev, avgWeight + posStDev);
+        Debug.Log(weight);
+
 
         // Map curve value to weight range
         //float randomWeight = Mathf.Lerp(minWeight, maxWeight, curveValue);
 
-        Debug.Log("Generated Weight: " + curveValue);
+        // calculate point value (TODO: CHANGE THIS TO ACTUALLY CALCULATE POINT VALUE)
+        float pointValue = 4;
+
+        return (weight, pointValue);
     }
 }
