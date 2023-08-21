@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ReachedGoal : MonoBehaviour
 {
-    public GameObject fishingUI;
-
     [Header("Goal Result")]
     public bool catchFish;
 
@@ -14,10 +12,12 @@ public class ReachedGoal : MonoBehaviour
     private FishDensity fishDensity;
     private FishWeightGenerator weightGenerator;
     private Inventory inventory;
+    private FishingManager fishingManager;
 
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        fishingManager = gm.fm;
         fishDensity = gm.player.boat.GetComponent<FishDensity>();
         weightGenerator = gm.GetComponent<FishWeightGenerator>();
         inventory = gm.GetComponent<Inventory>();
@@ -29,8 +29,9 @@ public class ReachedGoal : MonoBehaviour
         {
             // hide fishingUI
             // change cameras
-            gm.player.thirdPersonMovement.gameObject.SetActive(true);
-            fishingUI.SetActive(false);
+            fishingManager.ExitFishing();
+            //gm.player.thirdPersonMovement.gameObject.SetActive(true);
+            //fishingUI.SetActive(false);
 
             // can pass in amount of times hitting the walls to make weight of fish lower the more you hit the walls
             CatchFish();

@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +8,19 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
     public Button removeButton;
     public Image usedIcon;
+    public GameObject weight;
 
     [SerializeField] Image previewImage;
 
     Item item;
     Upgrade upgrade;
+    TextMeshProUGUI weightTextGUI;
+
+    private void Awake()
+    {
+        weightTextGUI = weight.GetComponentInChildren<TextMeshProUGUI>();
+        weight.SetActive(false);
+    }
 
     public void AddItem(Item newItem)
     {
@@ -18,7 +28,12 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = item.icon;
         icon.enabled = true;
-        removeButton.interactable = true;
+        if (newItem.fishType != null)
+        {
+            weightTextGUI.text = $"{newItem.weight} lbs";
+            weight.SetActive(true);
+        }
+        //removeButton.interactable = true;
     }
 
     public void AddUpgrade(Upgrade newUpgrade)
@@ -38,7 +53,7 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
-        removeButton.interactable = false;
+        //removeButton.interactable = false;
     }
 
     public void OnRemoveButton()

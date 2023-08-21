@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public GameObject pauseMenu;
     public QuestManager qm;
+    public FishingManager fm;
 
     [Header("Game States")]
     public Scene currentScene;

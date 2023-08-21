@@ -18,6 +18,7 @@ public class Item : ScriptableObject
     {
         Item newItem = CreateInstance<Item>();
         newItem.icon = type.icon;
+        newItem.weight = weight;
         newItem.fishType = type;
         newItem.pointValue = pointValue;
 

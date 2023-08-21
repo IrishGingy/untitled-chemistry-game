@@ -61,7 +61,10 @@ public class FishWeightGenerator : MonoBehaviour
         float posStDev = avgWeight / 2.0f;
         float negStDev = -(avgWeight / 2.0f);
         float weight = Random.Range(avgWeight + negStDev, avgWeight + posStDev);
-        Debug.Log(weight);
+
+        // Round to nearest tenth
+        weight = Mathf.Round(weight * 10.0f) * 0.1f;
+        Debug.Log($"{fType}: {weight}");
 
 
         // Map curve value to weight range

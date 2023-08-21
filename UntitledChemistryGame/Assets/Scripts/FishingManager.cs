@@ -11,20 +11,26 @@ public class FishingManager : MonoBehaviour
     public GameObject player;
     public int currentPhase;
     public float speed = 1f;
-    public GameObject tilemapGO;
+    public GameObject tilemapGrid;
     public GameObject catchAreas;
+    public GameObject tilemapGO;
 
     [Header("Don't set in inspector")]
     [SerializeField] public Transform chosenCatchArea;
 
     private Rigidbody2D rb;
+    private FishingWalls walls;
+    private GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         SetCatchArea();
 
+        gm = FindObjectOfType<GameManager>();
+        tilemapGrid.SetActive(false);
         tilemapGO.SetActive(false);
+        walls = tilemapGO.GetComponent<FishingWalls>();
         rb = player.GetComponent<Rigidbody2D>();
         rb.gravityScale = 1f;
         currentPhase = 0;
@@ -46,6 +52,12 @@ public class FishingManager : MonoBehaviour
                 rb.AddForce(Vector3.right * speed);
             }
         }
+        if (walls.fishing && Input.GetKeyDown(KeyCode.Space))
+        {
+            //tilemapGrid.SetActive(false);
+            //ResetFishing();
+            ExitFishing();
+        }
         //// Calculate the new position based on the current position and the left direction
         //Vector3 newPosition = transform.position + Vector3.right * speed * Time.deltaTime;
 
@@ -65,21 +77,32 @@ public class FishingManager : MonoBehaviour
 
     public void ResetFishing()
     {
+        tilemapGrid.SetActive(false);
         player.transform.position = startPosition.transform.position;
         catchAreas.SetActive(true);
+        currentPhase = 0;
+        rb.gravityScale = 1f;
     }
 
     public void FishOn()
     {
         catchAreas.SetActive(false);
-        Debug.Log("Before: " + Cursor.lockState);
         Cursor.lockState = CursorLockMode.None;
-        Debug.Log("After: " + Cursor.lockState);
         rb.velocity = Vector3.zero;
-        player.transform.position = tilemapGO.transform.position;
+        player.transform.position = tilemapGrid.transform.position;
+        tilemapGrid.SetActive(true);
         tilemapGO.SetActive(true);
+        walls.StartFishing();
         currentPhase = 1;
         rb.gravityScale = 0f;
+    }
+
+    public void ExitFishing()
+    {
+        gm.player.thirdPersonMovement.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+        ResetFishing();
+        walls.StopFishing();
     }
 
     //private void OnDrawGizmos()
