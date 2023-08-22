@@ -5,33 +5,35 @@ using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 
-public class FishingWalls : MonoBehaviour
+public class FishingPhaseII : MonoBehaviour
 {
     public float speed = 2f;
-    public bool fishing;
 
     private bool waited;
+    private GameObject gridGO;
+    private GameObject tilemapGO;
     private Tilemap tilemap;
     private Vector3Int max;
     // number of times the player hits an obstacle
     private int collisions;
     private int numTilesX;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         collisions = 0;
 
+        gridGO = transform.parent.gameObject;
+        tilemapGO = gameObject;
         // Get the reference to the Tilemap component
         tilemap = GetComponent<Tilemap>();
 
-        StartFishing();
+        //StartPhaseII();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (fishing && waited)
+        if (waited)
         {
             // Calculate the new position based on the current position and the left direction
             Vector3 newPosition = transform.position + Vector3.left * speed * Time.deltaTime;
@@ -44,6 +46,8 @@ public class FishingWalls : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collisions++;
+        // TODO: Give user feedback that they are colliding with an obstacle
+        Debug.Log($"Hit an obstacle x{collisions}");
 
         // restart scene
         if (collisions >= 3)
@@ -58,9 +62,14 @@ public class FishingWalls : MonoBehaviour
         waited = true;
     }
 
-    public void StartFishing()
+    public void StartPhaseII(GameObject player, out int currentPhase)
     {
-        fishing = true;
+        currentPhase = 1;
+        Cursor.lockState = CursorLockMode.None;
+        gridGO.SetActive(true);
+        tilemapGO.SetActive(true);
+        player.transform.position = gridGO.transform.position;
+
         // Calculate and display the number of tiles on the Tilemap
         numTilesX = tilemap.cellBounds.size.x;
         max = tilemap.cellBounds.max;
@@ -75,7 +84,6 @@ public class FishingWalls : MonoBehaviour
     public void StopFishing()
     {
         waited = false;
-        fishing = false;
         // Resets the tilemap position
         transform.localPosition = Vector3.zero;
         tilemap.CompressBounds();

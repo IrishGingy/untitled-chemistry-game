@@ -13,12 +13,14 @@ public class FishDensity : MonoBehaviour
 
     private Rigidbody rb;
     private GameManager gm;
+    private FishingManager fm;
 
     private void Awake()
     {
         fishingUIGameObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
         gm = FindObjectOfType<GameManager>();
+        fm = gm.fm;
     }
 
     private void Update()
@@ -89,6 +91,7 @@ public class FishDensity : MonoBehaviour
 
         // set the fishing gameobjects to active (could create the prefab here which could present more
         // options for customization based upon density, player info, etc.)
+        fm.StartFishing();
         gm.player.boatCam.SetActive(false);
         fishingUIGameObject.SetActive(true);
     }

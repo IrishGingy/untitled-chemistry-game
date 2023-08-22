@@ -17,20 +17,22 @@ public class FishingManager : MonoBehaviour
 
     [Header("Don't set in inspector")]
     [SerializeField] public Transform chosenCatchArea;
+    [SerializeField] private bool fishing;
 
     private Rigidbody2D rb;
-    private FishingWalls walls;
+    private FishingPhaseII walls;
     private GameManager gm;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        fishing = false;
         SetCatchArea();
 
         gm = FindObjectOfType<GameManager>();
         tilemapGrid.SetActive(false);
         tilemapGO.SetActive(false);
-        walls = tilemapGO.GetComponent<FishingWalls>();
+        walls = tilemapGO.GetComponent<FishingPhaseII>();
         rb = player.GetComponent<Rigidbody2D>();
         rb.gravityScale = 1f;
         currentPhase = 0;
@@ -44,15 +46,17 @@ public class FishingManager : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                rb.AddForce(Vector3.up * 5);
+                rb.velocity = Vector3.zero;
+                rb.AddForce(Vector3.up * 20);
             }
             if (Input.GetMouseButton(1))
             {
-                rb.AddForce(Vector3.up);
+                rb.velocity = Vector3.zero;
+                rb.AddForce(Vector3.up * 5);
                 rb.AddForce(Vector3.right * speed);
             }
         }
-        if (walls.fishing && Input.GetKeyDown(KeyCode.Space))
+        if (fishing && Input.GetKeyDown(KeyCode.Space))
         {
             //tilemapGrid.SetActive(false);
             //ResetFishing();
@@ -63,6 +67,19 @@ public class FishingManager : MonoBehaviour
 
         //// Update the position of the GameObject
         //transform.position = newPosition;
+    }
+
+    public void StartFishing()
+    {
+        // turn on fishing manager gameobject
+        // turn off boatCam
+        // turn off tilemap stuff (ensure it is off for phase 0)
+        // lock cursor
+        fishing = true;
+        currentPhase = 0;
+        // gravityScale = 1f;
+        // SetCatchArea()
+
     }
 
     private void SetCatchArea()
@@ -87,14 +104,14 @@ public class FishingManager : MonoBehaviour
     public void FishOn()
     {
         catchAreas.SetActive(false);
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         rb.velocity = Vector3.zero;
-        player.transform.position = tilemapGrid.transform.position;
-        tilemapGrid.SetActive(true);
-        tilemapGO.SetActive(true);
-        walls.StartFishing();
-        currentPhase = 1;
+        //player.transform.position = tilemapGrid.transform.position;
+        //tilemapGrid.SetActive(true);
+        //tilemapGO.SetActive(true);
         rb.gravityScale = 0f;
+        walls.StartPhaseII(player, out currentPhase);
+        //rb.gravityScale = 0f;
     }
 
     public void ExitFishing()

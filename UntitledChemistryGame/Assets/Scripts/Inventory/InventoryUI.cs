@@ -60,7 +60,7 @@ public class InventoryUI : MonoBehaviour
         }
 
         // Check if a quest has been completed
-        qm.QuestCheck();
+        //qm.QuestCheck();
         //Debug.Log("UPDATING UI");
     }
 }
