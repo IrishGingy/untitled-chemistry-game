@@ -54,5 +54,6 @@ public class ReachedGoal : MonoBehaviour
         Item item = Item.CreateFish(fishType, weight, pointValue);
 
         inventory.Add(item);
+        gm.qm.QuestCheck();
     }
 }

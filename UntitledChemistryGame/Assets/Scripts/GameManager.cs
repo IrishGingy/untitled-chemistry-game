@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public QuestManager qm;
     public FishingManager fm;
 
+    [Header("UI")]
+    public GameObject inventoryUI;
+    public Image previewImage;
+    public GameObject questUI;
+
     [Header("Game States")]
     public Scene currentScene;
     public bool atMainMenu;
@@ -40,15 +45,42 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        CheckUserInput();
+    }
+
+    private void CheckUserInput()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
         }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ToggleQuestMenu(questUI.activeSelf);
+        }
+        else if (Input.GetButtonDown("Inventory"))
+        {
+            ToggleInventoryMenu(inventoryUI.activeSelf);
+        }
+        // DEBUG: REMOVE THIS BEFORE RELEASE!!! (TODO)
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+        }
+        //else if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    qm.AddQuestToMenu(qm.questList.quests[0]);
+        //}
     }
 
     private void StartGame()
     {
         //player.DockBoat(spawnLocation, boatDockLocation);
+    }
+
+    public void AddQuest(Quest q)
+    {
+        qm.AddQuestToMenu(q);
     }
 
     public void LoadNextScene()
@@ -80,15 +112,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ToggleInventoryMenu(GameObject ui, Image previewImage)
+    public void ToggleInventoryMenu(bool active)
     {
         if (canOpenMenus)
         {
             inMenus = !inMenus;
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
-            ui.SetActive(!ui.activeSelf);
-            if (ui.activeSelf == false)
+            inventoryUI.SetActive(!active);
+            if (inventoryUI.activeSelf == false)
             {
                 previewImage.sprite = null;
                 previewImage.enabled = false;
@@ -96,11 +128,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ToggleQuestMenu()
+    public void ToggleQuestMenu(bool active)
     {
+        Debug.Log($"Active: {active}");
+        Debug.Log($"canOpenMenus: {canOpenMenus}");
         if (canOpenMenus)
         {
-
+            inMenus = !inMenus;
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            player.TogglePlayerMovement();
+            questUI.SetActive(!active);
+            Debug.Log($"QuestUI: {questUI}");
+            Debug.Log($"QuestUI Active?: {questUI.activeSelf}");
         }
     }
 }

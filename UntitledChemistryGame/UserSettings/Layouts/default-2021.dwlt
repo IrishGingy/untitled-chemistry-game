@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1397.3334
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 64
+  controlID: 21
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 65
+  controlID: 22
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 66
+  controlID: 23
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 368
     height: 1008.6667
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -213,7 +213,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 368
     y: 0
-    width: 1708
+    width: 1453.3334
     height: 1008.6667
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -239,12 +239,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 2076
+    x: 1821.3334
     y: 0
-    width: 484
+    width: 738.6666
     height: 1008.6667
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -300,7 +300,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 368
     y: 72.66667
-    width: 1706
+    width: 1451.3334
     height: 987.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -348,10 +348,10 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1706
+      width: 1451.3334
       height: 966.6667
-    m_Scale: {x: 0.6664063, y: 0.6664063}
-    m_Translation: {x: 853, y: 483.33334}
+    m_Scale: {x: 0.5669271, y: 0.5669271}
+    m_Translation: {x: 725.6666, y: 483.33337}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -359,12 +359,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -1280
-      y: -725.2833
+      y: -852.54944
       width: 2560
-      height: 1450.5667
+      height: 1705.0989
     m_MinimalGUI: 1
-  m_defaultScale: 0.6664063
-  m_LastWindowPixelSize: {x: 2559, y: 1481.5}
+  m_defaultScale: 0.5669271
+  m_LastWindowPixelSize: {x: 2177, y: 1481.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -401,20 +401,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4884fdff
-      m_LastClickedID: -162744
-      m_ExpandedIDs: 0084fdff0684fdff1084fdff1684fdff4884fdff5484fdffb084fdffb684fdff3685fdff5695fdff40a3fdffeabdfdffc0dcfdff90e4fdff9a01feff3608feff3812fefffa1dfeff3e2cfeffd48bfeffe88dfeffeaddfeffee0effff103fffffe464ffff0065fffff6a0ffff30fbffffde6b0000066e0000a86e0000ac6e0000b86e0000ba6e00006281000064810000e68100000683000050830000de930000f49300000c9400006095000074950000d69500007e9600009a960000a4960000e0cd00003ecf000082cf000044d00000280f0100962c0100b82d010096330100983301003a350100c8390100c6540100fa5e0100b29a01001cbd0100
+      m_SelectedIDs: 4442ffff
+      m_LastClickedID: -48572
+      m_ExpandedIDs: 4442ffff4642ffff324cffff84faffff30fbffff9c6b0000ec6b00005c6d00001a6e00003c250100a02b0100ac2b0100ce2b0100d42b0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Weight
-        m_OriginalName: Weight
+        m_Name: Quests
+        m_OriginalName: Quests
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 198934
+        m_UserData: 76716
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 368
     y: 72.66667
-    width: 1706
+    width: 1451.3334
     height: 987.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -514,7 +514,7 @@ MonoBehaviour:
       containerId: overlay-toolbar__top
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -674,9 +674,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1407.1798, y: 1111.7872, z: -11.02784}
+    m_Target: {x: 1871.3878, y: 1160.8671, z: 6.880139}
     speed: 2
-    m_Value: {x: 1407.1798, y: 1111.7872, z: -11.02784}
+    m_Value: {x: 1871.3878, y: 1160.8671, z: 6.880139}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -727,9 +727,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1472.7373
+    m_Target: 1514.8938
     speed: 2
-    m_Value: 1472.7373
+    m_Value: 1514.8938
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -747,7 +747,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.0413371, y: 0.9407144, z: -0.12374203, w: -0.31387582}
+  m_LastSceneViewRotation: {x: -0.21553454, y: 0.7148347, z: -0.24989945, w: -0.61653525}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -4489,9 +4489,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2076
+    x: 1821.3334
     y: 72.66667
-    width: 483
+    width: 737.6666
     height: 987.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -4586,22 +4586,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/ScriptableObjects/Quest
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/ScriptableObjects/Quest
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\GitHub\Games\UntitledChemistryGame\untitled-chemistry-game\UntitledChemistryGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 342.3333}
-    m_SelectedIDs: fa750000
-    m_LastClickedID: 30202
-    m_ExpandedIDs: 00000000e6750000e8750000ea750000ec750000ee750000f0750000f2750000f4750000f6750000f8750000fa750000fc750000fe75000000760000027600000476000006760000087600000a7600000c7600000e7600001076000012760000147600001a76000000ca9a3b
+    scrollPos: {x: 0, y: 390.3333}
+    m_SelectedIDs: 6a930000
+    m_LastClickedID: 37738
+    m_ExpandedIDs: 00000000327700003477000036770000387700003a7700003c7700003e77000040770000427700004477000046770000487700004a7700004c7700004e77000050770000527700005477000056770000587700005a7700005c7700005e770000607700003493000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4629,7 +4629,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e6750000e8750000ea750000ec750000ee750000f0750000f2750000f4750000f6750000f8750000fa750000fc750000fe75000000760000027600000476000006760000087600000a7600000c7600000e760000107600001276000014760000
+    m_ExpandedIDs: 00000000327700003477000036770000387700003a7700003c7700003e77000040770000427700004477000046770000487700004a7700004c7700004e77000050770000527700005477000056770000587700005a7700005c7700005e77000060770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

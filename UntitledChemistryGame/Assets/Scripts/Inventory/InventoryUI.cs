@@ -39,10 +39,10 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
-            gm.ToggleInventoryMenu(inventoryUI, previewImage);
-        }
+        //if (Input.GetButtonDown("Inventory"))
+        //{
+        //    gm.ToggleInventoryMenu(inventoryUI, previewImage);
+        //}
     }
 
     public void UpdateUI()

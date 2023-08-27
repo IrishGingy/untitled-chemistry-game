@@ -111,7 +111,8 @@ public class Player : MonoBehaviour
         {
             thirdPersonMovement.enabled = !thirdPersonMovement.enabled;
             boatController.enabled = !boatController.enabled;
-            boatController2.enabled = !boatController2.enabled;
+            // This is no longer being used
+            //boatController2.enabled = !boatController2.enabled;
         }
 
         Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;

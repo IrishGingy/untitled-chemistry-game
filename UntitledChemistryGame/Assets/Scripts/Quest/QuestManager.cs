@@ -9,10 +9,9 @@ public class QuestManager : MonoBehaviour
 
     private GameManager gm;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        gm = GetComponent<GameManager>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void AddQuestToMenu(Quest q)
@@ -25,7 +24,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log($"No quest button gameobject created for {q}");
+            Debug.Log($"No quest button gameobject created for {q}");
         }
     }
 
@@ -39,5 +38,6 @@ public class QuestManager : MonoBehaviour
     public void QuestCheck()
     {
         // number of fish, 
+        Debug.Log("Checking if a quest was completed...");
     }
 }
