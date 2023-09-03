@@ -63,7 +63,7 @@ public class ReachedGoal : MonoBehaviour
         {
             Debug.Log("Duplicate!");
             Debug.Log("duplicate item: " + duplicate.name + duplicate.weight);
-            log.Update(item);
+            log.UpdateSlot(item);
             // get the log item in the inventory and change the weight range
             //float min = 0;
             //float max = 0;

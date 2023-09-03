@@ -53,7 +53,7 @@ public class Log : MonoBehaviour
         return true;
     }
 
-    public void Update(Item item)
+    public void UpdateSlot(Item item)
     {
         InventorySlot[] logSlots = logItemsParent.GetComponentsInChildren<InventorySlot>();
         foreach (InventorySlot slot in logSlots)

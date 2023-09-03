@@ -3,15 +3,26 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BookManager : MonoBehaviour
 {
     //public QuestList questList;
     //public GameObject questNotificationUI;
+    public GameObject log;
     public GameObject leftPageObject;
     public Page leftPage;
     public GameObject rightPageObject;
+
+    public List<GameObject> leftPageGOs;
+    public List<GameObject> rightPageGOs;
+
     public Page rightPage;
+    // the page we are currently editing when pulling up the log
+    public Page currentPage;
+    // the current image that was clicked on in the book
+    public Image currentImage;
 
     [Header("Modal")]
     //public int modalNameValue = 0;
@@ -48,6 +59,9 @@ public class BookManager : MonoBehaviour
     private Modal modal;
     //private List<string> modalTypes = new List<string> { "Location", "WeightRange", "Name" };
 
+    private int leftPageIndex = 0;
+    private int rightPageIndex = 1;
+
     void Awake()
     {
         gm = FindObjectOfType<GameManager>();
@@ -70,13 +84,35 @@ public class BookManager : MonoBehaviour
         leftPage = leftPageObject.GetComponent<Page>();
         rightPage = rightPageObject.GetComponent<Page>();
 
-        leftPage.content = pageContents[0];
-        rightPage.content = pageContents[0];
+        leftPage.content = pageContents[leftPageIndex];
+        rightPage.content = pageContents[rightPageIndex];
 
         //foreach (FishType type in fishTypes)
         //{
         //    fishNames.Add(type.name);
         //}
+    }
+
+    private void Update()
+    {
+        if (!(modalGO.activeSelf && log.activeSelf))
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                // decrement the leftPageIndex by two if it's not the first page (otherwise don't change the index)
+                leftPageIndex = leftPageIndex != 0 ? leftPageIndex - 2 : leftPageIndex;
+                rightPageIndex = rightPageIndex != 1 ? rightPageIndex - 2 : rightPageIndex;
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                // increment the rightPageIndex by two if it's not the last page (otherwise don't change the index)
+                leftPageIndex = leftPageIndex != pageContents.Length - 2 ? leftPageIndex + 2 : leftPageIndex;
+                rightPageIndex = rightPageIndex != pageContents.Length - 1 ? rightPageIndex + 2 : rightPageIndex;
+            }
+
+            leftPage.content = pageContents[leftPageIndex];
+            leftPage.content = pageContents[rightPageIndex];
+        }
     }
 
     private void OnDropdownValueChanged(int index)
@@ -173,6 +209,48 @@ public class BookManager : MonoBehaviour
             typeIndex = -1;
             Debug.LogWarning($"The modalType {type} does not exist!");
         }
+    }
+
+    //public void LocationIcon(GameObject clickedPage)
+    //{
+    //    log.SetActive(true); 
+    //    currentPage = clickedPage.GetComponent<Page>();
+    //    if (currentPage.pageLeftOrRight == 0)
+    //    {
+    //        currentImage = leftPageGOs[1].transform.GetChild(0).GetComponent<Image>();
+    //    }
+    //    else
+    //    {
+    //        currentImage = rightPageGOs[1].transform.GetChild(0).GetComponent<Image>();
+    //    }
+    //}
+
+    public void FishIcon(GameObject clickedPage)
+    {
+        // toggle the log UI (position in the middle)
+        // make it so that on click it selects that fish type icon and closes the log
+        log.SetActive(true);
+        currentPage = clickedPage.GetComponent<Page>();
+        if (currentPage.pageLeftOrRight == 0)
+        {
+            currentImage = leftPageGOs[0].transform.GetChild(0).GetComponent<Image>();
+        }
+        else
+        {
+            currentImage = rightPageGOs[0].transform.GetChild(0).GetComponent<Image>();
+        }
+    }
+
+    public void SetIcon(GameObject obj)
+    {
+        InventorySlot slot = obj.transform.parent.GetComponent<InventorySlot>();
+        if (slot.item)
+        {
+            Debug.Log(slot.item.fishType);
+            currentPage.content.nameFishType = slot.item.fishType;
+            currentImage.sprite = slot.item.fishType.icon;
+        }
+        log.SetActive(false);
     }
 
     //public void AddQuestToMenu(Quest q)

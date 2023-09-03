@@ -16,5 +16,5 @@ public class PageContent : ScriptableObject
     [Header("Dropdown values")]
     public int locationValue;
     public int weightRangeValue;
-    public int nameValue;
+    public FishType nameFishType;
 }
