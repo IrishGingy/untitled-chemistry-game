@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ReachedGoal : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ReachedGoal : MonoBehaviour
     private FishDensity fishDensity;
     private FishWeightGenerator weightGenerator;
     private Inventory inventory;
+    private Log log;
     private FishingManager fishingManager;
 
     private void Start()
@@ -21,6 +23,7 @@ public class ReachedGoal : MonoBehaviour
         fishDensity = gm.player.boat.GetComponent<FishDensity>();
         weightGenerator = gm.GetComponent<FishWeightGenerator>();
         inventory = gm.GetComponent<Inventory>();
+        log = gm.GetComponent<Log>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,6 +57,35 @@ public class ReachedGoal : MonoBehaviour
         Item item = Item.CreateFish(fishType, weight, pointValue);
 
         inventory.Add(item);
+        // conditionally add to log if it's type isn't already added
+        Item duplicate = log.items.FirstOrDefault(item => item.fishType == fishType);
+        if (duplicate)
+        {
+            Debug.Log("Duplicate!");
+            Debug.Log("duplicate item: " + duplicate.name + duplicate.weight);
+            log.Update(item);
+            // get the log item in the inventory and change the weight range
+            //float min = 0;
+            //float max = 0;
+            //string text = weightTextGUI.text.Replace(" lbs", "");
+            //if (duplicate.weight < item.weight)
+            //{
+            //    min = duplicate.weight;
+            //    max = item.weight;
+            //}
+            //else if (duplicate.weight > item.weight)
+            //{
+            //    min = item.weight;
+            //    max = duplicate.weight;
+            //}
+            //duplicate.weight = ""
+            //iUI.UpdateLogUI();
+        }
+        else
+        {
+            log.Add(item);
+            Debug.Log("Not a duplicate");
+        }
         gm.qm.QuestCheck();
     }
 }

@@ -14,6 +14,8 @@ public class Item : ScriptableObject
     public float weight = -1f;
     public float pointValue = 0f;
 
+    // put a field on here that signifies that this item is getting stacked in the log (a fishType of this type already exists so we need to just update the weight range).
+
     public static Item CreateFish(FishType type, float weight, float pointValue)
     {
         Item newItem = CreateInstance<Item>();

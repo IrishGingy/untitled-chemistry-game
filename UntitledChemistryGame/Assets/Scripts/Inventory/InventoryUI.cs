@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent;
+    public Transform inventoryItemsParent;
+    public Transform logItemsParent;
     public GameObject inventoryUI;
     public QuestManager qm;
     //public GameObject player;
@@ -11,10 +12,12 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Image previewImage;
 
     Inventory inventory;
+    Log log;
     //bool camLook;
     PlayerController playerController;
 
-    InventorySlot[] slots;
+    InventorySlot[] inventorySlots;
+    InventorySlot[] logSlots;
     GameManager gm;
 
     // Start is called before the first frame update
@@ -29,9 +32,14 @@ public class InventoryUI : MonoBehaviour
         }
 
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
+        log = Log.instance;
+        Debug.Log("Inventory: " + inventory);
+        Debug.Log("Log:" + log);
+        inventory.onItemChangedCallback += UpdateInventoryUI;
+        log.onItemChangedCallback += UpdateLogUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        inventorySlots = inventoryItemsParent.GetComponentsInChildren<InventorySlot>();
+        logSlots = logItemsParent.GetComponentsInChildren<InventorySlot>();
         //camLook = true;
         //playerController = player.GetComponent<PlayerController>();
     }
@@ -45,17 +53,36 @@ public class InventoryUI : MonoBehaviour
         //}
     }
 
-    public void UpdateUI()
+    public void UpdateInventoryUI()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (i < inventory.items.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                inventorySlots[i].AddItem(inventory.items[i], true);
             }
             else
             {
-                slots[i].ClearSlot();
+                inventorySlots[i].ClearSlot();
+            }
+        }
+
+        // Check if a quest has been completed
+        //qm.QuestCheck();
+        //Debug.Log("UPDATING UI");
+    }
+
+    public void UpdateLogUI()
+    {
+        for (int i = 0; i < logSlots.Length; i++)
+        {
+            if (i < log.items.Count)
+            {
+                logSlots[i].AddItem(log.items[i], false);
+            }
+            else
+            {
+                logSlots[i].ClearSlot();
             }
         }
 

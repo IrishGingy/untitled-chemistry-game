@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryUI;
     public Image previewImage;
     public GameObject questUI;
+    public GameObject bookUI;
 
     [Header("Game States")]
     public Scene currentScene;
@@ -61,6 +62,10 @@ public class GameManager : MonoBehaviour
         else if (Input.GetButtonDown("Inventory"))
         {
             ToggleInventoryMenu(inventoryUI.activeSelf);
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            ToggleBookMenu(bookUI.activeSelf);
         }
         // DEBUG: REMOVE THIS BEFORE RELEASE!!! (TODO)
         else if (Input.GetKeyDown(KeyCode.C))
@@ -140,6 +145,17 @@ public class GameManager : MonoBehaviour
             questUI.SetActive(!active);
             Debug.Log($"QuestUI: {questUI}");
             Debug.Log($"QuestUI Active?: {questUI.activeSelf}");
+        }
+    }
+
+    public void ToggleBookMenu(bool active)
+    {
+        if (canOpenMenus)
+        {
+            inMenus = !inMenus;
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            player.TogglePlayerMovement();
+            bookUI.SetActive(!active);
         }
     }
 }
