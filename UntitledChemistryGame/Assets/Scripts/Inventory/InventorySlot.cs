@@ -16,9 +16,13 @@ public class InventorySlot : MonoBehaviour
     Upgrade upgrade;
     TextMeshProUGUI weightTextGUI;
 
-    private void Awake()
+    private void Start()
     {
+        Debug.Log("HiTTING AWAKE!");
         weightTextGUI = weight.GetComponentInChildren<TextMeshProUGUI>();
+        Debug.Log(weight);
+        Debug.Log(weightTextGUI);
+        Debug.Log(weightTextGUI.text);
         weight.SetActive(false);
     }
 
@@ -33,6 +37,7 @@ public class InventorySlot : MonoBehaviour
             icon.enabled = true;
             if (newItem.fishType != null)
             {
+                weightTextGUI = weight.GetComponentInChildren<TextMeshProUGUI>();
                 weightTextGUI.text = $"{newItem.weight} lbs";
                 weight.SetActive(true);
             }
@@ -48,6 +53,7 @@ public class InventorySlot : MonoBehaviour
             icon.enabled = true;
             if (newItem.fishType != null)
             {
+                weightTextGUI = weight.GetComponentInChildren<TextMeshProUGUI>();
                 weightTextGUI.text = $"{newItem.weight} lbs";
                 weight.SetActive(true);
             }

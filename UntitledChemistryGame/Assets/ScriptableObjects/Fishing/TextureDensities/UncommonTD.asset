@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78e8425654c32040aa43b5e59030fcc, type: 3}
   m_Name: UncommonTD
   m_EditorClassIdentifier: 
-  terrainLayer: {fileID: 0}
+  terrainLayer: {fileID: 8574412962073106934, guid: 80be5fda79b05804a8191d5e702c2fa0, type: 2}
   density: 0
-  fish: []
+  fish:
+  - {fileID: 0}

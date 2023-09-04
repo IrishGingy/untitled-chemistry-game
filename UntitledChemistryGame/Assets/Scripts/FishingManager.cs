@@ -24,15 +24,18 @@ public class FishingManager : MonoBehaviour
     private GameManager gm;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         fishing = false;
         SetCatchArea();
 
         gm = FindObjectOfType<GameManager>();
+        tilemapGrid.SetActive(true);
+        tilemapGO.SetActive(true);
+        walls = tilemapGO.GetComponent<FishingPhaseII>();
+
         tilemapGrid.SetActive(false);
         tilemapGO.SetActive(false);
-        walls = tilemapGO.GetComponent<FishingPhaseII>();
         rb = player.GetComponent<Rigidbody2D>();
         rb.gravityScale = 1f;
         currentPhase = 0;

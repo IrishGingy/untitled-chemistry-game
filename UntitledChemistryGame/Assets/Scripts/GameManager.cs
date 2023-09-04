@@ -125,11 +125,11 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
             inventoryUI.SetActive(!active);
-            if (inventoryUI.activeSelf == false)
-            {
-                previewImage.sprite = null;
-                previewImage.enabled = false;
-            }
+            //if (inventoryUI.activeSelf == false)
+            //{
+            //    previewImage.sprite = null;
+            //    previewImage.enabled = false;
+            //}
         }
     }
 

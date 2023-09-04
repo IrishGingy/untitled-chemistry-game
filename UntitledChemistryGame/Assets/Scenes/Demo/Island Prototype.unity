@@ -481,6 +481,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 446262, guid: bf5c716dea4419148879f65f4373d70d, type: 3}
   m_PrefabInstance: {fileID: 692072297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &149395188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091000757465493802, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+  m_PrefabInstance: {fileID: 891204946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1839735485 &149395194 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 3091000757465493807, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+  m_PrefabInstance: {fileID: 891204946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &170484413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -488,6 +498,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 676387125}
     m_Modifications:
+    - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
+      propertyPath: fishingUIGameObject
+      value: 
+      objectReference: {fileID: 1647143704}
+    - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
+      propertyPath: textureDensities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 618f096b98a0a1045855980e2a500878, type: 2}
+    - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
+      propertyPath: textureDensities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 65467793061dd5e43b2e601f401e7479, type: 2}
     - target: {fileID: 5461486556489701127, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4349,6 +4371,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3091000757465493804, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+      propertyPath: gridGO
+      value: 
+      objectReference: {fileID: 1347401405}
+    - target: {fileID: 3091000757465493804, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 149395194}
+    - target: {fileID: 3091000757465493804, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+      propertyPath: tilemapGO
+      value: 
+      objectReference: {fileID: 149395188}
     - target: {fileID: 3091000757465493808, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -6903,6 +6937,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1347401405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091000757613357262, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+  m_PrefabInstance: {fileID: 891204946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1351294617
 GameObject:
   m_ObjectHideFlags: 0

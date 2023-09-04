@@ -8,17 +8,17 @@ using Unity.VisualScripting;
 public class FishingPhaseII : MonoBehaviour
 {
     public float speed = 2f;
+    public GameObject gridGO;
+    public GameObject tilemapGO;
+    public Tilemap tilemap;
 
     private bool waited;
-    private GameObject gridGO;
-    private GameObject tilemapGO;
-    private Tilemap tilemap;
     private Vector3Int max;
     // number of times the player hits an obstacle
     private int collisions;
     private int numTilesX;
 
-    void Awake()
+    void Start()
     {
         collisions = 0;
 

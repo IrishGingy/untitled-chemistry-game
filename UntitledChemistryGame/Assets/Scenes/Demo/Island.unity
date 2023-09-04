@@ -4757,6 +4757,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969710640}
   m_CullTransparentMesh: 1
+--- !u!1 &970820471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091000757465493802, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+  m_PrefabInstance: {fileID: 1640536325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1839735485 &970820477 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 3091000757465493807, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+  m_PrefabInstance: {fileID: 1640536325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1036996619
 GameObject:
   m_ObjectHideFlags: 0
@@ -7249,6 +7259,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335187334}
   m_CullTransparentMesh: 1
+--- !u!1 &1371781021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3091000757613357262, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+  m_PrefabInstance: {fileID: 1640536325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1392802579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8862,6 +8877,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3091000757465493804, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+      propertyPath: gridGO
+      value: 
+      objectReference: {fileID: 1371781021}
+    - target: {fileID: 3091000757465493804, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 970820477}
+    - target: {fileID: 3091000757465493804, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
+      propertyPath: tilemapGO
+      value: 
+      objectReference: {fileID: 970820471}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38dd6f7e57698c549940a0fb6d8af8fa, type: 3}
 --- !u!1 &1640536326 stripped
