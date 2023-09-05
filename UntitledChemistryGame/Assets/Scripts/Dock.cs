@@ -21,8 +21,13 @@ public class Dock : Trigger
     public bool canDock = false;
     public bool canSail = false;
 
+    [Header("Quests")]
+    public Quest noteQuest;
+    public Quest prevQuest;
+
     private Player player;
     private GameManager gm;
+    private bool questAdded = false;
 
     protected override void Start()
     {
@@ -43,6 +48,7 @@ public class Dock : Trigger
         {
             Undocking();
         }
+        // if questAdded = true, then don't allow docking
     }
 
     private void Docking()
@@ -51,6 +57,7 @@ public class Dock : Trigger
         if (Input.GetKeyDown(promptKeyText))
         {
             player.DockBoat(gm.spawnLocation, gm.boatDockLocation);
+            gm.AddQuest(noteQuest, prevQuest);
             CheckEventDependency(EventDependency.Methods.dock);
             // switching from docked to undocked and vice versa requires that we hide the prompt to reset the promptTextMesh (to prevent error)
             //base.HidePrompt();

@@ -59,8 +59,8 @@ public class BookManager : MonoBehaviour
     private Modal modal;
     //private List<string> modalTypes = new List<string> { "Location", "WeightRange", "Name" };
 
-    private int leftPageIndex = 0;
-    private int rightPageIndex = 1;
+    public int leftPageIndex = 0;
+    public int rightPageIndex = 1;
 
     void Awake()
     {
@@ -95,23 +95,27 @@ public class BookManager : MonoBehaviour
 
     private void Update()
     {
-        if (!(modalGO.activeSelf && log.activeSelf))
+        if (gameObject.activeSelf && !(modalGO.activeSelf && log.activeSelf))
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
-                // decrement the leftPageIndex by two if it's not the first page (otherwise don't change the index)
-                leftPageIndex = leftPageIndex != 0 ? leftPageIndex - 2 : leftPageIndex;
-                rightPageIndex = rightPageIndex != 1 ? rightPageIndex - 2 : rightPageIndex;
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                // increment the rightPageIndex by two if it's not the last page (otherwise don't change the index)
-                leftPageIndex = leftPageIndex != pageContents.Length - 2 ? leftPageIndex + 2 : leftPageIndex;
-                rightPageIndex = rightPageIndex != pageContents.Length - 1 ? rightPageIndex + 2 : rightPageIndex;
-            }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    // decrement the leftPageIndex by two if it's not the first page (otherwise don't change the index)
+                    leftPageIndex = leftPageIndex != 0 ? leftPageIndex - 2 : leftPageIndex;
+                    rightPageIndex = rightPageIndex != 1 ? rightPageIndex - 2 : rightPageIndex;
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    // increment the rightPageIndex by two if it's not the last page (otherwise don't change the index)
+                    Debug.Log(pageContents.Length);
+                    leftPageIndex = leftPageIndex != pageContents.Length - 2 ? leftPageIndex + 2 : leftPageIndex;
+                    rightPageIndex = rightPageIndex != pageContents.Length - 1 ? rightPageIndex + 2 : rightPageIndex;
+                }
 
-            leftPage.content = pageContents[leftPageIndex];
-            leftPage.content = pageContents[rightPageIndex];
+                leftPage.content = pageContents[leftPageIndex];
+                rightPage.content = pageContents[rightPageIndex];
+            }
         }
     }
 

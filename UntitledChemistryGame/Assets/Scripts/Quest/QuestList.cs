@@ -22,6 +22,7 @@ public class QuestList : MonoBehaviour
         id = 0;
         foreach(Quest quest in quests)
         {
+            Debug.Log("making quests");
             //Debug.Log("Instantiating...");
             GameObject button = Instantiate(questButtonPrefab, questListParent);
             
@@ -53,7 +54,12 @@ public class QuestList : MonoBehaviour
 
             button.SetActive(false);
         }
-
+        QuestManager qm = FindObjectOfType<QuestManager>();
+        foreach (Transform child in qm.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        //FindObjectOfType<QuestManager>().transform.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

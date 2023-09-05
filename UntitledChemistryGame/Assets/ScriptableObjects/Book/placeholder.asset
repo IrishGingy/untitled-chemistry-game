@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd5e88d94d2509c4eb06f331f52a5ed9, type: 3}
-  m_Name: pg2
+  m_Name: placeholder
   m_EditorClassIdentifier: 
   pageIndex: 1
-  fishName: Mowhawk Fish
-  icon: {fileID: 0}
-  mapLocation: {fileID: 0}
+  fishName: ???
+  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  mapLocation: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   description: 
   locationValue: 0
   weightRangeValue: 0

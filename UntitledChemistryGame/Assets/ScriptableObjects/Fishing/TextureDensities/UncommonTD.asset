@@ -15,4 +15,4 @@ MonoBehaviour:
   terrainLayer: {fileID: 8574412962073106934, guid: 80be5fda79b05804a8191d5e702c2fa0, type: 2}
   density: 0
   fish:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ac6499ceb7c7c1d4794e3c45cb1bf931, type: 2}

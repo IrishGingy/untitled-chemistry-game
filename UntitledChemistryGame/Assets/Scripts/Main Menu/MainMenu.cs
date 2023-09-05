@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject playerCam;
     public GameObject mainMenuCam;
+    public Quest firstQuest;
 
     private GameManager gm;
 
@@ -24,7 +25,7 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         gm.atMainMenu = false;
         gm.canOpenMenus = true;
-        //gm.qm.AddQuestToMenu();
+        gm.qm.AddQuestToMenu(firstQuest, null);
 
         // Later smoothly transition to the playerCam
         gm.player.boat.SetActive(true);

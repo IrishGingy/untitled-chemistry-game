@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5e88d94d2509c4eb06f331f52a5ed9, type: 3}
   m_Name: pg1
   m_EditorClassIdentifier: 
-  fishName: 
+  pageIndex: 1
+  fishName: Pink Collared Gleamfin
   icon: {fileID: 0}
   mapLocation: {fileID: 0}
   description: 
+  locationValue: 0
+  weightRangeValue: 0
+  nameFishType: {fileID: 0}

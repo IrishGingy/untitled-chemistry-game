@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,12 +13,14 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public QuestManager qm;
     public FishingManager fm;
+    public BookManager bm;
 
     [Header("UI")]
     public GameObject inventoryUI;
     public Image previewImage;
     public GameObject questUI;
     public GameObject bookUI;
+    public GameObject bookNotificationUI;
 
     [Header("Game States")]
     public Scene currentScene;
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            ToggleQuestMenu(questUI.activeSelf);
+            ToggleQuestMenu(questUI.transform.GetChild(0).gameObject.activeSelf);
         }
         else if (Input.GetButtonDown("Inventory"))
         {
@@ -83,9 +86,9 @@ public class GameManager : MonoBehaviour
         //player.DockBoat(spawnLocation, boatDockLocation);
     }
 
-    public void AddQuest(Quest q)
+    public void AddQuest(Quest q, Quest prevQuest)
     {
-        qm.AddQuestToMenu(q);
+        qm.AddQuestToMenu(q, prevQuest);
     }
 
     public void LoadNextScene()
@@ -142,7 +145,11 @@ public class GameManager : MonoBehaviour
             inMenus = !inMenus;
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
-            questUI.SetActive(!active);
+            //questUI.SetActive(!active);
+            foreach (Transform child in questUI.transform)
+            {
+                child.gameObject.SetActive(!active);
+            }
             Debug.Log($"QuestUI: {questUI}");
             Debug.Log($"QuestUI Active?: {questUI.activeSelf}");
         }
@@ -157,6 +164,18 @@ public class GameManager : MonoBehaviour
             player.TogglePlayerMovement();
             bookUI.SetActive(!active);
         }
+    }
+
+    public void ShowBookNotification()
+    {
+        StartCoroutine(BookNotification());
+    }
+
+    private IEnumerator BookNotification()
+    {
+        bookNotificationUI.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        bookNotificationUI.SetActive(false);
     }
 }
 
