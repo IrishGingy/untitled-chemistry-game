@@ -10,12 +10,13 @@ public class MainMenu : MonoBehaviour
 
     private GameManager gm;
 
-    private void Start()
+    private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         gm.atMainMenu = true;
         gm.canOpenMenus = false;
         playerCam.SetActive(false);
+        gm.player.boat.SetActive(false);
     }
 
     public void PlayGame()
@@ -26,6 +27,7 @@ public class MainMenu : MonoBehaviour
         //gm.qm.AddQuestToMenu();
 
         // Later smoothly transition to the playerCam
+        gm.player.boat.SetActive(true);
         playerCam.SetActive(true);
         mainMenuCam.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;

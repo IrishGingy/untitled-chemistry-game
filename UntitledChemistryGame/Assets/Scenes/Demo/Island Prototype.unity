@@ -1648,6 +1648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1961b1252b95c7f4f8f451bc51fac014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noPrompt: 0
   _promptKeyText: 101
   _eventDependency: {fileID: 0}
   canTriggerDialogue: 0
@@ -1664,6 +1665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1961b1252b95c7f4f8f451bc51fac014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noPrompt: 0
   _promptKeyText: 101
   _eventDependency: {fileID: 0}
   canTriggerDialogue: 0
@@ -8553,6 +8555,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530537343}
   m_CullTransparentMesh: 1
+--- !u!1 &1532624405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 110828, guid: cae8e749c8d3eb44da3bdd1e6c9f42fd, type: 3}
+  m_PrefabInstance: {fileID: 1250458837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1534751285
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,6 +8722,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 412076, guid: cae8e749c8d3eb44da3bdd1e6c9f42fd, type: 3}
   m_PrefabInstance: {fileID: 1250458837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579038615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532624405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3350ad53aa83bb841b194a52c7cf8af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noPrompt: 0
+  _promptKeyText: 101
+  _eventDependency: {fileID: 0}
+  noteUI: {fileID: 0}
+--- !u!65 &1579038616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532624405}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.248826, y: 2.421313, z: 3.1075902}
+  m_Center: {x: -0.032247644, y: 0.71065396, z: 0.5457271}
 --- !u!1 &1590297284
 GameObject:
   m_ObjectHideFlags: 0
@@ -9577,6 +9613,7 @@ GameObject:
   - component: {fileID: 1799753694}
   - component: {fileID: 1799753696}
   - component: {fileID: 1799753697}
+  - component: {fileID: 1799753698}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9613,7 +9650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrompt: {fileID: 789436693}
   nextSceneTrigger: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1799753692}
   pauseMenu: {fileID: 415437171}
   qm: {fileID: 1986099834}
   fm: {fileID: 891204947}
@@ -9719,6 +9756,26 @@ MonoBehaviour:
   logItemsParent: {fileID: 1205605147}
   space: 20
   items: []
+--- !u!114 &1799753698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799753688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3bf2a8ac293654caea3d0ef6684ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weightCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minWeight: 1
+  maxWeight: 10
 --- !u!1 &1814963447
 GameObject:
   m_ObjectHideFlags: 0
@@ -10283,6 +10340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2350550d16d3a524e93034a686e5054f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noPrompt: 0
   _promptKeyText: 101
   _eventDependency: {fileID: 0}
   canDock: 0
@@ -13739,7 +13797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Untitled Sea Game
+  m_text: Unworthy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13766,8 +13824,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
-  m_fontSizeBase: 46
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

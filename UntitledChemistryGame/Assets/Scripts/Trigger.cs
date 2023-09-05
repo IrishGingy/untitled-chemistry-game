@@ -8,6 +8,7 @@ public abstract class Trigger : MonoBehaviour
 {
     public abstract KeyCode promptKeyText { get; set; }
     public abstract EventDependency eventDependency { get; set; }
+    public bool noPrompt;
 
     private GameManager gm;
     private GameObject buttonPrompt;
@@ -23,7 +24,7 @@ public abstract class Trigger : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other)
     {
         // TODO: Change this to detect a like script called "Player" instead of checking for tags
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !this.noPrompt)
         {
             //Debug.Log("Player has entered!");
             ShowPrompt();
@@ -35,7 +36,7 @@ public abstract class Trigger : MonoBehaviour
     public virtual void OnTriggerExit(Collider other)
     {
         // TODO: Change this to detect a like script called "Player" instead of checking for tags
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !noPrompt)
         {
             HidePrompt();
             // call derived class's "TriggerExitEvent" method that overrides this class's "TriggerExitEvent" method
