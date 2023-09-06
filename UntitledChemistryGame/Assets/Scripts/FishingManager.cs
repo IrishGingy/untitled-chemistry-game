@@ -8,6 +8,7 @@ public class FishingManager : MonoBehaviour
 
     public GameObject startPosition;
     public BoxCollider2D endPositionCollider;
+    public GameObject phase1Line;
     public GameObject player;
     public int currentPhase;
     public float speed = 1f;
@@ -40,6 +41,7 @@ public class FishingManager : MonoBehaviour
         rb.gravityScale = 1f;
         currentPhase = 0;
         player.transform.position = startPosition.transform.position;
+        phase1Line.SetActive(true);
     }
 
     // Update is called once per frame
@@ -99,7 +101,8 @@ public class FishingManager : MonoBehaviour
     {
         tilemapGrid.SetActive(false);
         player.transform.position = startPosition.transform.position;
-        catchAreas.SetActive(true);
+        catchAreas.SetActive(true); 
+        phase1Line.SetActive(true);
         currentPhase = 0;
         rb.gravityScale = 1f;
     }
@@ -113,6 +116,8 @@ public class FishingManager : MonoBehaviour
         //tilemapGrid.SetActive(true);
         //tilemapGO.SetActive(true);
         rb.gravityScale = 0f;
+        endPositionCollider.enabled = false;
+        phase1Line.SetActive(false);
         walls.StartPhaseII(player, out currentPhase);
         //rb.gravityScale = 0f;
     }

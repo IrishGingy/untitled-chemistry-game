@@ -1,0 +1,1 @@
+- \*Dumb book, I don't need you! I can make my own way, I don't need to try to be the best at anything. So what I had to quit the team, I don't need that team. Now I have a bunch of free time. I might as well take advantage of it and get some sleep.\*

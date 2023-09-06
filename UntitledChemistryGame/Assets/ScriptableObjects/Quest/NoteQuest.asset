@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Note Quest
   description: Pick up the note in the chest!
   descriptionObject: {fileID: 1203360787326275669, guid: 1b4d28b0b5c5aad4fb894c769eed3326, type: 3}
-  tasksObject: {fileID: 2822151268912160670, guid: 2a973784fb4721b479e4113666e38bef, type: 3}
+  tasksObject: {fileID: 0}
   activeQuest: 0

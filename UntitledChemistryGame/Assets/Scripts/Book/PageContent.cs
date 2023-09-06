@@ -12,6 +12,7 @@ public class PageContent : ScriptableObject
     public Sprite mapLocation;
     // description of the fishType
     public string description;
+    public bool completed;
 
     [Header("Dropdown values")]
     public int locationValue;

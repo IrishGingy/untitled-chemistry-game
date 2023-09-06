@@ -103,12 +103,23 @@ public class Player : MonoBehaviour
 
     public void TogglePlayerMovement()
     {
+        var playerController = FindObjectOfType<PlayerController>();
         if (playerController)
         {
+            //playerController = playerObject.GetComponentInChildren<PlayerController>();
             playerController.enabled = !playerController.enabled;
         }
+        //if (playerController)
+        //{
+        //    playerController.enabled = !playerController.enabled;
+        //}
         else
         {
+            if (!thirdPersonMovement)
+            {
+                thirdPersonMovement = FindObjectOfType<ThirdPersonCamera>();
+                boatController = FindObjectOfType<SimpleBoatController>();
+            }
             thirdPersonMovement.enabled = !thirdPersonMovement.enabled;
             boatController.enabled = !boatController.enabled;
             // This is no longer being used

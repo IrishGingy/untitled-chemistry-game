@@ -20,9 +20,6 @@ public class InventorySlot : MonoBehaviour
     {
         Debug.Log("HiTTING AWAKE!");
         weightTextGUI = weight.GetComponentInChildren<TextMeshProUGUI>();
-        Debug.Log(weight);
-        Debug.Log(weightTextGUI);
-        Debug.Log(weightTextGUI.text);
         weight.SetActive(false);
     }
 

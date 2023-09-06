@@ -18,6 +18,10 @@ public class Page : MonoBehaviour
     public TextMeshProUGUI description;
     public Text fishName;
 
+    private GameManager gm;
+    private BookManager bm;
+    private bool initialized;
+
     private PageContent _content;
     public PageContent content
     {
@@ -38,8 +42,34 @@ public class Page : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ContentChanged += UpdateUI;
+        ContentChanged();
+    }
+
     public void UpdateUI()
     {
+        if (!initialized)
+        {
+            gm = FindObjectOfType<GameManager>();
+            bm = gm.bm;
+            Debug.Log(bm);
+
+            // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
+            bm.pageContents[0].completed = true;
+            bm.pageContents[1].completed = true;
+            bm.pageContents[2].icon = null;
+            bm.pageContents[2].description = "";
+            initialized = true;
+        }
+
+        Debug.Log(pageLeftOrRight);
+        Debug.Log(bm);
+        Debug.Log(bm.leftPageIndex);
+        int index = pageLeftOrRight == 0 ? bm.leftPageIndex : bm.rightPageIndex;
+        PageContent curPageContent = bm.pageContents[index];
+
         // Your logic to update the UI here
         Debug.Log("UI Updated");
         Debug.Log("Content: " + _content.fishName);
@@ -47,12 +77,37 @@ public class Page : MonoBehaviour
         Debug.Log("Content: " + _content.icon);
         fishName.text = _content.fishName;
         description.text = _content.description;
-        nameIcon.target = _content.icon;
+        nameIcon.sprite = _content.icon;
+
+        curPageContent.completed = IsPageComplete();
+        Button locationButton = locationIcon.GetComponent<Button>();
+        Button nameButton = nameIcon.transform.parent.GetComponent<Button>();
+        if (curPageContent.completed)
+        {
+            locationButton.interactable = false;
+            nameButton.interactable = false;
+        }
+        else
+        {
+            locationButton.interactable = true;
+            nameButton.interactable = true;
+        }
     }
 
-    private void Start()
+    private bool IsPageComplete()
     {
-        ContentChanged += UpdateUI;
-        ContentChanged();
+        if (fishName.text == "Peach Bearded Fish")
+        {
+            // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
+            FishType fType = bm.fishTypes[2];
+            if (fType.icon != nameIcon.sprite)
+            {
+                Debug.Log("Name icon is wrong!");
+                return false;
+            }
+            return true;
+        }
+
+        return true;
     }
 }

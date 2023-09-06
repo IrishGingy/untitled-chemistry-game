@@ -64,7 +64,11 @@ public class BookManager : MonoBehaviour
 
     void Awake()
     {
-        gm = FindObjectOfType<GameManager>();
+        gm = FindObjectOfType<GameManager>(); 
+
+        gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
 
         modal = modalGO.GetComponent<Modal>();
         foreach (FishType type in fishTypes)

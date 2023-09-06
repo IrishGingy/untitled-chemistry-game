@@ -46,6 +46,7 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log($"No quest button gameobject created for {q}");
         }
+        q.inList = true;
     }
 
     private IEnumerator ShowQuestNotification()

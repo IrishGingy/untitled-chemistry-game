@@ -6,15 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Demo/Island Prototype.unity
+    path: Assets/Scenes/Demo/[r]Disclaimer.unity
+    guid: af9d93ae495424441924ddeab36de005
+  - enabled: 1
+    path: Assets/Scenes/Demo/[f]Island Prototype.unity
     guid: b39e1e5b20867b44aa2b9e130742fa5a
   - enabled: 1
-    path: Assets/Scenes/Demo/Room Interior.unity
+    path: Assets/Scenes/Demo/[r]Room Interior.unity
     guid: e841da1da0c664d43998f3977bef85fc
+  - enabled: 1
+    path: Assets/Scenes/Demo/[f]IP2.unity
+    guid: 7f1353ef530a89441a8261f65f29dd39
   - enabled: 1
     path: Assets/Scenes/Demo/Island.unity
     guid: c87d016e641747a44b33f86ac243cbc5
   - enabled: 1
     path: Assets/Scenes/Demo/ImprovedFishing.unity
     guid: 73cb35347c4c9e746bca72d1d2248f25
+  - enabled: 1
+    path: Assets/Scenes/Demo/[r]AlarmClock.unity
+    guid: 74b590b3150a50542ac67b2b4419b087
   m_configObjects: {}

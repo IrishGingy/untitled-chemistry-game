@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            ToggleBookMenu(bookUI.activeSelf);
+            ToggleBookMenu(bookUI.transform.GetChild(0).gameObject.activeSelf);
         }
         // DEBUG: REMOVE THIS BEFORE RELEASE!!! (TODO)
         else if (Input.GetKeyDown(KeyCode.C))
@@ -162,7 +163,9 @@ public class GameManager : MonoBehaviour
             inMenus = !inMenus;
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
-            bookUI.SetActive(!active);
+            bookUI.transform.GetChild(0).gameObject.SetActive(!active);
+            bookUI.transform.GetChild(1).gameObject.SetActive(!active);
+            //bookUI.SetActive(!active);
         }
     }
 

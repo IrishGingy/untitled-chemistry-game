@@ -9,5 +9,8 @@ public class Quest : ScriptableObject
     public string description;
     public GameObject descriptionObject;
     public GameObject tasksObject;
+    // whether this quest has been clicked in the quest menu
     public bool activeQuest;
+    // whether this quest is in the list of quests
+    public bool inList;
 }

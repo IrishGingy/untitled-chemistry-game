@@ -25,6 +25,9 @@ public class Dock : Trigger
     public Quest noteQuest;
     public Quest prevQuest;
 
+    public Quest roomQuest;
+    public Quest coachQuest;
+
     private Player player;
     private GameManager gm;
     private bool questAdded = false;
@@ -57,8 +60,13 @@ public class Dock : Trigger
         if (Input.GetKeyDown(promptKeyText))
         {
             player.DockBoat(gm.spawnLocation, gm.boatDockLocation);
-            gm.AddQuest(noteQuest, prevQuest);
-            CheckEventDependency(EventDependency.Methods.dock);
+
+            // if this is false we know that this is the second occurrence of this scene
+            if (!noteQuest.inList)
+            {
+                gm.AddQuest(noteQuest, prevQuest);
+                CheckEventDependency(EventDependency.Methods.dock);
+            }
             // switching from docked to undocked and vice versa requires that we hide the prompt to reset the promptTextMesh (to prevent error)
             //base.HidePrompt();
         }
@@ -70,7 +78,12 @@ public class Dock : Trigger
         if (Input.GetKeyDown(promptKeyText))
         {
             player.SetSail();
-            CheckEventDependency(EventDependency.Methods.sail);
+
+            // only check event dependency on the first instance of the island scene
+            if (gm.currentScene.buildIndex == 1)
+            {
+                CheckEventDependency(EventDependency.Methods.sail);
+            }
             //base.HidePrompt();
         }
     }

@@ -25,7 +25,9 @@ public class Current : MonoBehaviour
         Vector3 direction = transform.position - rb.position;
         if (difference.HasValue && difference < 0)
         {
+            //rb.velocity = Vector3.zero;
             rb.AddForce((Vector3)(direction.normalized * Mathf.Abs((float)difference)), ForceMode.Acceleration);
+            //boatController.maxMoveSpeed = -boatController.maxMoveSpeed;
         }
     }
 

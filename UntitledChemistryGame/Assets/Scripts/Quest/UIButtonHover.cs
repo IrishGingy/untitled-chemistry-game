@@ -20,7 +20,7 @@ public class UIButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //GameObject button = eventData.pointerEnter;
         qb = gameObject.GetComponent<QuestButton>();
         qb.questDescriptionObject.SetActive(true);
-        qb.questTasksObject.SetActive(true);
+        //qb.questTasksObject.SetActive(true);
         //questDetails.SetActive(true);
     }
 
@@ -29,6 +29,6 @@ public class UIButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // change details to be the specific button's quest description
         //questDetails.SetActive(false);
         qb.questDescriptionObject.SetActive(false);
-        qb.questTasksObject.SetActive(false);
+        //qb.questTasksObject.SetActive(false);
     }
 }

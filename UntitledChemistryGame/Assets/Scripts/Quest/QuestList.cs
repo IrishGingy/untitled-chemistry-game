@@ -22,6 +22,7 @@ public class QuestList : MonoBehaviour
         id = 0;
         foreach(Quest quest in quests)
         {
+            quest.inList = false;
             Debug.Log("making quests");
             //Debug.Log("Instantiating...");
             GameObject button = Instantiate(questButtonPrefab, questListParent);
@@ -38,17 +39,17 @@ public class QuestList : MonoBehaviour
 
             // Create quest details objects
             GameObject description = Instantiate(quest.descriptionObject, questDetailsParent);
-            GameObject tasks = Instantiate(quest.tasksObject, questDetailsParent);
+            //GameObject tasks = Instantiate(quest.tasksObject, questDetailsParent);
             description.GetComponent<TextMeshProUGUI>().text = quest.description;
             description.SetActive(false);
-            tasks.SetActive(false);
+            //tasks.SetActive(false);
 
             // set QuestButton fields to identify quest objects from button
             QuestButton qb = button.GetComponent<QuestButton>();
             qb.quest = quest;
             qb.questButtonObject = button;
             qb.questDescriptionObject = description;
-            qb.questTasksObject = tasks;
+            //qb.questTasksObject = tasks;
 
             id++;
 
