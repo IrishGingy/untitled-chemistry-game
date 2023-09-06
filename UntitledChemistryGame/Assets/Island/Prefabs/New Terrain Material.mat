@@ -83,7 +83,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableHeightBlend: 0
-    - _EnableInstancedPerPixelNormal: 1
+    - _EnableInstancedPerPixelNormal: 0
     - _HeightTransition: 0
     - _Metallic0: 0
     - _Metallic1: 0

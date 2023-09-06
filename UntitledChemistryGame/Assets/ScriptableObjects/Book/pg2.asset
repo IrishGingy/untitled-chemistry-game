@@ -15,7 +15,7 @@ MonoBehaviour:
   pageIndex: 1
   fishName: Mowhawk Fish
   icon: {fileID: 21300000, guid: 615f44dcb6329414f8c4067260131516, type: 3}
-  mapLocation: {fileID: 21300000, guid: 9251106dbd64b5b4bb59136c12555a5a, type: 3}
+  mapLocation: {fileID: 21300000, guid: 4f92eefb54fbbe64c980e22ef4d6b889, type: 3}
   description: The mohawk fish, a distinctive species, features a prominent crest
     of spines resembling a mohawk haircut. Often found near drop-offs along coastal
     islands, it thrives in rocky habitats.

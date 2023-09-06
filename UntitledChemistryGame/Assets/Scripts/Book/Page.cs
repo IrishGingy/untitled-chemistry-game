@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
 
 public class Page : MonoBehaviour
 {
+    public Sprite addIcon;
     // 0 indicates it is the left page, while 1 indicates it is the right page
     public int pageLeftOrRight;
 
@@ -59,27 +61,39 @@ public class Page : MonoBehaviour
             // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
             bm.pageContents[0].completed = true;
             bm.pageContents[1].completed = true;
-            bm.pageContents[2].icon = null;
+            bm.pageContents[2].icon = addIcon;
             bm.pageContents[2].description = "";
+            bm.pageContents[2].completed = false;
             initialized = true;
         }
 
-        Debug.Log(pageLeftOrRight);
-        Debug.Log(bm);
-        Debug.Log(bm.leftPageIndex);
+        //Debug.Log(pageLeftOrRight);
+        //Debug.Log(bm);
+        //Debug.Log(bm.leftPageIndex);
         int index = pageLeftOrRight == 0 ? bm.leftPageIndex : bm.rightPageIndex;
         PageContent curPageContent = bm.pageContents[index];
 
-        // Your logic to update the UI here
-        Debug.Log("UI Updated");
-        Debug.Log("Content: " + _content.fishName);
-        Debug.Log("Content: " + _content.description);
-        Debug.Log("Content: " + _content.icon);
+        //// Your logic to update the UI here
+        //Debug.Log("UI Updated");
+        //Debug.Log("Content: " + _content.fishName);
+        //Debug.Log("Content: " + _content.description);
+        //Debug.Log("Content: " + _content.icon);
         fishName.text = _content.fishName;
         description.text = _content.description;
         nameIcon.sprite = _content.icon;
+        locationIcon.sprite = _content.mapLocation;
 
-        curPageContent.completed = IsPageComplete();
+        //curPageContent.icon = _content.icon;
+        ////curPageContent.mapLocation = _content.location;
+        ///
+        //Debug.Log("curpage icon: " + curPageContent.icon);
+        //Debug.Log("fishtype icon: " + bm.fishTypes[2].icon);
+        //if (curPageContent.icon == bm.fishTypes[2].icon)
+        //{
+        //    curPageContent.completed = true;
+        //}
+
+        //curPageContent.completed = IsPageComplete();
         Button locationButton = locationIcon.GetComponent<Button>();
         Button nameButton = nameIcon.transform.parent.GetComponent<Button>();
         if (curPageContent.completed)
@@ -94,20 +108,20 @@ public class Page : MonoBehaviour
         }
     }
 
-    private bool IsPageComplete()
-    {
-        if (fishName.text == "Peach Bearded Fish")
-        {
-            // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
-            FishType fType = bm.fishTypes[2];
-            if (fType.icon != nameIcon.sprite)
-            {
-                Debug.Log("Name icon is wrong!");
-                return false;
-            }
-            return true;
-        }
+    //private bool IsPageComplete()
+    //{
+    //    if (fishName.text == "Peach Bearded Fish")
+    //    {
+    //        // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
+    //        FishType fType = bm.fishTypes[2];
+    //        if (fType.icon != nameIcon.sprite)
+    //        {
+    //            Debug.Log("Name icon is wrong!");
+    //            return false;
+    //        }
+    //        return true;
+    //    }
 
-        return true;
-    }
+    //    return true;
+    //}
 }

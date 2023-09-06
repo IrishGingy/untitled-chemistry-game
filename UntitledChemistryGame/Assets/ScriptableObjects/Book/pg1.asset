@@ -15,7 +15,7 @@ MonoBehaviour:
   pageIndex: 1
   fishName: Pink Collared Gleamfin
   icon: {fileID: 21300000, guid: 4b08527124140f244b5a9f3a02ffe169, type: 3}
-  mapLocation: {fileID: 21300000, guid: 9251106dbd64b5b4bb59136c12555a5a, type: 3}
+  mapLocation: {fileID: 21300000, guid: 769ab1d738f7e594ba9dc4b72109cb53, type: 3}
   description: The pink collared gleamfin, a snake-like fish, boasts a shimmering
     pink body with an iridescent collar. It thrives in shallow waters, gracefully
     hunting small aquatic prey.

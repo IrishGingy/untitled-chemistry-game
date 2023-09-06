@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pageIndex: 1
   fishName: Peach Bearded Fish
-  icon: {fileID: 0}
-  mapLocation: {fileID: 0}
-  description: The peach bearded fish is a marvelous specimen. Beautiful to look
-    at, but its sharp teeth make it quite the predator. Interestingly, this fish
-    doesn't like to show off its beard, and is usually found secluded in narrow passageways
-    without much traffic.
+  icon: {fileID: 21300000, guid: a67b58d6cddcd4345b1e001340de5a76, type: 3}
+  mapLocation: {fileID: 21300000, guid: 9a9c8396b924a3b45bdfe66989cd4ee5, type: 3}
+  description: 
+  completed: 0
   locationValue: 0
   weightRangeValue: 0
-  nameFishType: {fileID: 0}
+  nameFishType: {fileID: 11400000, guid: c9e8cf05c302f9d4b9840776514a5737, type: 2}

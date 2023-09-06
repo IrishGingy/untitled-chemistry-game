@@ -256,9 +256,16 @@ public class BookManager : MonoBehaviour
         {
             Debug.Log(slot.item.fishType);
             currentPage.content.nameFishType = slot.item.fishType;
+            currentPage.content.icon = slot.item.fishType.icon;
             currentImage.sprite = slot.item.fishType.icon;
         }
         log.SetActive(false);
+
+        // check for completion
+        if (currentPage.content.icon == fishTypes[2].icon)
+        {
+            currentPage.content.completed = true;
+        }
     }
 
     //public void AddQuestToMenu(Quest q)
