@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
     {
         if (!atMainMenu && !inMenus)
         {
-            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            // TODO: In Unity, the escape button already does this. Make sure this is also the case on the final build
+            //Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             inPauseMenu = inPauseMenu ? false : true;
             player.TogglePlayerMovement();
             if (inPauseMenu)
