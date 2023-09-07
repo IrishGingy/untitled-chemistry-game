@@ -19,6 +19,7 @@ public class Bookshelf : Trigger
     public bool noPrompt;
 
     public GameObject book;
+    public GameObject prerequisiteTrigger;
 
     private GameManager gm;
     private bool canPlaceBook;
@@ -29,6 +30,7 @@ public class Bookshelf : Trigger
         gm = FindObjectOfType<GameManager>();
         canPlaceBook = false;
         book.SetActive(false);
+        prerequisiteTrigger.SetActive(false);
     }
 
     private void Update()
@@ -39,6 +41,7 @@ public class Bookshelf : Trigger
             book.SetActive(true);
             base.HidePrompt();
             base.noPrompt = true;
+            prerequisiteTrigger.SetActive(true);
         }
     }
 

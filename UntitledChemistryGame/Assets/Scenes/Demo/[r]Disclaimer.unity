@@ -674,14 +674,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Welcome to the Prototype Preview of \n\"Unworthy\" (formerly titled Untitled
-    Chemistry Game)!\r\n\r\nPlease note that this is an early work-in-progress version
+    Chemistry Game)!\r\n\nPlease note that this is an early work-in-progress version
     of the game. Everything you see here is subject to change, and I apoogize for
     any bugs along the way (this is the first playtest of this game, so hopefully
     with your help I'll be able to make the final version as bug-free as possible).
-    Your feedback is invaluable in shaping the final product.\r\n\r\nTo stay updated
-    on the progress, make sure to check out the YouTube channel 'SheepSully' (As
-    of now, there are 5 devlogs on the channel!).\n\r\nThank you for being a part
-    of the journey, and I hope you enjoy!"
+    Your feedback is invaluable in shaping the final product. <b>Speaking of bugs,
+    press \"C\" if you find that the mouse is locked and shouldn't be (and vice versa).</b>\n\r\nTo
+    stay updated on the progress, make sure to check out the YouTube channel 'SheepSully'
+    (As of now, there are 5 devlogs on the channel!).\n\r\nThank you for being a
+    part of the journey, and I hope you enjoy!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -708,8 +709,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

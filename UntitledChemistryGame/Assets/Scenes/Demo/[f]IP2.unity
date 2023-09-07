@@ -1693,7 +1693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &676387123
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -2113,7 +2113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 247332267636563395, guid: a712d2352b644c4468b7d3a36a9f3c63, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 247332267636563396, guid: a712d2352b644c4468b7d3a36a9f3c63, type: 3}
       propertyPath: m_RootOrder

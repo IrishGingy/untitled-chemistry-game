@@ -15,8 +15,9 @@ MonoBehaviour:
   pageIndex: 1
   fishName: ???
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  mapLocation: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  mapLocation: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   description: 
+  completed: 0
   locationValue: 0
   weightRangeValue: 0
   nameFishType: {fileID: 0}

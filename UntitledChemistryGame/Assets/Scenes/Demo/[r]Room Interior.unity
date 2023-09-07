@@ -3862,6 +3862,7 @@ MonoBehaviour:
   _eventDependency: {fileID: 0}
   noPrompt: 0
   book: {fileID: 598518360}
+  prerequisiteTrigger: {fileID: 432099679}
 --- !u!65 &793197879
 BoxCollider:
   m_ObjectHideFlags: 0

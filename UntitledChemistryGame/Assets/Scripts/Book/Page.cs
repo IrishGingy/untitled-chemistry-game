@@ -8,9 +8,9 @@ using TMPro;
 
 public class Page : MonoBehaviour
 {
-    public Sprite addIcon;
     // 0 indicates it is the left page, while 1 indicates it is the right page
     public int pageLeftOrRight;
+    public GameObject clickInstructions;
 
     public event Action ContentChanged;
 
@@ -56,14 +56,6 @@ public class Page : MonoBehaviour
         {
             gm = FindObjectOfType<GameManager>();
             bm = gm.bm;
-            Debug.Log(bm);
-
-            // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
-            bm.pageContents[0].completed = true;
-            bm.pageContents[1].completed = true;
-            bm.pageContents[2].icon = addIcon;
-            bm.pageContents[2].description = "";
-            bm.pageContents[2].completed = false;
             initialized = true;
         }
 
@@ -100,11 +92,13 @@ public class Page : MonoBehaviour
         {
             locationButton.interactable = false;
             nameButton.interactable = false;
+            clickInstructions.SetActive(false);
         }
         else
         {
             locationButton.interactable = true;
             nameButton.interactable = true;
+            clickInstructions.SetActive(true);
         }
     }
 

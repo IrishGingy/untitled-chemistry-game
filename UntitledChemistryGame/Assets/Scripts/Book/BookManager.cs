@@ -14,6 +14,7 @@ public class BookManager : MonoBehaviour
     public GameObject leftPageObject;
     public Page leftPage;
     public GameObject rightPageObject;
+    public Sprite addIcon;
 
     public List<GameObject> leftPageGOs;
     public List<GameObject> rightPageGOs;
@@ -90,6 +91,16 @@ public class BookManager : MonoBehaviour
 
         leftPage.content = pageContents[leftPageIndex];
         rightPage.content = pageContents[rightPageIndex];
+
+        // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
+        pageContents[0].completed = true;
+        pageContents[1].completed = true;
+        pageContents[2].icon = addIcon;
+        pageContents[2].description = "";
+        pageContents[2].completed = false;
+        pageContents[3].completed = true;
+
+        //initialized = true;
 
         //foreach (FishType type in fishTypes)
         //{
