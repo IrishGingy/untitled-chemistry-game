@@ -58,6 +58,8 @@ public class BookManager : MonoBehaviour
 
     private GameManager gm;
     private Modal modal;
+    // This is used when input polling (don't want to move the pages if the children aren't active)
+    private GameObject firstChild;
     //private List<string> modalTypes = new List<string> { "Location", "WeightRange", "Name" };
 
     public int leftPageIndex = 0;
@@ -68,7 +70,8 @@ public class BookManager : MonoBehaviour
         gm = FindObjectOfType<GameManager>(); 
 
         gameObject.SetActive(true);
-        transform.GetChild(0).gameObject.SetActive(false);
+        firstChild = transform.GetChild(0).gameObject;
+        firstChild.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
 
         modal = modalGO.GetComponent<Modal>();
@@ -110,7 +113,7 @@ public class BookManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.activeSelf && !(modalGO.activeSelf && log.activeSelf))
+        if (firstChild.activeSelf && !(modalGO.activeSelf && log.activeSelf))
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {

@@ -20,14 +20,17 @@ public class Bookshelf : Trigger
 
     public GameObject book;
     public GameObject prerequisiteTrigger;
+    public DialogueItem dialogue;
 
     private GameManager gm;
+    private DialogueManager dm;
     private bool canPlaceBook;
 
     protected override void Start()
     {
         base.Start();
         gm = FindObjectOfType<GameManager>();
+        dm = gm.gameObject.GetComponent<DialogueManager>();
         canPlaceBook = false;
         book.SetActive(false);
         prerequisiteTrigger.SetActive(false);
@@ -37,6 +40,7 @@ public class Bookshelf : Trigger
     {
         if (canPlaceBook && Input.GetKeyDown(promptKeyText))
         {
+            dm.PlayDialogue(dialogue);
             Debug.Log("Place Book!");
             book.SetActive(true);
             base.HidePrompt();

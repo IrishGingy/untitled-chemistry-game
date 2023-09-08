@@ -18,7 +18,10 @@ public class DialogueTrigger : Trigger
     }
 
     [SerializeField] private bool canTriggerDialogue;
+    // for the first occurrence of the sea scene
     [SerializeField] DialogueItem dI;
+    // for the second occurrence of the sea scene
+    [SerializeField] DialogueItem altDI;
 
     private Camera shopCamera;
     private Player player;
@@ -54,7 +57,14 @@ public class DialogueTrigger : Trigger
                     dm.PlayPlaceholderDialogue();
                     return;
                 }
-                dm.PlayDialogue(dI);
+                if (gm.currentScene.buildIndex == 1 && !dI.played)
+                {
+                    dm.PlayDialogue(dI);
+                }
+                else if (gm.currentScene.buildIndex == 3 && !altDI.played)
+                {
+                    dm.PlayDialogue(altDI);
+                }
             }
         }
         else if (player.inDialogue && !dm.dialogueIsPlaying)
@@ -87,6 +97,8 @@ public class DialogueTrigger : Trigger
         shopCamera.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         player.inDialogue = false;
+        //base.HidePrompt();
+        //base.noPrompt = true;
     }
 
     public override void TriggerEnterEvent()

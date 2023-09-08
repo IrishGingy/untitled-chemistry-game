@@ -6,16 +6,14 @@ public class TurnOffAlarm : MonoBehaviour
 {
     public GameObject textPrompt;
     public GameObject alarmClockCam;
+    public GameObject player;
 
     private GameManager gm;
 
     void Start()
     {
         alarmClockCam.SetActive(true);
-        gm = FindObjectOfType<GameManager>();
-        Debug.Log(gm.player);
-        Debug.Log(gm.player.playerPrefab);
-        gm.player.playerPrefab.SetActive(false);
+        player.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,7 +30,7 @@ public class TurnOffAlarm : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         alarmClockCam.SetActive(false);
-        gm.player.playerPrefab.SetActive(true);
+        player.SetActive(true);
         textPrompt.SetActive(false);
     }
 }

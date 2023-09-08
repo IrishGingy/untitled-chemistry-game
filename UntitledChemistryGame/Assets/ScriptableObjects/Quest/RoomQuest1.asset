@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fc322242822174d83273de46f5682e, type: 3}
   m_Name: RoomQuest1
   m_EditorClassIdentifier: 
-  title: Room Quest 1
-  description: This is the description for quest room
+  title: Put book away
+  description: Place book on the shelf in your room
   descriptionObject: {fileID: 1203360787326275669, guid: 1b4d28b0b5c5aad4fb894c769eed3326, type: 3}
   tasksObject: {fileID: 0}
   activeQuest: 0
+  inList: 1

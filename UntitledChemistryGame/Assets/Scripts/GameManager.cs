@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
         }
+        // DEBUG: REMOVE THIS BEFORE RELEASE!!! (TODO)
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextScene();
+        }
         //else if (Input.GetKeyDown(KeyCode.T))
         //{
         //    qm.AddQuestToMenu(qm.questList.quests[0]);

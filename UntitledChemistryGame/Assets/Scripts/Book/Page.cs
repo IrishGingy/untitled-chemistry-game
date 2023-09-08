@@ -90,14 +90,17 @@ public class Page : MonoBehaviour
         Button nameButton = nameIcon.transform.parent.GetComponent<Button>();
         if (curPageContent.completed)
         {
-            locationButton.interactable = false;
-            nameButton.interactable = false;
+            locationButton.enabled = false;
+            nameButton.enabled = false;
             clickInstructions.SetActive(false);
         }
         else
         {
-            locationButton.interactable = true;
-            nameButton.interactable = true;
+            if (bm.leftPageIndex != 2)
+            {
+                locationButton.enabled = true;
+            }
+            nameButton.enabled = true;
             clickInstructions.SetActive(true);
         }
     }
