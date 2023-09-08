@@ -86,6 +86,6 @@ public class ReachedGoal : MonoBehaviour
             log.Add(item);
             Debug.Log("Not a duplicate");
         }
-        gm.qm.QuestCheck();
+        gm.qm.QuestCheck(item);
     }
 }

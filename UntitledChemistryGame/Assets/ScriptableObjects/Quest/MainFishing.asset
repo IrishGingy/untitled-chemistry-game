@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fc322242822174d83273de46f5682e, type: 3}
+  m_Name: MainFishing
+  m_EditorClassIdentifier: 
+  title: Coach's Expectations
+  description: 'Louis told you that he expects the following: 5 fish caught, 1 "Peach
+    Bearded Fish". Check book with "B" for hints on where to find fish. '
+  descriptionObject: {fileID: 1203360787326275669, guid: 1b4d28b0b5c5aad4fb894c769eed3326, type: 3}
+  tasksObject: {fileID: 0}
+  activeQuest: 0
+  inList: 0
+  completed: 0

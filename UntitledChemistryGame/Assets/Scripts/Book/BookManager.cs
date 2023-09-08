@@ -25,6 +25,9 @@ public class BookManager : MonoBehaviour
     // the current image that was clicked on in the book
     public Image currentImage;
 
+    [Header("Quests")]
+    public Quest bookTutorialQuest;
+
     [Header("Modal")]
     //public int modalNameValue = 0;
     //public int modalLocationValue = 0;
@@ -67,7 +70,7 @@ public class BookManager : MonoBehaviour
 
     void Awake()
     {
-        gm = FindObjectOfType<GameManager>(); 
+        gm = FindObjectOfType<GameManager>();
 
         gameObject.SetActive(true);
         firstChild = transform.GetChild(0).gameObject;
@@ -279,6 +282,7 @@ public class BookManager : MonoBehaviour
         if (currentPage.content.icon == fishTypes[2].icon)
         {
             currentPage.content.completed = true;
+            gm.qm.CompleteQuest(bookTutorialQuest);
         }
     }
 

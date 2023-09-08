@@ -79,7 +79,7 @@ public class FishDensity : MonoBehaviour
 
         foreach(TextureDensity textureDensity in textureDensities)
         {
-            if (textureDensity.terrainLayer.diffuseTexture == terrain.terrainData.terrainLayers[primaryIndex].diffuseTexture)
+            if (textureDensity.terrainLayer.name == terrain.terrainData.terrainLayers[primaryIndex].name)
             {
                 currentTextureDensity = textureDensity;
                 break;

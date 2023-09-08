@@ -13,4 +13,5 @@ public class Quest : ScriptableObject
     public bool activeQuest;
     // whether this quest is in the list of quests
     public bool inList;
+    public bool completed;
 }

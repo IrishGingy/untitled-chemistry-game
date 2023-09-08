@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
+    //public InventoryUI ui;
     public Image icon;
     public Button removeButton;
     public Image usedIcon;
@@ -29,6 +30,7 @@ public class InventorySlot : MonoBehaviour
         {
             Debug.Log("Inventory!");
             item = newItem;
+            //ui.qm.QuestCheck(newItem);
 
             icon.sprite = item.icon;
             icon.enabled = true;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.4
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28739667, g: 0.32141578, b: 0.37493867, a: 0.4}
+  m_IndirectSpecularColor: {r: 0.23899466, g: 0.40189624, b: 0.57424086, a: 0.4}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -781,7 +781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5461486556489701127, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -72.41
+      value: 345.99
       objectReference: {fileID: 0}
     - target: {fileID: 5461486556489701127, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: m_LocalPosition.y
@@ -789,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5461486556489701127, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -60.0255
+      value: 368.81
       objectReference: {fileID: 0}
     - target: {fileID: 5461486556489701127, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5013,7 +5013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676387122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -280.09076, y: -32.490974, z: -306.15558}
+  m_LocalPosition: {x: 0, y: -32.490974, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11372,6 +11372,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -350
       objectReference: {fileID: 0}
+    - target: {fileID: 1278898834247685692, guid: 1dcbe0bd0a2c0ea4095c1571f19534bb, type: 3}
+      propertyPath: itemsParent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1355452012681990589, guid: 1dcbe0bd0a2c0ea4095c1571f19534bb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -15424,6 +15428,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questList: {fileID: 1065509170}
   questNotificationUI: {fileID: 3457049767848559101}
+  questCompleteType: {fileID: 11400000, guid: c9e8cf05c302f9d4b9840776514a5737, type: 2}
+  bookTutorialQuest: {fileID: 11400000, guid: 42ef314a36b2e5f4bbb2d4f985798814, type: 2}
+  numFishQuest: {fileID: 0}
+  mainFishingQuest: {fileID: 11400000, guid: 78776477c446231498637773f1ea1d59, type: 2}
+  numberFishToCatch: 5
 --- !u!4 &1987595364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446262, guid: bf5c716dea4419148879f65f4373d70d, type: 3}
