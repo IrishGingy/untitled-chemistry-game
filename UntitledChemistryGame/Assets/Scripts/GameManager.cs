@@ -29,8 +29,10 @@ public class GameManager : MonoBehaviour
     public bool inMenus;
     public bool inPauseMenu;
     public bool canOpenMenus;
-    // Used in special circumstances where the player shouldn't be able to open menus (except pause menu)
-    public bool lockMenus;
+    // Used when book is set down (bookshelf.cs and trashbook.cs)
+    public bool lockBook;
+    public bool canFish;
+
 
     [Header("Dock")]
     public Transform spawnLocation;
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
         {
             ToggleInventoryMenu(inventoryUI.activeSelf);
         }
-        else if (Input.GetKeyDown(KeyCode.B))
+        else if (!lockBook && Input.GetKeyDown(KeyCode.B))
         {
             ToggleBookMenu(bookUI.transform.GetChild(0).gameObject.activeSelf);
         }
@@ -103,6 +105,38 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(_currentScene.buildIndex + 1);
     }
 
+    public void RemoveBook()
+    {
+        lockBook = true;
+        bookUI.transform.GetChild(0).gameObject.SetActive(false);
+        bookUI.transform.GetChild(1).gameObject.SetActive(false);
+        inMenus = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController)
+        {
+            playerController.enabled = true;
+        }
+    }
+
+    void PauseAllAudio()
+    {
+        AudioSource[] audio = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audio)
+        {
+            a.Pause();
+        }
+    }
+
+    void ContinueAudio()
+    {
+        AudioSource[] audio = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audio)
+        {
+            a.UnPause();
+        }
+    }
+
     public void TogglePauseMenu()
     {
         if (!atMainMenu && !inMenus)
@@ -113,11 +147,13 @@ public class GameManager : MonoBehaviour
             player.TogglePlayerMovement();
             if (inPauseMenu)
             {
+                PauseAllAudio();
                 Time.timeScale = 0;
             }
             else
             {
                 Time.timeScale = 1;
+                ContinueAudio();
             }
             pauseMenu.SetActive(inPauseMenu);
         }

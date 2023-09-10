@@ -31,20 +31,24 @@ public class FishDensity : MonoBehaviour
     private void CheckGround()
     {
         Debug.DrawRay(transform.position, Vector3.down * 40f, Color.red);
-        if (!gm.player.docked && Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position,
-            Vector3.down,
-            out RaycastHit hit,
-            40f,
-            groundLayer)
-            )
+        Debug.Log(gm.currentScene.name);
+        if (gm.canFish)
         {
-            if (hit.collider.TryGetComponent<Terrain>(out Terrain terrain))
+            if (!gm.player.docked && Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position,
+                Vector3.down,
+                out RaycastHit hit,
+                40f,
+                groundLayer)
+                )
             {
-                GetDensity(terrain, hit.point);
-            }
-            else if (hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
-            {
-                //Debug.Log("Hit renderer component");
+                if (hit.collider.TryGetComponent<Terrain>(out Terrain terrain))
+                {
+                    GetDensity(terrain, hit.point);
+                }
+                else if (hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
+                {
+                    //Debug.Log("Hit renderer component");
+                }
             }
         }
     }

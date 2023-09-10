@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueTrigger : Trigger
 {
@@ -51,18 +52,23 @@ public class DialogueTrigger : Trigger
                 EnableShopCamera();
                 base.HidePrompt();
 
+                Debug.Log("THIS IS THE CURRENT SCENE INDEX!: " + gm.currentScene.buildIndex);
+
+                Scene currentScene = SceneManager.GetActiveScene();
+
                 // if the dependent dialogue item hasn't been played, a placeholder dialogue is instead played.
                 if (dI.dependency && !dI.dependency.played)
                 {
                     dm.PlayPlaceholderDialogue();
                     return;
                 }
-                if (gm.currentScene.buildIndex == 1 && !dI.played)
+                if (currentScene.buildIndex == 1 && !dI.played)
                 {
                     dm.PlayDialogue(dI);
                 }
-                else if (gm.currentScene.buildIndex == 3 && !altDI.played)
+                else if (currentScene.buildIndex == 3 && !altDI.played)
                 {
+                    Debug.Log("IT'S TRUE, IT'S ALL TRUE!");
                     dm.PlayDialogue(altDI);
                 }
             }

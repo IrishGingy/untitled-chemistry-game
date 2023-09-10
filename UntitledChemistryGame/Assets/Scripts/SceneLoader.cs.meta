@@ -3,7 +3,12 @@ guid: 9eb1b78e0b7544d40ab6bfa0f5ebbd12
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boat: {instanceID: 0}
+  - sea: {instanceID: 0}
+  - boatCam: {instanceID: 0}
+  - terrain: {instanceID: 0}
+  - knock: {fileID: 3620906769052249802, guid: ef520bceb5f0e2c4d99668fb37cdee14, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

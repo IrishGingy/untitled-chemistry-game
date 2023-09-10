@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35fc322242822174d83273de46f5682e, type: 3}
-  m_Name: NumFish
+  m_Name: WhosAtTheDoor
   m_EditorClassIdentifier: 
-  title: Catch 5 fish
-  description: Catch 5 fish around the islands. Look in the book (B) for tips on
-    where to find fish
+  title: Who is at the door?
+  description: I heard a knock on my door. I should check it out
   descriptionObject: {fileID: 1203360787326275669, guid: 1b4d28b0b5c5aad4fb894c769eed3326, type: 3}
   tasksObject: {fileID: 0}
   activeQuest: 0

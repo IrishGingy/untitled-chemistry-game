@@ -17,8 +17,8 @@ public class QuestOnLoad : Trigger
         set { _eventDependency = value; }
     }
     public bool noPrompt;
-    public Quest noteQuest;
-    public Quest roomQuest;
+    public Quest prevQuest;
+    public Quest curQuest;
     //public DialogueItem dialogue;
     //public GameObject prerequisiteTrigger;
     //public GameObject book;
@@ -57,7 +57,7 @@ public class QuestOnLoad : Trigger
         if (!givenQuest)
         {
             givenQuest = true;
-            gm.AddQuest(roomQuest, noteQuest);
+            gm.AddQuest(curQuest, prevQuest);
         }
     }
 

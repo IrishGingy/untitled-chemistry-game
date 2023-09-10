@@ -3,10 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [Header("Required")]
     public GameObject boat;
     public GameObject sea;
     public GameObject boatCam;
     public GameObject terrain;
+
+    public AudioSource knock;
 
     private GameManager gm;
 
@@ -30,6 +33,20 @@ public class SceneLoader : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // if scene is IP2, then change dock event dependency dependent dialogue to "not creative enough"
+        if (scene.name == "[f]IP2")
+        {
+            Debug.Log("THIS IS THE SCENE!");
+            gm.canFish = true;
+            gm.lockBook = false;
+        }
+
+        //Debug.Log(scene.name);
+        //if (scene.name == "[r]AlarmClock")
+        //{
+        //    // play door knocking sound
+        //    Debug.Log("KNOCK KNOCK KNOCK!!!");
+        //    knock.Play();
+        //}
 
         // This function will be called every time a scene is loaded.
         if (scene.name[1] == 'f')

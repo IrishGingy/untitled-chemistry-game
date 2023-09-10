@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        //Debug.Log("Game quit.");
+        Application.Quit();
     }
 
     public void LetterScrolling(TMP_Dropdown dropdown)

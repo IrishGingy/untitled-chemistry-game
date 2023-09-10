@@ -46,6 +46,8 @@ public class Bookshelf : Trigger
             base.HidePrompt();
             base.noPrompt = true;
             prerequisiteTrigger.SetActive(true);
+            // make it so that the player can't open the book
+            gm.RemoveBook();
         }
     }
 
