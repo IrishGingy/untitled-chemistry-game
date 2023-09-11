@@ -15,6 +15,8 @@ public class FishingManager : MonoBehaviour
     public GameObject tilemapGrid;
     public GameObject catchAreas;
     public GameObject tilemapGO;
+    public AudioSource reelingSound;
+    public GameObject collisionUI; 
 
     [Header("Don't set in inspector")]
     [SerializeField] public Transform chosenCatchArea;
@@ -49,6 +51,10 @@ public class FishingManager : MonoBehaviour
     {
         if (currentPhase == 0)
         {
+            if (collisionUI)
+            {
+                collisionUI.SetActive(false);
+            }
             if (Input.GetMouseButton(0))
             {
                 rb.velocity = Vector3.zero;
@@ -59,6 +65,21 @@ public class FishingManager : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 rb.AddForce(Vector3.up * 5);
                 rb.AddForce(Vector3.right * speed);
+            }
+            //if (Input.GetMouseButtonDown(1))
+            //{
+            //    reelingSound.Play();
+            //}
+            //if (Input.GetMouseButtonUp(1))
+            //{
+            //    reelingSound.Stop();
+            //}
+        }
+        else
+        {
+            if (!collisionUI)
+            {
+                collisionUI.SetActive(true);
             }
         }
         if (fishing && Input.GetKeyDown(KeyCode.Space))
@@ -83,7 +104,7 @@ public class FishingManager : MonoBehaviour
         fishing = true;
         currentPhase = 0;
         // gravityScale = 1f;
-        // SetCatchArea()
+        SetCatchArea();
 
     }
 

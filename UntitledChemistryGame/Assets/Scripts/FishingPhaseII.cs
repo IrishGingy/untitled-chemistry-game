@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class FishingPhaseII : MonoBehaviour
     public GameObject gridGO;
     public GameObject tilemapGO;
     public Tilemap tilemap;
+    public Image[] collisionImages;
 
     private bool waited;
     private Vector3Int max;
@@ -48,6 +50,7 @@ public class FishingPhaseII : MonoBehaviour
         collisions++;
         // TODO: Give user feedback that they are colliding with an obstacle
         Debug.Log($"Hit an obstacle x{collisions}");
+        collisionImages[collisions - 1].enabled = true;
 
         // restart scene
         if (collisions >= 3)
@@ -64,6 +67,9 @@ public class FishingPhaseII : MonoBehaviour
 
     public void StartPhaseII(GameObject player, out int currentPhase)
     {
+        // reset collision count
+        collisions = 0;
+
         currentPhase = 1;
         Cursor.lockState = CursorLockMode.None;
         gridGO.SetActive(true);

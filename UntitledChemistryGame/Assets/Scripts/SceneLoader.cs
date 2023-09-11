@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
     // used in IP2 scene to conditionally activate the dock trigger
     public GameObject dockTrigger;
     public DialogueItem notCreativeEnough;
+    public AudioSource waves;
 
     public AudioSource knock;
 
@@ -68,9 +69,11 @@ public class SceneLoader : MonoBehaviour
             sea.SetActive(true);
             boatCam.SetActive(true);
             terrain.SetActive(true);
+            waves.Play();
         }
         else if (scene.name[1] == 'r')
         {
+            waves.Stop();
             // hide fishing specific objects
             boat.SetActive(false);
             sea.SetActive(false);
