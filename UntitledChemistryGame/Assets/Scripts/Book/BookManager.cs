@@ -292,6 +292,7 @@ public class BookManager : MonoBehaviour
         {
             currentPage.content.completed = true;
             gm.qm.CompleteQuest(bookTutorialQuest);
+            gm.qm.QuestCheck(slot.item);
             currentPage.UpdateUI();
         }
     }

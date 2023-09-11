@@ -112,7 +112,7 @@ public class QuestManager : MonoBehaviour
             // show general notification that num fish task has been completed
             StartCoroutine(ShowGeneralNotification($"{numberFishToCatch} fish successfully caught!"));
         }
-        else if (inventory.items.Count >= numberFishToCatch && bookTutorialQuest.completed)
+        if (inventory.items.Count >= numberFishToCatch && bookTutorialQuest.completed)
         {
             AddQuestToMenu(talkToCoachQuest, mainFishingQuest);
             // enable the player to dock their boat
