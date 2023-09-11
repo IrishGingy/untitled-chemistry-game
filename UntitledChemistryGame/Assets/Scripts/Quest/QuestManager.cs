@@ -2,24 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
     public QuestList questList;
     public GameObject questNotificationUI;
+    public GameObject generalNotificationUI;
+    // this is used to enable the player to dock their boat after they've completed the main fishing quest
+    public GameObject dockTrigger;
     public FishType questCompleteType;
     public Quest bookTutorialQuest;
     //public Quest numFishQuest;
     public Quest mainFishingQuest;
+    public Quest talkToCoachQuest;
 
     private GameManager gm;
     private Inventory inventory;
     private int numberFishToCatch;
+    private TextMeshProUGUI gNotificationText;
 
     void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         inventory = gm.GetComponent<Inventory>();
+        gNotificationText = generalNotificationUI.GetComponentInChildren<TextMeshProUGUI>();
         numberFishToCatch = 5;
 
         gameObject.SetActive(true);
@@ -94,14 +101,35 @@ public class QuestManager : MonoBehaviour
                 AddQuestToMenu(bookTutorialQuest, null);
             }
         }
-        if (inventory.items.Count >= numberFishToCatch && bookTutorialQuest.completed)
+        if (bookTutorialQuest.completed)
         {
-            CompleteQuest(mainFishingQuest);
+            // add boost upgrade on hold shift
+            gm.canBoost = true;
+            StartCoroutine(ShowGeneralNotification("Upgrade acquired!\n- Engine V2 (Hold Shift)"));
+        }
+        if (inventory.items.Count >= numberFishToCatch && !bookTutorialQuest.completed)
+        {
+            // show general notification that num fish task has been completed
+            StartCoroutine(ShowGeneralNotification($"{numberFishToCatch} fish successfully caught!"));
+        }
+        else if (inventory.items.Count >= numberFishToCatch && bookTutorialQuest.completed)
+        {
+            AddQuestToMenu(talkToCoachQuest, mainFishingQuest);
+            // enable the player to dock their boat
+            dockTrigger.SetActive(true);
         }
 
         //if (numFishQuest.completed && )
         //{
         //    AddQuestToMenu(mainFishingQuest, null);
         //}
+    }
+
+    private IEnumerator ShowGeneralNotification(string description)
+    {
+        gNotificationText.text = description;
+        generalNotificationUI.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        generalNotificationUI.SetActive(false);
     }
 }

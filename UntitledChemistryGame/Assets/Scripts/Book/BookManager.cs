@@ -278,11 +278,15 @@ public class BookManager : MonoBehaviour
         }
         log.SetActive(false);
 
+        Debug.Log("CurrentPage.icon: " + currentPage.content.icon);
+        Debug.Log("fishType[2]: " + fishTypes[2].name);
+        Debug.Log("fishType[2].icon: " + fishTypes[2].icon);
         // check for completion
         if (currentPage.content.icon == fishTypes[2].icon)
         {
             currentPage.content.completed = true;
             gm.qm.CompleteQuest(bookTutorialQuest);
+            currentPage.UpdateUI();
         }
     }
 

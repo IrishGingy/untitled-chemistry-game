@@ -3864,6 +3864,7 @@ MonoBehaviour:
   book: {fileID: 598518360}
   prerequisiteTrigger: {fileID: 432099679}
   dialogue: {fileID: 11400000, guid: 5f58fd5b127dbc7468aedfacf8201814, type: 2}
+  questToComplete: {fileID: 11400000, guid: 67b9103243f70e6498311a3607addcd2, type: 2}
 --- !u!65 &793197879
 BoxCollider:
   m_ObjectHideFlags: 0

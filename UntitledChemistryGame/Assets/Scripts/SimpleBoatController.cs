@@ -21,11 +21,14 @@ public class SimpleBoatController : MonoBehaviour
     [SerializeField] private Vector3 offset;
 
     private Rigidbody _rb;
+    private float prevMaxMoveSpeed;
+    private GameManager gm;
     //private float mouseX, mouseY;
 
     private void Awake()
     {
         //boatCam.SetActive(true);
+        gm = FindObjectOfType<GameManager>();
         _rb = GetComponent<Rigidbody>();
         //Cursor.lockState = CursorLockMode.Locked;
     }
@@ -37,6 +40,19 @@ public class SimpleBoatController : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) { _rotation = Vector3.down; }
         else if (Input.GetKey(KeyCode.D)) { _rotation = Vector3.up; }
         else { _rotation = Vector3.zero; }
+
+        if (gm.canBoost)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                prevMaxMoveSpeed = maxMoveSpeed;
+                maxMoveSpeed *= 2;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                maxMoveSpeed = prevMaxMoveSpeed;
+            }
+        }
 
         transform.Rotate(_rotation * _speed * Time.deltaTime);
 

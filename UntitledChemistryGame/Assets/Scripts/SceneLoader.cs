@@ -8,6 +8,11 @@ public class SceneLoader : MonoBehaviour
     public GameObject sea;
     public GameObject boatCam;
     public GameObject terrain;
+    public Quest mainFishingQuest;
+    public DialogueItem startDialogue;
+    // used in IP2 scene to conditionally activate the dock trigger
+    public GameObject dockTrigger;
+    public DialogueItem notCreativeEnough;
 
     public AudioSource knock;
 
@@ -38,6 +43,13 @@ public class SceneLoader : MonoBehaviour
             Debug.Log("THIS IS THE SCENE!");
             gm.canFish = true;
             gm.lockBook = false;
+            // Set docking the boat to inactive until quest has been completed (prerequisiteTrigger)
+            gm.AddQuest(mainFishingQuest, null);
+            gm.GetComponent<DialogueManager>().PlayDialogue(startDialogue);
+            dockTrigger.SetActive(false);
+            dockTrigger.GetComponent<EventDependency>().dependentDialogue = notCreativeEnough;
+            //dockDependency.preventedMethod = Methods.dock;
+            //dockDependency.dependentDialogue = mainFishingQuest;
         }
 
         //Debug.Log(scene.name);

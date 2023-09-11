@@ -21,6 +21,7 @@ public class Bookshelf : Trigger
     public GameObject book;
     public GameObject prerequisiteTrigger;
     public DialogueItem dialogue;
+    public Quest questToComplete;
 
     private GameManager gm;
     private DialogueManager dm;
@@ -48,6 +49,7 @@ public class Bookshelf : Trigger
             prerequisiteTrigger.SetActive(true);
             // make it so that the player can't open the book
             gm.RemoveBook();
+            gm.qm.CompleteQuest(questToComplete);
         }
     }
 

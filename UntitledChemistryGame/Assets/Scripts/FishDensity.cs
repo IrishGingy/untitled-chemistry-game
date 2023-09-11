@@ -34,7 +34,7 @@ public class FishDensity : MonoBehaviour
         Debug.Log(gm.currentScene.name);
         if (gm.canFish)
         {
-            if (!gm.player.docked && Input.GetKeyDown(KeyCode.Space) && Physics.Raycast(transform.position,
+            if (!gm.player.docked && Input.GetKeyDown(KeyCode.F) && Physics.Raycast(transform.position,
                 Vector3.down,
                 out RaycastHit hit,
                 40f,

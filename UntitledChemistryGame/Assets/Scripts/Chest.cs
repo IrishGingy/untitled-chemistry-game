@@ -21,6 +21,7 @@ public class Chest : Trigger
     public GameObject prerequisiteTrigger;
     // this is the page we are adding notes to
     public PageContent pageToUpdate;
+    public Quest noteQuest;
     
     private bool canOpen;
     private GameManager gm;
@@ -51,6 +52,9 @@ public class Chest : Trigger
             Debug.Log(pageToUpdate.description);
             // update the actual page in the book (UpdateUI which could be done here and/or when "B" is pressed)
             prerequisiteTrigger.SetActive(true);
+            gm.qm.CompleteQuest(noteQuest);
+            //base.HidePrompt();
+            //base.noPrompt = true;
         }
     }
 

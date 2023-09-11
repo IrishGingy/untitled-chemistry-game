@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     // Used when book is set down (bookshelf.cs and trashbook.cs)
     public bool lockBook;
     public bool canFish;
+    public bool canBoost;
 
 
     [Header("Dock")]
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         buttonPrompt.SetActive(false);
         letterScrolling = true;
         currentScene = SceneManager.GetActiveScene();
+        canBoost = false;
         //StartGame();
     }
 
@@ -186,7 +188,7 @@ public class GameManager : MonoBehaviour
         if (canOpenMenus)
         {
             inMenus = !inMenus;
-            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            //Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
             //questUI.SetActive(!active);
             foreach (Transform child in questUI.transform)
@@ -221,6 +223,7 @@ public class GameManager : MonoBehaviour
         bookNotificationUI.SetActive(true);
         yield return new WaitForSeconds(3f);
         bookNotificationUI.SetActive(false);
+        // might need to destroy this if it doesn't cooperate
     }
 }
 
