@@ -1770,6 +1770,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1647143704}
     - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
+      propertyPath: textureDensities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: textureDensities.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 618f096b98a0a1045855980e2a500878, type: 2}
@@ -1777,6 +1781,10 @@ PrefabInstance:
       propertyPath: textureDensities.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 65467793061dd5e43b2e601f401e7479, type: 2}
+    - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
+      propertyPath: textureDensities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ae5450a12c14d841b2064ce31aae522, type: 2}
     - target: {fileID: 5461486556489701127, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -14780,7 +14788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1048927232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15118,7 +15126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4382029931885861738, guid: 1757ea04db7449c469eb5366b15aecda, type: 3}
       propertyPath: quests.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4382029931885861738, guid: 1757ea04db7449c469eb5366b15aecda, type: 3}
       propertyPath: quests.Array.data[1]
@@ -15148,6 +15156,10 @@ PrefabInstance:
       propertyPath: quests.Array.data[7]
       value: 
       objectReference: {fileID: 11400000, guid: f462bd15b2384af489c6f552084246cd, type: 2}
+    - target: {fileID: 4382029931885861738, guid: 1757ea04db7449c469eb5366b15aecda, type: 3}
+      propertyPath: quests.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: c1efa5c169a308d40aa6f117f0612855, type: 2}
     - target: {fileID: 8355522842643155895, guid: 1757ea04db7449c469eb5366b15aecda, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0

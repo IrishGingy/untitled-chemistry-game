@@ -87,5 +87,7 @@ public class ReachedGoal : MonoBehaviour
             Debug.Log("Not a duplicate");
         }
         gm.qm.QuestCheck(item);
+
+        Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
     }
 }

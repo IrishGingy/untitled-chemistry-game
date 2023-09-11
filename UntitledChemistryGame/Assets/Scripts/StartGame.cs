@@ -16,6 +16,10 @@ public class StartGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (SceneManager.GetActiveScene().name == "[r]Credits")
+            {
+                Application.Quit();
+            }
             SceneManager.LoadScene("[f]Island Prototype");
         }
     }

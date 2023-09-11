@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
         if (canOpenMenus)
         {
             inMenus = !inMenus;
-            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            //Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             player.TogglePlayerMovement();
             bookUI.transform.GetChild(0).gameObject.SetActive(!active);
             bookUI.transform.GetChild(1).gameObject.SetActive(!active);

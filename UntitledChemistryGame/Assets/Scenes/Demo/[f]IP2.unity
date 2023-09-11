@@ -1695,7 +1695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &676387123
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -2577,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1048927232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3630,6 +3630,7 @@ MonoBehaviour:
   noteUI: {fileID: 0}
   prerequisiteTrigger: {fileID: 373024951}
   pageToUpdate: {fileID: 11400000, guid: d98935200ac58f246882c57248a7f061, type: 2}
+  noteQuest: {fileID: 0}
 --- !u!65 &1579038616
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -100,7 +100,8 @@ public class BookManager : MonoBehaviour
 
         // TODO: THIS IS VERY MUCH HARDCODED, CHANGE LATER!!!
         pageContents[0].completed = true;
-        pageContents[1].completed = true;
+        pageContents[1].completed = false;
+        pageContents[1].icon = addIcon;
         pageContents[2].icon = addIcon;
         pageContents[2].description = "";
         pageContents[2].completed = false;
@@ -279,10 +280,15 @@ public class BookManager : MonoBehaviour
         log.SetActive(false);
 
         Debug.Log("CurrentPage.icon: " + currentPage.content.icon);
-        Debug.Log("fishType[2]: " + fishTypes[2].name);
-        Debug.Log("fishType[2].icon: " + fishTypes[2].icon);
+        Debug.Log("fishType[1]: " + fishTypes[1].name);
+        Debug.Log("fishType[1].icon: " + fishTypes[1].icon);
         // check for completion
-        if (currentPage.content.icon == fishTypes[2].icon)
+        if (currentPage.content == pageContents[1] && currentPage.content.icon == fishTypes[1].icon)
+        {
+            currentPage.content.completed = true;
+            currentPage.UpdateUI();
+        }
+        else if (currentPage.content == pageContents[2] && currentPage.content.icon == fishTypes[2].icon)
         {
             currentPage.content.completed = true;
             gm.qm.CompleteQuest(bookTutorialQuest);

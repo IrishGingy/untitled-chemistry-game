@@ -23,6 +23,7 @@ public class QuestList : MonoBehaviour
         foreach(Quest quest in quests)
         {
             quest.inList = false;
+            quest.completed = false;
             Debug.Log("making quests");
             //Debug.Log("Instantiating...");
             GameObject button = Instantiate(questButtonPrefab, questListParent);

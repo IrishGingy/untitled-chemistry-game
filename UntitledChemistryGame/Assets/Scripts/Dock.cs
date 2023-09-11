@@ -79,11 +79,11 @@ public class Dock : Trigger
         {
             player.SetSail();
 
-            // only check event dependency on the first instance of the island scene
-            if (gm.currentScene.buildIndex == 1)
-            {
+            //// only check event dependency on the first instance of the island scene
+            //if (gm.currentScene.buildIndex == 1)
+            //{
                 CheckEventDependency(EventDependency.Methods.sail);
-            }
+            //}
             //base.HidePrompt();
         }
     }
