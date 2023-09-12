@@ -23,6 +23,7 @@ public class DialogueTrigger : Trigger
     [SerializeField] DialogueItem dI;
     // for the second occurrence of the sea scene
     [SerializeField] DialogueItem altDI;
+    [SerializeField] Quest talkToCoachQuest;
 
     private Camera shopCamera;
     private Player player;
@@ -68,8 +69,8 @@ public class DialogueTrigger : Trigger
                 }
                 else if (currentScene.buildIndex == 3 && !altDI.played)
                 {
-                    Debug.Log("IT'S TRUE, IT'S ALL TRUE!");
                     dm.PlayDialogue(altDI);
+                    gm.qm.CompleteQuest(talkToCoachQuest);
                 }
             }
         }

@@ -18,6 +18,7 @@ public class MoveRug : Trigger
     }
     public Transform rugTransform;
     public Transform movedRugParent;
+    public GameObject prerequisiteTrigger;
 
     private GameManager gm;
     private bool rugMoved;
@@ -30,7 +31,8 @@ public class MoveRug : Trigger
         gm = FindObjectOfType<GameManager>();
         canInteract = false;
         rugMoved = false;
-        trapDoorOpen = false;
+        prerequisiteTrigger.SetActive(false);
+        //trapDoorOpen = false;
     }
 
     private void Update()
@@ -43,15 +45,17 @@ public class MoveRug : Trigger
             rugTransform.parent = movedRugParent;
             rugTransform.localPosition = Vector3.zero;
             rugTransform.Rotate(0, 90, 0);
+            prerequisiteTrigger.SetActive(true);
+            gameObject.SetActive(false);
             //rugTransform.position = new Vector3(rugTransform.position.x + 16, rugTransform.position.y, rugTransform.position.z);
         }
-        else if (!trapDoorOpen && canInteract && rugMoved && Input.GetKeyDown(promptKeyText)) 
-        {
-            // open trapdoor
-            trapDoorOpen = true;
-            canInteract = false;
-            gm.LoadNextScene();
-        }
+        //else if (!trapDoorOpen && canInteract && rugMoved && Input.GetKeyDown(promptKeyText)) 
+        //{
+        //    // open trapdoor
+        //    trapDoorOpen = true;
+        //    canInteract = false;
+        //    gm.LoadNextScene();
+        //}
     }
 
     public override void TriggerEnterEvent()

@@ -13,12 +13,14 @@ public class FishingPhaseII : MonoBehaviour
     public GameObject tilemapGO;
     public Tilemap tilemap;
     public Image[] collisionImages;
+    public GameObject collisionUI;
 
     private bool waited;
     private Vector3Int max;
     // number of times the player hits an obstacle
     private int collisions;
     private int numTilesX;
+    private GameManager gm;
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class FishingPhaseII : MonoBehaviour
         tilemapGO = gameObject;
         // Get the reference to the Tilemap component
         tilemap = GetComponent<Tilemap>();
+        gm = FindObjectOfType<GameManager>(); 
 
         //StartPhaseII();
     }
@@ -55,7 +58,9 @@ public class FishingPhaseII : MonoBehaviour
         // restart scene
         if (collisions >= 3)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            collisions = 0;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gm.fm.ResetFishing();
         }
     }
 
@@ -68,12 +73,20 @@ public class FishingPhaseII : MonoBehaviour
     public void StartPhaseII(GameObject player, out int currentPhase)
     {
         // reset collision count
+        collisionUI.SetActive(true);
         collisions = 0;
+        foreach (Image i in collisionImages)
+        {
+            i.enabled = false;
+        }
 
         currentPhase = 1;
         Cursor.lockState = CursorLockMode.None;
         gridGO.SetActive(true);
         tilemapGO.SetActive(true);
+        // Resets the tilemap position
+        transform.localPosition = Vector3.zero;
+        tilemap.CompressBounds();
         player.transform.position = gridGO.transform.position;
 
         // Calculate and display the number of tiles on the Tilemap
@@ -93,6 +106,7 @@ public class FishingPhaseII : MonoBehaviour
         // Resets the tilemap position
         transform.localPosition = Vector3.zero;
         tilemap.CompressBounds();
+        collisionUI.SetActive(false);
 
         StopAllCoroutines();
     }

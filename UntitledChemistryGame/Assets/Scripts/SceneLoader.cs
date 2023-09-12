@@ -9,6 +9,7 @@ public class SceneLoader : MonoBehaviour
     public GameObject boatCam;
     public GameObject terrain;
     public Quest mainFishingQuest;
+    public Quest trashQuest;
     public DialogueItem startDialogue;
     // used in IP2 scene to conditionally activate the dock trigger
     public GameObject dockTrigger;
@@ -51,6 +52,11 @@ public class SceneLoader : MonoBehaviour
             dockTrigger.GetComponent<EventDependency>().dependentDialogue = notCreativeEnough;
             //dockDependency.preventedMethod = Methods.dock;
             //dockDependency.dependentDialogue = mainFishingQuest;
+        }
+
+        if (scene.name == "[r]Trash")
+        {
+            gm.AddQuest(trashQuest, null);
         }
 
         //Debug.Log(scene.name);

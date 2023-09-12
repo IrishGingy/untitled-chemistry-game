@@ -923,6 +923,7 @@ MonoBehaviour:
   _eventDependency: {fileID: 0}
   rugTransform: {fileID: 618691129}
   movedRugParent: {fileID: 1066202486}
+  prerequisiteTrigger: {fileID: 1064440082}
 --- !u!1001 &151698650
 PrefabInstance:
   m_ObjectHideFlags: 0

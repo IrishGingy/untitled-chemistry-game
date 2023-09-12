@@ -16,7 +16,7 @@ public class FishingManager : MonoBehaviour
     public GameObject catchAreas;
     public GameObject tilemapGO;
     public AudioSource reelingSound;
-    public GameObject collisionUI; 
+    public GameObject collisionUI;
 
     [Header("Don't set in inspector")]
     [SerializeField] public Transform chosenCatchArea;
@@ -51,10 +51,10 @@ public class FishingManager : MonoBehaviour
     {
         if (currentPhase == 0)
         {
-            if (collisionUI)
-            {
-                collisionUI.SetActive(false);
-            }
+            //if (collisionUI)
+            //{
+            //    collisionUI.SetActive(false);
+            //}
             if (Input.GetMouseButton(0))
             {
                 rb.velocity = Vector3.zero;
@@ -77,10 +77,10 @@ public class FishingManager : MonoBehaviour
         }
         else
         {
-            if (!collisionUI)
-            {
-                collisionUI.SetActive(true);
-            }
+            //if (!collisionUI)
+            //{
+            //    collisionUI.SetActive(true);
+            //}
         }
         if (fishing && Input.GetKeyDown(KeyCode.Space))
         {
@@ -101,6 +101,7 @@ public class FishingManager : MonoBehaviour
         // turn off boatCam
         // turn off tilemap stuff (ensure it is off for phase 0)
         // lock cursor
+        collisionUI.SetActive(false);
         fishing = true;
         currentPhase = 0;
         endPositionCollider.enabled = true;
@@ -122,6 +123,7 @@ public class FishingManager : MonoBehaviour
     public void ResetFishing()
     {
         tilemapGrid.SetActive(false);
+        collisionUI.SetActive(false);
         player.transform.position = startPosition.transform.position;
         catchAreas.SetActive(true); 
         phase1Line.SetActive(true);
@@ -142,6 +144,7 @@ public class FishingManager : MonoBehaviour
         endPositionCollider.enabled = false;
         phase1Line.SetActive(false);
         walls.StartPhaseII(player, out currentPhase);
+        collisionUI.SetActive(true);
         //rb.gravityScale = 0f;
     }
 

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo/[f]IP2.unity
     guid: 7f1353ef530a89441a8261f65f29dd39
   - enabled: 1
+    path: Assets/Scenes/Demo/[r]TwoWeeksLater.unity
+    guid: d5aae7572bf1add4ba5e65677e2a3e35
+  - enabled: 1
     path: Assets/Scenes/Demo/[r]Trash.unity
     guid: 86396122155eebe429b2c3cbecb3f5a8
   - enabled: 1

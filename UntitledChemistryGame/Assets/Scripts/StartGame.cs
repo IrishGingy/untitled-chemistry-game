@@ -20,7 +20,10 @@ public class StartGame : MonoBehaviour
             {
                 Application.Quit();
             }
-            SceneManager.LoadScene("[f]Island Prototype");
+            else
+            {
+                SceneManager.LoadScene("[f]Island Prototype");
+            }
         }
     }
 }

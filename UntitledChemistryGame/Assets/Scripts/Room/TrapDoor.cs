@@ -30,6 +30,7 @@ public class TrapDoor : Trigger
     {
         if (canGoDownstairs && Input.GetKeyDown(promptKeyText))
         {
+            base.HidePrompt();
             gm.LoadNextScene();
         }
     }

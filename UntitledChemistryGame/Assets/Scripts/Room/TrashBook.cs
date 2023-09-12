@@ -20,6 +20,7 @@ public class TrashBook : Trigger
     public DialogueItem dialogue;
     public GameObject prerequisiteTrigger;
     public GameObject book;
+    public Quest trashQuest;
 
     private GameManager gm;
     private DialogueManager dm;
@@ -46,6 +47,7 @@ public class TrashBook : Trigger
             base.noPrompt = true;
             prerequisiteTrigger.SetActive(true);
             book.SetActive(true);
+            gm.qm.CompleteQuest(trashQuest);
         }
     }
 
