@@ -16,7 +16,6 @@ public class Bookshelf : Trigger
         get { return _eventDependency; }
         set { _eventDependency = value; }
     }
-    public bool noPrompt;
 
     public GameObject book;
     public GameObject prerequisiteTrigger;
@@ -42,7 +41,6 @@ public class Bookshelf : Trigger
         if (canPlaceBook && Input.GetKeyDown(promptKeyText))
         {
             dm.PlayDialogue(dialogue);
-            Debug.Log("Place Book!");
             book.SetActive(true);
             base.HidePrompt();
             base.noPrompt = true;

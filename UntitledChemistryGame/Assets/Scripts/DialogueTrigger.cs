@@ -53,8 +53,6 @@ public class DialogueTrigger : Trigger
                 EnableShopCamera();
                 base.HidePrompt();
 
-                Debug.Log("THIS IS THE CURRENT SCENE INDEX!: " + gm.currentScene.buildIndex);
-
                 Scene currentScene = SceneManager.GetActiveScene();
 
                 // if the dependent dialogue item hasn't been played, a placeholder dialogue is instead played.

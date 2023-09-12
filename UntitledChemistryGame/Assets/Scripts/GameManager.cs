@@ -183,8 +183,6 @@ public class GameManager : MonoBehaviour
 
     public void ToggleQuestMenu(bool active)
     {
-        Debug.Log($"Active: {active}");
-        Debug.Log($"canOpenMenus: {canOpenMenus}");
         if (canOpenMenus)
         {
             inMenus = !inMenus;
@@ -195,8 +193,6 @@ public class GameManager : MonoBehaviour
             {
                 child.gameObject.SetActive(!active);
             }
-            Debug.Log($"QuestUI: {questUI}");
-            Debug.Log($"QuestUI Active?: {questUI.activeSelf}");
         }
     }
 

@@ -19,7 +19,6 @@ public class InventorySlot : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("HiTTING AWAKE!");
         weightTextGUI = weight.GetComponentInChildren<TextMeshProUGUI>();
         weight.SetActive(false);
     }
@@ -28,7 +27,6 @@ public class InventorySlot : MonoBehaviour
     {
         if (inventory)
         {
-            Debug.Log("Inventory!");
             item = newItem;
             //ui.qm.QuestCheck(newItem);
 
@@ -44,7 +42,6 @@ public class InventorySlot : MonoBehaviour
         }
         else
         {
-            Debug.Log("Log this time!");
             // does this already exist in log?
             item = newItem;
 

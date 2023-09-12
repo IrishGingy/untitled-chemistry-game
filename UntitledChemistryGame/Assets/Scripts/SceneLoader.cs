@@ -42,7 +42,6 @@ public class SceneLoader : MonoBehaviour
         // if scene is IP2, then change dock event dependency dependent dialogue to "not creative enough"
         if (scene.name == "[f]IP2")
         {
-            Debug.Log("THIS IS THE SCENE!");
             gm.canFish = true;
             gm.lockBook = false;
             // Set docking the boat to inactive until quest has been completed (prerequisiteTrigger)

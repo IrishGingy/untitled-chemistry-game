@@ -16,7 +16,6 @@ public class QuestOnLoad : Trigger
         get { return _eventDependency; }
         set { _eventDependency = value; }
     }
-    public bool noPrompt;
     public Quest prevQuest;
     public Quest curQuest;
     //public DialogueItem dialogue;

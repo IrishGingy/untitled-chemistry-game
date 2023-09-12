@@ -61,8 +61,6 @@ public class ReachedGoal : MonoBehaviour
         Item duplicate = log.items.FirstOrDefault(item => item.fishType == fishType);
         if (duplicate)
         {
-            Debug.Log("Duplicate!");
-            Debug.Log("duplicate item: " + duplicate.name + duplicate.weight);
             log.UpdateSlot(item);
             // get the log item in the inventory and change the weight range
             //float min = 0;
@@ -84,7 +82,6 @@ public class ReachedGoal : MonoBehaviour
         else
         {
             log.Add(item);
-            Debug.Log("Not a duplicate");
         }
         gm.qm.QuestCheck(item);
 

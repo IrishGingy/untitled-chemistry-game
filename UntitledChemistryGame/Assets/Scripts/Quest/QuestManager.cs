@@ -52,7 +52,6 @@ public class QuestManager : MonoBehaviour
         //        Debug.Log($"No quest button gameobject created for {prevQuest}");
         //    }
         //}
-        Debug.Log("Button Game objects: " + questList.buttonGameObjects);
         questList.buttonGameObjects.TryGetValue(q, out GameObject button);
         if (button)
         {
@@ -61,7 +60,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"No quest button gameobject created for {q}");
+            Debug.LogWarning($"No quest button gameobject created for {q}");
         }
         q.inList = true;
     }
@@ -78,7 +77,7 @@ public class QuestManager : MonoBehaviour
             }
             else
             {
-                Debug.Log($"No quest button gameobject created for {q}");
+                Debug.LogWarning($"No quest button gameobject created for {q}");
             }
         }
     }
@@ -93,7 +92,6 @@ public class QuestManager : MonoBehaviour
     public void QuestCheck(Item item)
     {
         // number of fish, 
-        Debug.Log("Checking if a quest was completed...");
         if (item.fishType == questCompleteType)
         {
             if (!bookTutorialQuest.inList)

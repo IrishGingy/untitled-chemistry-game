@@ -41,7 +41,6 @@ public class MoveRug : Trigger
         {
             rugMoved = true;
             // move the rug
-            Debug.Log("rug has been moved");
             rugTransform.parent = movedRugParent;
             rugTransform.localPosition = Vector3.zero;
             rugTransform.Rotate(0, 90, 0);

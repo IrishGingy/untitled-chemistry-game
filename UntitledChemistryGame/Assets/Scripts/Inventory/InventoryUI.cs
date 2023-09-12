@@ -33,8 +33,6 @@ public class InventoryUI : MonoBehaviour
 
         inventory = Inventory.instance;
         log = Log.instance;
-        Debug.Log("Inventory: " + inventory);
-        Debug.Log("Log:" + log);
         inventory.onItemChangedCallback += UpdateInventoryUI;
         log.onItemChangedCallback += UpdateLogUI;
 

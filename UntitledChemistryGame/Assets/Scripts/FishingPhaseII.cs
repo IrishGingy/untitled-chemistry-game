@@ -52,7 +52,6 @@ public class FishingPhaseII : MonoBehaviour
     {
         collisions++;
         // TODO: Give user feedback that they are colliding with an obstacle
-        Debug.Log($"Hit an obstacle x{collisions}");
         collisionImages[collisions - 1].enabled = true;
 
         // restart scene

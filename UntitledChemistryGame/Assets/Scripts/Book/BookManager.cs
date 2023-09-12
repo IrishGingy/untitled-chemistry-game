@@ -130,7 +130,6 @@ public class BookManager : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
                     // increment the rightPageIndex by two if it's not the last page (otherwise don't change the index)
-                    Debug.Log(pageContents.Length);
                     leftPageIndex = leftPageIndex != pageContents.Length - 2 ? leftPageIndex + 2 : leftPageIndex;
                     rightPageIndex = rightPageIndex != pageContents.Length - 1 ? rightPageIndex + 2 : rightPageIndex;
                 }
@@ -143,10 +142,8 @@ public class BookManager : MonoBehaviour
 
     private void OnDropdownValueChanged(int index)
     {
-        Debug.Log(index);
         selectedText = modalDropdown.options[index].text;
         selectedIndex = index;
-        Debug.Log($"Selected Index: {selectedIndex}, Selected Text: {selectedText}");
     }
 
     public void Modal(string modalType)
@@ -196,7 +193,6 @@ public class BookManager : MonoBehaviour
         else
         {
             modalDropdown.onValueChanged.RemoveListener(OnDropdownValueChanged);
-            Debug.Log($"Selected Index: {selectedIndex}, Selected Text: {selectedText}");
 
 
             //if (title == "Weight Range")
@@ -272,16 +268,12 @@ public class BookManager : MonoBehaviour
         InventorySlot slot = obj.transform.parent.GetComponent<InventorySlot>();
         if (slot.item)
         {
-            Debug.Log(slot.item.fishType);
             currentPage.content.nameFishType = slot.item.fishType;
             currentPage.content.icon = slot.item.fishType.icon;
             currentImage.sprite = slot.item.fishType.icon;
         }
         log.SetActive(false);
 
-        Debug.Log("CurrentPage.icon: " + currentPage.content.icon);
-        Debug.Log("fishType[1]: " + fishTypes[1].name);
-        Debug.Log("fishType[1].icon: " + fishTypes[1].icon);
         // check for completion
         if (currentPage.content == pageContents[1] && currentPage.content.icon == fishTypes[1].icon)
         {

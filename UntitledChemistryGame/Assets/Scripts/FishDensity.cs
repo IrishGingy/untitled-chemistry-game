@@ -31,7 +31,6 @@ public class FishDensity : MonoBehaviour
     private void CheckGround()
     {
         Debug.DrawRay(transform.position, Vector3.down * 40f, Color.red);
-        Debug.Log(gm.currentScene.name);
         if (gm.canFish)
         {
             if (!gm.player.docked && Input.GetKeyDown(KeyCode.F) && Physics.Raycast(transform.position,

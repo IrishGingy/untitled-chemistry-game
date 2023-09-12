@@ -37,7 +37,6 @@ public class TrapDoor : Trigger
 
     public override void TriggerEnterEvent()
     {
-        Debug.Log("Triggered!");
         canGoDownstairs = true;
     }
 

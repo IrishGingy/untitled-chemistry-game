@@ -16,7 +16,6 @@ public class BookIsGone : Trigger
         get { return _eventDependency; }
         set { _eventDependency = value; }
     }
-    public bool noPrompt;
     public DialogueItem dialogue;
     public GameObject prerequisiteTrigger;
 
