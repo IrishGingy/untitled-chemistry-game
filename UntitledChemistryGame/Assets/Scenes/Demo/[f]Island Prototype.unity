@@ -1842,6 +1842,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 843215675}
     m_Modifications:
+    - target: {fileID: 5461486556489701123, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
+      propertyPath: engineAudio
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5461486556489701126, guid: bdf7d85f7addb1740bcf5b24ee670753, type: 3}
       propertyPath: fishingUIGameObject
       value: 
@@ -18149,6 +18153,7 @@ GameObject:
   - component: {fileID: 1206950994}
   - component: {fileID: 1206950993}
   - component: {fileID: 1206950991}
+  - component: {fileID: 1206950995}
   m_Layer: 0
   m_Name: Shop Camera
   m_TagString: Untagged
@@ -18247,6 +18252,14 @@ Transform:
   m_Father: {fileID: 1003444334}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!81 &1206950995
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206950990}
+  m_Enabled: 1
 --- !u!1 &1210891701
 GameObject:
   m_ObjectHideFlags: 0
@@ -22185,7 +22198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14272af0a2d2774db7efa912a74bb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &1463281448
+--- !u!82 &1463281457
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22195,9 +22208,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 318bd55b93487be46945a26ffdc1db33, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 26b36c6966f3b8b4c8c62d22671cc533, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 651c2476c36c4894f9e3b49b88b48233, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.342
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -29297,6 +29310,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14272af0a2d2774db7efa912a74bb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1990528499
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990528492}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 318bd55b93487be46945a26ffdc1db33, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 26b36c6966f3b8b4c8c62d22671cc533, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.342
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1993786108
 GameObject:
   m_ObjectHideFlags: 0
@@ -32895,7 +33004,7 @@ MonoBehaviour:
   startDialogue: {fileID: 11400000, guid: c98352d2dcc64994ea2413f8623021da, type: 2}
   dockTrigger: {fileID: 1955635705}
   notCreativeEnough: {fileID: 11400000, guid: e01ae8b4b3b8a434ea879165fc524797, type: 2}
-  waves: {fileID: 1463281448}
+  waves: {fileID: 1990528499}
   knock: {fileID: 0}
 --- !u!114 &3432036464973938151
 MonoBehaviour:

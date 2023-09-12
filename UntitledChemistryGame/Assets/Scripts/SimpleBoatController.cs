@@ -20,6 +20,7 @@ public class SimpleBoatController : MonoBehaviour
     [SerializeField] private Vector3 _vectorVelocity;
     [SerializeField] private Vector3 offset;
 
+    private AudioSource engineAudio;
     private Rigidbody _rb;
     private float prevMaxMoveSpeed;
     private GameManager gm;
@@ -30,6 +31,7 @@ public class SimpleBoatController : MonoBehaviour
         //boatCam.SetActive(true);
         gm = FindObjectOfType<GameManager>();
         _rb = GetComponent<Rigidbody>();
+        engineAudio = GetComponent<AudioSource>();
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -74,6 +76,8 @@ public class SimpleBoatController : MonoBehaviour
         var forward = Vector3.Scale(new Vector3(1, 0, 1), transform.forward);
         var targetVel = Vector3.zero;
 
+        float forwardVelocity = Mathf.Abs(Vector3.Dot(_rb.velocity, forward));
+
         // forward/backward power
         if (Input.GetKey(KeyCode.W))
         {
@@ -83,6 +87,25 @@ public class SimpleBoatController : MonoBehaviour
         {
             ApplyForceToReachVelocity(_rb, forward * -maxMoveSpeed * Time.deltaTime, _speed);
         }
+
+
+        if (forwardVelocity > 0.5f && !engineAudio.isPlaying)
+        {
+            engineAudio.Play();
+        }
+        else if (forwardVelocity <= 0.5f && engineAudio.isPlaying)
+        {
+            engineAudio.Stop();
+        }
+
+        //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+        //{
+        //    engineAudio.Play();
+        //}
+        //if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.S))
+        //{
+        //    engineAudio.Stop();
+        //}
     }
 
     //private void HandleCameraMovement()
@@ -129,5 +152,11 @@ public class SimpleBoatController : MonoBehaviour
             var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rigidbody.velocity) / velocity.magnitude);
             rigidbody.AddForce((velocity - velocityProjectedToTarget) * force, mode);
         }
+    }
+
+    private void OnDisable()
+    {
+        // anytime we leave the boat, the engine is cut off
+        engineAudio.Stop();
     }
 }

@@ -103,6 +103,7 @@ public class FishingManager : MonoBehaviour
         // lock cursor
         fishing = true;
         currentPhase = 0;
+        endPositionCollider.enabled = true;
         // gravityScale = 1f;
         SetCatchArea();
 
@@ -124,6 +125,7 @@ public class FishingManager : MonoBehaviour
         player.transform.position = startPosition.transform.position;
         catchAreas.SetActive(true); 
         phase1Line.SetActive(true);
+        endPositionCollider.enabled = true;
         currentPhase = 0;
         rb.gravityScale = 1f;
     }
