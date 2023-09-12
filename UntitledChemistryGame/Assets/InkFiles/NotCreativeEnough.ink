@@ -8,10 +8,13 @@ Thanks! So, what's my next task?
     * [Xenosquid?] Maybe a little night fishing to find the slippery xenosquid?
     * [Ghostfin Shark?] Oh, how about the ghostfin shark? I've always wanted to see their ghost-like dorsal fin!
     * [Voidspire?] Maybe I should be looking for the voidspire? I think I've seen some notes around the island that might help me locate them.
-    # speaker Louis
-    - Sully, why don't you take this next week off? Take a rest week.
-    # speaker Sully
-    ** [A rest week?] But coach, how am I going to improve? Is there something I'm not doing well enough? I did all that you asked of me and I just want to catch more fish.
+    - -> rest
+    
+== rest ==
+# speaker Louis
+Sully, why don't you take this next week off? Take a rest week.
+# speaker Sully
+** [A rest week?] But coach, how am I going to improve? Is there something I'm not doing well enough? I did all that you asked of me and I just want to catch more fish.
 # speaker Louis
 Yes, you did what I asked, but you just need to be more creative.
 # speaker Sully
