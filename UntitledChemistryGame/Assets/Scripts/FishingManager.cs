@@ -11,7 +11,8 @@ public class FishingManager : MonoBehaviour
     public GameObject phase1Line;
     public GameObject player;
     public int currentPhase;
-    public float speed = 1f;
+    public float forwardForce;
+    public float upForce;
     public GameObject tilemapGrid;
     public GameObject catchAreas;
     public GameObject tilemapGO;
@@ -25,10 +26,14 @@ public class FishingManager : MonoBehaviour
     private Rigidbody2D rb;
     private FishingPhaseII walls;
     private GameManager gm;
+    private bool movingUp;
+    private bool movingForward;
 
     // Start is called before the first frame update
     void Start()
     {
+        forwardForce = 2000f;
+        upForce = 2000f;
         fishing = false;
         SetCatchArea();
 
@@ -55,16 +60,21 @@ public class FishingManager : MonoBehaviour
             //{
             //    collisionUI.SetActive(false);
             //}
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
-                rb.velocity = Vector3.zero;
-                rb.AddForce(Vector3.up * 20);
+                movingUp = true;
             }
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButtonDown(1))
             {
-                rb.velocity = Vector3.zero;
-                rb.AddForce(Vector3.up * 5);
-                rb.AddForce(Vector3.right * speed);
+                movingForward = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                movingUp = false;
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                movingForward = false;
             }
             //if (Input.GetMouseButtonDown(1))
             //{
@@ -95,6 +105,21 @@ public class FishingManager : MonoBehaviour
         //transform.position = newPosition;
     }
 
+    private void FixedUpdate()
+    {
+        if (movingUp)
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(Vector3.up * Time.deltaTime * upForce);
+        }
+        if (movingForward)
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(Vector3.up * Time.deltaTime * (upForce / 5));
+            rb.AddForce(Vector3.right * Time.deltaTime * forwardForce);
+        }
+    }
+
     public void StartFishing()
     {
         // turn on fishing manager gameobject
@@ -122,6 +147,8 @@ public class FishingManager : MonoBehaviour
 
     public void ResetFishing()
     {
+        movingUp = false;
+        movingForward = false;
         tilemapGrid.SetActive(false);
         collisionUI.SetActive(false);
         player.transform.position = startPosition.transform.position;
@@ -134,6 +161,8 @@ public class FishingManager : MonoBehaviour
 
     public void FishOn()
     {
+        movingUp = false;
+        movingForward = false;
         catchAreas.SetActive(false);
         //Cursor.lockState = CursorLockMode.None;
         rb.velocity = Vector3.zero;
