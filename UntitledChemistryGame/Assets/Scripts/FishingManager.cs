@@ -15,23 +15,29 @@ public class FishingManager : MonoBehaviour
     public float upForce;
     public GameObject tilemapGrid;
     public GameObject catchAreas;
-    public GameObject tilemapGO;
+    public GameObject tilemapsParentGO;
     public AudioSource reelingSound;
     public GameObject collisionUI;
+    public Sprite wormSprite;
+    public Sprite fishSprite;
+    public SpriteRenderer playerSprite;
 
     [Header("Don't set in inspector")]
     [SerializeField] public Transform chosenCatchArea;
+    [SerializeField] public FishingPhaseII chosenObstacleTilemap;
     [SerializeField] private bool fishing;
 
     private Rigidbody2D rb;
-    private FishingPhaseII walls;
+    private FishingPhaseII[] obstacleTilemaps;
     private GameManager gm;
     private bool movingUp;
     private bool movingForward;
+    private bool attachToCursor;
 
     // Start is called before the first frame update
     void Start()
     {
+        player.SetActive(true);
         forwardForce = 2000f;
         upForce = 2000f;
         fishing = false;
@@ -39,11 +45,16 @@ public class FishingManager : MonoBehaviour
 
         gm = FindObjectOfType<GameManager>();
         tilemapGrid.SetActive(true);
-        tilemapGO.SetActive(true);
-        walls = tilemapGO.GetComponent<FishingPhaseII>();
+        tilemapsParentGO.SetActive(true);
+        obstacleTilemaps = tilemapsParentGO.GetComponentsInChildren<FishingPhaseII>();
+        foreach (Transform child in tilemapsParentGO.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        //SetObstacles();
 
         tilemapGrid.SetActive(false);
-        tilemapGO.SetActive(false);
+        //tilemapsParentGO.SetActive(false);
         rb = player.GetComponent<Rigidbody2D>();
         rb.gravityScale = 1f;
         currentPhase = 0;
@@ -54,6 +65,28 @@ public class FishingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentPhase == 1 && Input.GetKeyDown(KeyCode.O))
+        {
+            if (attachToCursor)
+            {
+                attachToCursor = false;
+                player.SetActive(true);
+
+                Cursor.SetCursor(null, Vector3.zero, CursorMode.Auto);
+            }
+            else
+            {
+                attachToCursor = true;
+                player.SetActive(false);
+                // this centers the mouse
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
+
+                Cursor.SetCursor(fishSprite.texture, Vector3.zero, CursorMode.Auto);
+            }
+        }
+
+
         if (currentPhase == 0)
         {
             //if (collisionUI)
@@ -126,9 +159,11 @@ public class FishingManager : MonoBehaviour
         // turn off boatCam
         // turn off tilemap stuff (ensure it is off for phase 0)
         // lock cursor
+        player.SetActive(true);
         collisionUI.SetActive(false);
         fishing = true;
         currentPhase = 0;
+        playerSprite.sprite = wormSprite;
         endPositionCollider.enabled = true;
         // gravityScale = 1f;
         SetCatchArea();
@@ -145,17 +180,42 @@ public class FishingManager : MonoBehaviour
         }
     }
 
+    private void SetObstacles()
+    {
+        if (obstacleTilemaps.Length > 0)
+        {
+            int index = Random.Range(0, obstacleTilemaps.Length);
+            chosenObstacleTilemap = obstacleTilemaps[index];
+        }
+        else
+        {
+            Debug.LogWarning("There are no obstacle tilemaps to choose!");
+        }
+        //int tilemapCount = tilemapsParentGO.transform.childCount;
+        //if (tilemapCount > 0)
+        //{
+        //    chosenObstacleTilemap = tilemapsParentGO.transform.GetChild(Random.Range(0, tilemapCount));
+        //}
+        //else 
+        //{
+        //    Debug.LogWarning("There are no obstacle tilemaps to choose!");
+        //}
+    }
+
     public void ResetFishing()
     {
+        player.SetActive(true);
         movingUp = false;
         movingForward = false;
         tilemapGrid.SetActive(false);
-        collisionUI.SetActive(false);
+        collisionUI.SetActive(false); 
+        chosenObstacleTilemap.gameObject.SetActive(false);
         player.transform.position = startPosition.transform.position;
         catchAreas.SetActive(true); 
         phase1Line.SetActive(true);
         endPositionCollider.enabled = true;
         currentPhase = 0;
+        playerSprite.sprite = wormSprite;
         rb.gravityScale = 1f;
     }
 
@@ -171,8 +231,10 @@ public class FishingManager : MonoBehaviour
         //tilemapGO.SetActive(true);
         rb.gravityScale = 0f;
         endPositionCollider.enabled = false;
-        phase1Line.SetActive(false);
-        walls.StartPhaseII(player, out currentPhase);
+        phase1Line.SetActive(false); 
+        playerSprite.sprite = fishSprite;
+        SetObstacles();
+        chosenObstacleTilemap.StartPhaseII(player, out currentPhase);
         collisionUI.SetActive(true);
         //rb.gravityScale = 0f;
     }
@@ -182,7 +244,7 @@ public class FishingManager : MonoBehaviour
         gm.player.thirdPersonMovement.gameObject.SetActive(true);
         gameObject.SetActive(false);
         ResetFishing();
-        walls.StopFishing();
+        chosenObstacleTilemap.StopFishing();
     }
 
     //private void OnDrawGizmos()

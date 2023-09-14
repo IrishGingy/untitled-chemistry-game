@@ -26,7 +26,7 @@ public class FishingPhaseII : MonoBehaviour
     {
         collisions = 0;
 
-        gridGO = transform.parent.gameObject;
+        gridGO = transform.parent.parent.gameObject;
         tilemapGO = gameObject;
         // Get the reference to the Tilemap component
         tilemap = GetComponent<Tilemap>();
@@ -106,6 +106,7 @@ public class FishingPhaseII : MonoBehaviour
         transform.localPosition = Vector3.zero;
         tilemap.CompressBounds();
         collisionUI.SetActive(false);
+        tilemapGO.SetActive(false);
 
         StopAllCoroutines();
     }

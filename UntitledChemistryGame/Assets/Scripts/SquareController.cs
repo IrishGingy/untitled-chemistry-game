@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
 
 public class SquareController : MonoBehaviour
 {
     public Camera cam;
+    public TextMeshProUGUI positionText;
 
     private float camZDistance;
     private FishingManager fm;
@@ -23,9 +25,11 @@ public class SquareController : MonoBehaviour
         // square can only be dragged if we are in the second phase of fishing
         if (fm.currentPhase == 1)
         {
-            Vector3 screenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, camZDistance); // z axis to screen point
+            Vector3 screenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5); // z axis to screen point
             Vector3 newWorldPosition = cam.ScreenToWorldPoint(screenPosition); // screen point converted to world point
             transform.position = newWorldPosition;
+
+            positionText.text = transform.position.ToString();
         }
     }
 
