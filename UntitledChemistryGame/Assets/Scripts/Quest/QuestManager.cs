@@ -21,6 +21,11 @@ public class QuestManager : MonoBehaviour
     private Inventory inventory;
     private int numberFishToCatch;
     private TextMeshProUGUI gNotificationText;
+    private Dictionary<string, bool> notificationShown = new Dictionary<string, bool>
+    {
+        { "upgrade", false },
+        { "fiveFish", false }
+    };
 
     void Awake()
     {
@@ -99,16 +104,18 @@ public class QuestManager : MonoBehaviour
                 AddQuestToMenu(bookTutorialQuest, null);
             }
         }
-        if (bookTutorialQuest.completed)
+        if (!notificationShown["upgrade"] && bookTutorialQuest.completed)
         {
             // add boost upgrade on hold shift
             gm.canBoost = true;
             StartCoroutine(ShowGeneralNotification("Upgrade acquired!\n- Engine V2 (Hold Shift)"));
+            notificationShown["upgrade"] = true;
         }
-        if (inventory.items.Count >= numberFishToCatch && !bookTutorialQuest.completed)
+        if (!notificationShown["fiveFish"] && inventory.items.Count >= numberFishToCatch && !bookTutorialQuest.completed)
         {
             // show general notification that num fish task has been completed
             StartCoroutine(ShowGeneralNotification($"{numberFishToCatch} fish successfully caught!"));
+            notificationShown["fiveFish"] = true;
         }
         if (inventory.items.Count >= numberFishToCatch && bookTutorialQuest.completed)
         {

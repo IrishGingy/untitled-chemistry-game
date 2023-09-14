@@ -1642,7 +1642,6 @@ MonoBehaviour:
   noPrompt: 0
   _promptKeyText: 101
   _eventDependency: {fileID: 0}
-  noPrompt: 0
   prevQuest: {fileID: 0}
   curQuest: {fileID: 11400000, guid: f462bd15b2384af489c6f552084246cd, type: 2}
 --- !u!65 &281017109
@@ -3279,7 +3278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: --- PRESS SPACE TO TURN OFF ALARM ---
+  m_text: --- PRESS SPACE TO GET OUT OF BED ---
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4208,7 +4207,6 @@ MonoBehaviour:
   noPrompt: 0
   _promptKeyText: 101
   _eventDependency: {fileID: 0}
-  noPrompt: 0
   dialogue: {fileID: 11400000, guid: 8e8fa4b0c94117243b3587d29f468eb7, type: 2}
   prerequisiteTrigger: {fileID: 432099679}
 --- !u!1 &812303687
