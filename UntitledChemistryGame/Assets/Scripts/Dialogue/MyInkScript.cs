@@ -91,6 +91,7 @@ public class MyInkScript : MonoBehaviour
                 //Are there any choices?
                 if (story.currentChoices.Count != 0)
                 {
+                    continueMessage.text = "—— CLICK AN OPTION BELOW TO RESPOND ——";
                     StartCoroutine(ShowChoices());
                 }
             }
@@ -155,6 +156,7 @@ public class MyInkScript : MonoBehaviour
         ParseTags();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(currentSentence));
+        continueMessage.text = $"—— PRESS {continueButtonKeyString} TO CONTINUE ——";
     }
 
     // Type out the sentence letter by letter and make character idle if they were talking
