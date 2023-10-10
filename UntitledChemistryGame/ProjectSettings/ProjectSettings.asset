@@ -175,7 +175,7 @@ PlayerSettings:
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 1
-  VertexChannelCompressionMask: 4054
+  VertexChannelCompressionMask: 0
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 11.0
   tvOSSdkVersion: 0
@@ -352,6 +352,8 @@ PlayerSettings:
   - m_BuildTarget: iPhone
     m_EncodingQuality: 1
   - m_BuildTarget: tvOS
+    m_EncodingQuality: 1
+  - m_BuildTarget: WebGL
     m_EncodingQuality: 1
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetNormalMapEncoding:
@@ -605,7 +607,7 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 1
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0

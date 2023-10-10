@@ -1,0 +1,15 @@
+Standard Unity Asset Store EULA: (https://unity.com/legal/as-terms)
+
+1. "HQ Old Books" by Pointless Clouds (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+2. "Trash Bin" by Rodolfo Rubens (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+3. "Low Polygon Soccer Ball" by Ahmet Gencoglu (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+4. "Island Assets" by Lylek Games (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+5. "Boats - PolyPack" by Alstra Infinite (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+6. "Ink Integration for Unity" by inkle (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+7. "FREE Skybox Extended Shader" by BOXOPHOBIC (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+8. "Mini First Person Controller" by Simon Pasi (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+9. "Dungeon - Low Poly Toon Battle Arena / Tower Defense Pack" by AurynSky [used the trap door asset] 
+	(acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+10."Lowpoly Baker's House" by Evgenia (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+11. "Free: House Interior" by Studio Billion (acquired from Unity Asset Store under Standard Unity Asset Store EULA license agreement)
+12. "LowPoly Bookshelf" by Aredon (acquired form opengameart.org with https://creativecommons.org/publicdomain/zero/1.0/ license agreement)
