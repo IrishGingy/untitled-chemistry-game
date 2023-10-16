@@ -44,15 +44,17 @@ public class Chest : Trigger
             //base.HidePrompt();
             //base.noPrompt = true;
             // show book notification with page number
-            gm.ShowBookNotification();
+            StartCoroutine(gm.qm.ShowGeneralNotification("Notes added to book (B)\n- Page 3"));
+            canOpen = false;
+            //gm.ShowBookNotification();
             // update the page content scriptableobject description of the third page
             pageToUpdate.description = "The peach bearded fish is a marvelous specimen. Beautiful to look at, but its sharp teeth make it " +
                 "quite the predator. Interestingly, this fish doesn't like to show off its beard, and is usually found secluded in narrow passageways without much traffic.";
             // update the actual page in the book (UpdateUI which could be done here and/or when "B" is pressed)
             prerequisiteTrigger.SetActive(true);
             gm.qm.CompleteQuest(noteQuest);
-            //base.HidePrompt();
-            //base.noPrompt = true;
+            base.HidePrompt();
+            base.noPrompt = true;
         }
     }
 

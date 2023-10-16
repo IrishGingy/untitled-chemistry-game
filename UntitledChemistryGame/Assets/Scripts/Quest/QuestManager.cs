@@ -130,7 +130,7 @@ public class QuestManager : MonoBehaviour
         //}
     }
 
-    private IEnumerator ShowGeneralNotification(string description)
+    public IEnumerator ShowGeneralNotification(string description)
     {
         gNotificationText.text = description;
         generalNotificationUI.SetActive(true);

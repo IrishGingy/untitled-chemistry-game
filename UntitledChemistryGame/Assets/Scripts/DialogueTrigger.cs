@@ -51,7 +51,8 @@ public class DialogueTrigger : Trigger
             {
                 // Change player camera
                 EnableShopCamera();
-                base.HidePrompt();
+                base.HidePrompt(); 
+                base.noPrompt = true;
 
                 Scene currentScene = SceneManager.GetActiveScene();
 
@@ -70,6 +71,8 @@ public class DialogueTrigger : Trigger
                     dm.PlayDialogue(altDI);
                     gm.qm.CompleteQuest(talkToCoachQuest);
                 }
+
+                canTriggerDialogue = false;
             }
         }
         else if (player.inDialogue && !dm.dialogueIsPlaying)
